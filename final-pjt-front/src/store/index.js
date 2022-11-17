@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import router from '@/router'
 import createPersistedState from 'vuex-persistedstate'
 Vue.use(Vuex)
 
@@ -24,7 +25,7 @@ export default new Vuex.Store({
     SAVE_TOKEN(state, token) {
       state.token = token
       console.log('로그인 성공~')
-      // router.push({ name: '' })
+      router.push({ name: 'HomeView' })
     }
   },
   actions: {
@@ -43,7 +44,7 @@ export default new Vuex.Store({
           context.commit('SAVE_TOKEN', res.data.key)
         })
         .catch((err) => {
-          console.log(err)
+          console.log(err) 
         })
     },
     logIn(context, payload) {
