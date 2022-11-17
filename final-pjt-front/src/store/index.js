@@ -18,7 +18,7 @@ export default new Vuex.Store({
   getters: {
     isLogin(state) {
       return state.token ? true : false
-    }
+    },
   },
   mutations: {
     GET_MOVIES(state, movies) {
@@ -29,7 +29,7 @@ export default new Vuex.Store({
       state.token = token
       console.log('로그인 성공~')
       router.push({ name: 'MovieView' })
-    }
+    },
   },
   actions: {
     getMovies(context) {
@@ -86,4 +86,3 @@ export default new Vuex.Store({
   modules: {
   }
 })
-

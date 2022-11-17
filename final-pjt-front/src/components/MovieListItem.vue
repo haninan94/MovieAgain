@@ -3,6 +3,7 @@
     <h5>{{ movie.id }}</h5>
     <p>{{ movie.title }}</p>
     <img :src="imgUrl" alt="" />
+    <br />
     <router-link :to="{ name: 'MovieDetailView', params: { id: movie.id } }">
       [DETAIL]
     </router-link>

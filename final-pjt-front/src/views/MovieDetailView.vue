@@ -13,9 +13,17 @@
       <button v-for="genre in genres" :key="genre.id">{{ genre }}</button>
     </p>
     <p>줄거리 : {{ movie?.overview }}</p>
-    <p>포스터 : {{ movie?.poster_path }}</p>
-    <!-- <p>작성시간 : {{ movie?.created_at }}</p> -->
-    <!-- <p>수정시간 : {{ movie?.updated_at }}</p> -->
+
+    <hr />
+    <!-- 댓글 작성 폼 -->
+    <!-- <div>
+      <form @submit="createComment" style="width: 1000px"></form>
+      <input
+        type="text"
+        v-model="comment"
+        placeholder="댓글을 입력해 주세요."
+      />
+    </div> -->
   </div>
 </template>
 
@@ -31,6 +39,7 @@ export default {
       movie: null,
       img_url: null,
       genres: [],
+      comment: "",
     };
   },
   created() {
@@ -48,10 +57,8 @@ export default {
           this.img_url =
             "https://image.tmdb.org/t/p/original" + res.data.poster_path;
           for (let object of this.movie.genre_ids) {
-            console.log(object.name);
             this.genres.push(object.name);
           }
-          console.log(this.genre);
         })
         .catch((err) => {
           console.log(err);
