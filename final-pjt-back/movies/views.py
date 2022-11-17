@@ -11,17 +11,21 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from django.shortcuts import get_object_or_404, get_list_or_404
 from .serializers import MovieListSerializer, MovieSerializer, CommentSerializer
-from .models import Movie, Comment
+from .models import Movie, Comment, Genre
 
 
 
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
+
 def movie_list(request):
     if request.method == 'GET':
         movies = get_list_or_404(Movie)
+        #
+        # 공포영화만
         serializer = MovieListSerializer(movies, many=True)
         return Response(serializer.data)
+
 
     # elif request.method == 'POST':
     #     serializer = MovieSerializer(data=request.data)
@@ -37,7 +41,6 @@ def movie_detail(request, movie_pk):
 
     if request.method == 'GET':
         serializer = MovieSerializer(movie)
-        print(serializer.data)
         return Response(serializer.data)
     
     elif request.method == 'DELETE':
