@@ -18,9 +18,9 @@ export default {
     AdventureMovieList,
   },
   computed: {
-    isLogin() {
-      return this.$store.getters.isLogin;
-    },
+    // isLogin() {
+    //   return this.$store.getters.isLogin;
+    // },
   },
   created() {
     this.getMovies();

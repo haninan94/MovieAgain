@@ -12,17 +12,19 @@ from rest_framework import status
 from django.shortcuts import get_object_or_404, get_list_or_404
 from .serializers import MovieListSerializer, MovieSerializer, CommentSerializer
 from .models import Movie, Comment
+from django.db.models import Q
 
 
 @api_view(['GET', 'POST'])
 # @permission_classes([IsAuthenticated])
 def movie_list(request):
     if request.method == 'GET':
-        movies = get_list_or_404(Movie)
+        movies = get_list_or_404(Movie)[0:5]
+        
     elif request.method == 'POST':
         genre = request.data['genre']
         movies = get_list_or_404(Movie)
-        movies = Movie.objects.filter(genre_ids=genre)
+        movies = Movie.objects.filter(genre_ids=genre).order_by('?')[0:5]
     serializer = MovieListSerializer(movies, many=True)
     return Response(serializer.data)
 
