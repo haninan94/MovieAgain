@@ -7,7 +7,8 @@ class FundingListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Funding
-        read_only_fields = 'user'
+        fields = '__all__'
+        read_only_fields = ('user',)
 
 
 class CommentSerializer(serializers.ModelSerializer):

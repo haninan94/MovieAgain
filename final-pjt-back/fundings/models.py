@@ -10,7 +10,7 @@ class Funding(models.Model):
     now_money = models.IntegerField()
     poster_path = models.CharField(max_length=220, null=True)
     expired_date = models.DateField()
-    created_at = models.DateField(auto_now_add=True)
+    created_at = models.DateField(auto_now_add=True, null=True)
     movie_title = models.CharField(max_length=100)
     content = models.TextField()
 
@@ -22,7 +22,7 @@ class Comment(models.Model):
     funding = models.ForeignKey(Funding, on_delete=models.CASCADE)
     content = models.TextField()
     star_rate = models.FloatField()
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
     updated_a = models.DateTimeField(auto_now=True)
 
     def __str__(self):

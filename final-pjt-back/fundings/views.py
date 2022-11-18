@@ -20,7 +20,7 @@ from .models import Funding, Comment, Backers
 
 
 @api_view(['GET', 'POST'])
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 def funding_list(request):
     if request.method == 'GET':
         # articles = Article.objects.all()
