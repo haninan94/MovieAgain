@@ -1,5 +1,6 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from django.contrib.auth.decorators import login_required
 
 # Authentication Decorators
 # from rest_framework.decorators import authentication_classes
@@ -17,10 +18,12 @@ from .serializers import (
     FundingSerializer,
 )
 from .models import Funding, Comment, Backers
+from rest_framework.permissions import IsAuthenticated
 
 
+# @login_required
 @api_view(['GET', 'POST'])
-# @permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticated])
 def funding_list(request):
     if request.method == 'GET':
         # articles = Article.objects.all()
@@ -31,12 +34,15 @@ def funding_list(request):
     elif request.method == 'POST':
         serializer = FundingSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
+
             # serializer.save()
             serializer.save(user=request.user)
+            # serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
-@api_view(['GET', 'DELETE', 'PUT'])
+@api_view(['GET', 'DELETE', 'POST'])
+@permission_classes([IsAuthenticated])
 def funding_detail(request, funding_pk):
     # article = Article.objects.get(pk=article_pk)
     funding = get_object_or_404(Funding, pk=funding_pk)
@@ -45,16 +51,30 @@ def funding_detail(request, funding_pk):
         serializer = FundingSerializer(funding)
         print(serializer.data)
         return Response(serializer.data)
-
+    #  지금 유저랑 비교해서 글쓴 사람이 지울 수 있게 !!
     elif request.method == 'DELETE':
         funding.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-    elif request.method == 'PUT':
-        serializer = FundingSerializer(funding, data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            return Response(serializer.data)
+    # elif request.method == 'PUT':
+    #     serializer = FundingSerializer(funding, data=request.data)
+    #     if serializer.is_valid(raise_exception=True):
+    #         serializer.save()
+    #         return Response(serializer.data)
+
+    #  내가 쓴글이면 도네이션 참여 x
+    elif request.method == 'POST':
+        serializer1 = BackerSerializer(data=request.data)
+        if serializer1.is_valid(raise_exception=True):
+            serializer1.save()
+        print(request.data, '11111111111111111111111111111')
+        funding.now_money += int(request.data['donation'])
+        serializer2 = FundingSerializer(funding)
+        # if serializer.is_valid(raise_exception=True):
+        print(funding.now_money, '333333333333333333333333333333')
+        funding.save()
+        print(serializer2.data, '2222222222222222222222222222')
+        return Response(serializer2.data, status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])

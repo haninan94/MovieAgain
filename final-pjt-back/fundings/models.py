@@ -5,9 +5,9 @@ from django.conf import settings
 class Funding(models.Model):
     # 펀딩작성유저
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    goal_moeny = models.IntegerField()
+    goal_money = models.IntegerField()
     minimum_money = models.IntegerField()
-    now_money = models.IntegerField()
+    now_money = models.IntegerField(default=0)
     poster_path = models.CharField(max_length=220, null=True)
     expired_date = models.DateField()
     created_at = models.DateField(auto_now_add=True, null=True)
@@ -17,11 +17,12 @@ class Funding(models.Model):
 
 class Comment(models.Model):
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='user_comment'
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='user_funding_comment',
     )
     funding = models.ForeignKey(Funding, on_delete=models.CASCADE)
     content = models.TextField()
-    star_rate = models.FloatField()
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     updated_a = models.DateTimeField(auto_now=True)
 

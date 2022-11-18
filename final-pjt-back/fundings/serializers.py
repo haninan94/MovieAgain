@@ -22,18 +22,33 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class FundingSerializer(serializers.ModelSerializer):
-    comment_set = CommentSerializer(many=True, read_only=True)
-    comment_count = serializers.IntegerField(source='comment_set.count', read_only=True)
-    username = serializers.CharField(source='user.username', read_only=True)
+    # user_funding_comment = CommentSerializer(many=True, read_only=True)
+    # comment_count = serializers.IntegerField(
+    #     source='user_funding_comment.count', read_only=True
+    # )
+    # username = serializers.CharField(source='user.username', read_only=True)
 
     class Meta:
         model = Funding
-        fields = '__all__'
-        read_only_fields = ('user',)
+        fields = (
+            'id',
+            'user',
+            'goal_money',
+            'minimum_money',
+            'poster_path',
+            'expired_date',
+            'movie_title',
+            'content',
+            'now_money',
+        )
+        # read_only_fields = (
+        #     'now_money',
+        #     'user',
+        # )
 
 
 class BackerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Backers
         fields = '__all__'
-        read_only_fields = ('user', 'funding')
+        # read_only_fields = ('user', 'funding')
