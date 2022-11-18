@@ -19,7 +19,7 @@ export default {
   },
   computed: {
     imgUrl() {
-      return "https://image.tmdb.org/t/p/original" + this.movie.poster_path;
+      return "https://image.tmdb.org/t/p/w200" + this.movie.poster_path;
     },
   },
 };
