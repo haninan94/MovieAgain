@@ -16,7 +16,7 @@ from .models import Movie, Comment, Genre
 
 
 @api_view(['GET', 'POST'])
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 
 def movie_list(request):
     if request.method == 'GET':

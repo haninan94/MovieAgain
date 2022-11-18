@@ -15,6 +15,8 @@
     <p>줄거리 : {{ movie?.overview }}</p>
 
     <hr />
+    <router-link :to="{ name: 'MovieView'}">뒤로가기</router-link>
+
     <!-- 댓글 작성 폼 -->
     <!-- <div>
       <form @submit="createComment" style="width: 1000px"></form>

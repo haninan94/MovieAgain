@@ -30,15 +30,19 @@ export default new Vuex.Store({
       console.log('로그인 성공~')
       router.push({ name: 'MovieView' })
     },
+    LOGOUT(state) {
+      console.log("ok")
+      state.token = null
+    },
   },
   actions: {
     getMovies(context) {
       axios({
         method: 'get',
         url: `${API_URL}/api/v1/movies/`,
-        headers: {
-          Authorization: `Token ${context.state.token}`
-        }
+        // headers: {
+        //   Authorization: `Token ${context.state.token}`
+        // }
       })
         .then((res) => {
           // console.log(res, context)
@@ -82,6 +86,9 @@ export default new Vuex.Store({
 
         })
     },
+    // logOut(context) {
+    //   context.commit("")
+    // }
   },
   modules: {
   }

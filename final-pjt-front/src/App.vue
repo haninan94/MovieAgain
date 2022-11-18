@@ -1,12 +1,35 @@
 <template>
   <div id="app">
     <nav>
-    <router-link :to="{ name: 'SignUpView' }">SignUpPage</router-link> | 
-    <router-link :to="{ name: 'LogInView' }">LogInPage</router-link>
+      <template v-if="check">
+        <button @click="logOut">LogOut</button>
+      </template>
+      <template v-else>
+        <router-link :to="{ name: 'SignUpView' }">SignUpPage</router-link> | 
+        <router-link :to="{ name: 'LogInView' }">LogInPage</router-link>
+      </template>
     </nav>
     <router-view/>
   </div>
 </template>
+
+<script>
+export default {
+  name: "App",
+  computed: {
+    check() {
+      return this.$store.getters.isLogin
+    }
+  },
+  methods: {
+    logOut() {
+      console.log("go")
+      this.$store.commit("LOGOUT")
+      this.$router.push({ name: "MovieView" })
+    }
+  },
+}
+</script>
 
 <style>
 #app {
