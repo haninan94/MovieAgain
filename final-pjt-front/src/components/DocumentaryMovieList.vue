@@ -19,7 +19,7 @@ export default {
   },
   computed: {
     movies() {
-      return this.$store.state.Documentary_movies;
+      return this.$store.state.documentary_movies;
     },
   },
 };
