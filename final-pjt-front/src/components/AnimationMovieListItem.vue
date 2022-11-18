@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: "AdventureMovieListItem",
+  name: "AnimationMovieListItem",
   props: {
     movie: Object,
   },
