@@ -1,0 +1,681 @@
+[
+    {
+        "model": "movies.movie",
+        "pk": 966220,
+        "fields": {
+            "backdrop_path": "/yNib9QAiyaopUJbaayKQ2xK7mYf.jpg",
+            "genre_ids": [
+                18,
+                28,
+                10752
+            ],
+            "overview": "",
+            "poster_path": "/66mrr3AK6grmkfGJ1wlCP8dkzjM.jpg",
+            "release_date": "2022-05-03",
+            "title": "\u0421\u043d\u0430\u0439\u043f\u0435\u0440. \u0411\u0456\u043b\u0438\u0439 \u0432\u043e\u0440\u043e\u043d",
+            "vote_average": 7.5,
+            "vote_count": 74
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 663712,
+        "fields": {
+            "backdrop_path": "/y5Z0WesTjvn59jP6yo459eUsbli.jpg",
+            "genre_ids": [
+                27,
+                53
+            ],
+            "overview": "",
+            "poster_path": "/b6IRp6Pl2Fsq37r9jFhGoLtaqHm.jpg",
+            "release_date": "2022-10-06",
+            "title": "\ud14c\ub9ac\ud30c\uc774\uc5b4 2",
+            "vote_average": 7,
+            "vote_count": 603
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 675054,
+        "fields": {
+            "backdrop_path": "/b2FxWOxe9K7ZZ1uaPOze2RJ1ajq.jpg",
+            "genre_ids": [
+                27,
+                28,
+                35
+            ],
+            "overview": "",
+            "poster_path": "/85zufUxhD97k2s5Bu2u101Qd8Sg.jpg",
+            "release_date": "2022-10-26",
+            "title": "MexZombies",
+            "vote_average": 7.2,
+            "vote_count": 77
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 732459,
+        "fields": {
+            "backdrop_path": "/pGx6O6IwqADOsgmqWzPysmWnOyr.jpg",
+            "genre_ids": [
+                28,
+                14
+            ],
+            "overview": "",
+            "poster_path": "/kjFDIlUCJkcpFxYKtE6OsGcAfQQ.jpg",
+            "release_date": "2022-10-25",
+            "title": "47 \ub85c\ub2cc\uc758 \uac80",
+            "vote_average": 6.8,
+            "vote_count": 74
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 676701,
+        "fields": {
+            "backdrop_path": "/tUBN1paMQ1tmVA5Sjy1ZjPWVsiF.jpg",
+            "genre_ids": [
+                12,
+                16,
+                35,
+                10751,
+                14
+            ],
+            "overview": "",
+            "poster_path": "/8ZJjRunZbkMSXcRHiqAdQiecXYz.jpg",
+            "release_date": "2022-08-24",
+            "title": "Tadeo Jones 3: La Tabla Esmeralda",
+            "vote_average": 7.9,
+            "vote_count": 75
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 717728,
+        "fields": {
+            "backdrop_path": "/tIX6j3NzadlwGcJ52nuWdmtOQkg.jpg",
+            "genre_ids": [
+                27,
+                53,
+                9648
+            ],
+            "overview": "",
+            "poster_path": "/qVVegwPsW6n9unBtLWq1rzOutka.jpg",
+            "release_date": "2022-09-15",
+            "title": "Jeepers Creepers: Reborn",
+            "vote_average": 5.8,
+            "vote_count": 458
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 862965,
+        "fields": {
+            "backdrop_path": "/gVecEIEZLZg3pV5CACXAB48I6au.jpg",
+            "genre_ids": [
+                80,
+                18,
+                9648,
+                53
+            ],
+            "overview": "",
+            "poster_path": "/iZvzMpREGiqDQ5eYbx8z70qPgst.jpg",
+            "release_date": "2022-08-12",
+            "title": "\uc5d0\ubc00\ub9ac \ub354 \ud06c\ub9ac\ubbf8\ub110",
+            "vote_average": 6.8,
+            "vote_count": 176
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 551271,
+        "fields": {
+            "backdrop_path": "/aQOWnw3HydsCQZ10O0wvxFOaWc3.jpg",
+            "genre_ids": [
+                36,
+                28,
+                18
+            ],
+            "overview": "",
+            "poster_path": "/4njdAkiBdC5LnFApeXSkFQ78GdT.jpg",
+            "release_date": "2022-09-08",
+            "title": "\ubbf8\ub514\ubc8c",
+            "vote_average": 7.2,
+            "vote_count": 128
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 928123,
+        "fields": {
+            "backdrop_path": "/mMA2YNddowV8MZtxpbn0a7Yilum.jpg",
+            "genre_ids": [
+                10752,
+                36,
+                28,
+                18
+            ],
+            "overview": "",
+            "poster_path": "/ugiL6wIhl1OfPyv1gqLkTe45jLl.jpg",
+            "release_date": "2022-02-01",
+            "title": "\uc7a5\uc9c4\ud638\uc9c0\uc218\ubb38\uad50",
+            "vote_average": 6.6,
+            "vote_count": 25
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 848526,
+        "fields": {
+            "backdrop_path": "/3Ykwi0ObNpqy5gAwhddmxKWs1dp.jpg",
+            "genre_ids": [
+                53,
+                18
+            ],
+            "overview": "",
+            "poster_path": "/2symxAMYXpJ9mJ8YOc2b5ZEKIAQ.jpg",
+            "release_date": "2022-06-17",
+            "title": "Arsenault & Fils",
+            "vote_average": 5.1,
+            "vote_count": 5
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 916719,
+        "fields": {
+            "backdrop_path": "/ttkibtcAjoilW1PbTIFy9U9YOdB.jpg",
+            "genre_ids": [
+                53,
+                28
+            ],
+            "overview": "",
+            "poster_path": "/g29dShv0wHJUvif2KPq039imds5.jpg",
+            "release_date": "2022-07-01",
+            "title": "\ucf54\ub4dc \ub124\uc784 \ubc34\uc26c",
+            "vote_average": 5.1,
+            "vote_count": 44
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 928773,
+        "fields": {
+            "backdrop_path": "/t0qAnq1iOno3Z926Fc1OeKk43Qu.jpg",
+            "genre_ids": [
+                27,
+                53
+            ],
+            "overview": "",
+            "poster_path": "/3zunvPLgM9qGFr8ob2BpaKSuAJI.jpg",
+            "release_date": "2022-01-23",
+            "title": "Whisper",
+            "vote_average": 6.2,
+            "vote_count": 35
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 955644,
+        "fields": {
+            "backdrop_path": "/a6OX0pzbcPHstcNPK3FSJGq8Sxp.jpg",
+            "genre_ids": [
+                16,
+                14,
+                12
+            ],
+            "overview": "",
+            "poster_path": "/a3ZpDsvNCQUOD7ApAs9y3mFwVU4.jpg",
+            "release_date": "2022-05-26",
+            "title": "Mia and Me: The Hero of Centopia",
+            "vote_average": 7.3,
+            "vote_count": 36
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 950044,
+        "fields": {
+            "backdrop_path": "/rdM0VaJu5wo8aTolE1RjQk675kL.jpg",
+            "genre_ids": [
+                10402
+            ],
+            "overview": "",
+            "poster_path": "/gimlLbjGjZBnktEH15eLER9XKne.jpg",
+            "release_date": "2018-07-06",
+            "title": "Wakanda",
+            "vote_average": 8,
+            "vote_count": 4
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 1013860,
+        "fields": {
+            "backdrop_path": "/kmzppWh7ljL6K9fXW72bPN3gKwu.jpg",
+            "genre_ids": [
+                14,
+                28,
+                35,
+                80
+            ],
+            "overview": "",
+            "poster_path": "/g4yJTzMtOBUTAR2Qnmj8TYIcFVq.jpg",
+            "release_date": "2022-11-15",
+            "title": "R.I.P.D.:\uc54c.\uc544\uc774.\ud53c.\ub514.  2",
+            "vote_average": 6.8,
+            "vote_count": 79
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 834734,
+        "fields": {
+            "backdrop_path": "/pwEilCqu0rYNNWjEmrxdWpAEM4x.jpg",
+            "genre_ids": [
+                53
+            ],
+            "overview": "",
+            "poster_path": "/g5cEKhHn2NSH18FxASF8UT0LfsC.jpg",
+            "release_date": "2022-05-12",
+            "title": "Sicosexual",
+            "vote_average": 2,
+            "vote_count": 1
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 904039,
+        "fields": {
+            "backdrop_path": "/oUCq5CC1LPRDd9nDDXgve5gb2tM.jpg",
+            "genre_ids": [
+                16,
+                35
+            ],
+            "overview": "",
+            "poster_path": "/vwYx8HHQFlKFVK3Hs8U0Au6nKGa.jpg",
+            "release_date": "2021-11-26",
+            "title": "Madagascar: A Little Wild Holiday Goose Chase",
+            "vote_average": 5.3,
+            "vote_count": 6
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 928015,
+        "fields": {
+            "backdrop_path": "/wfdc6HVUiIluKxFxe7deJUvnwN0.jpg",
+            "genre_ids": [
+                27,
+                14,
+                53
+            ],
+            "overview": "",
+            "poster_path": "/weZUBP2WvRwso1wTMNp3JK96ULS.jpg",
+            "release_date": "2022-01-28",
+            "title": "Dracula: The Original Living Vampire",
+            "vote_average": 5.5,
+            "vote_count": 46
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 1039026,
+        "fields": {
+            "backdrop_path": "/4ig7xlM8r3rxLZadMHqGGntPkyq.jpg",
+            "genre_ids": [
+                35
+            ],
+            "overview": "",
+            "poster_path": "/nIwNj5OJksZ7IIZDQT3cgVeYlPh.jpg",
+            "release_date": "2022-10-23",
+            "title": "Franco Escamilla: Voyerista auditivo",
+            "vote_average": 8.7,
+            "vote_count": 54
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 886396,
+        "fields": {
+            "backdrop_path": "/iQJ1gC2p6yn5wnBEklhPaEFJ3n1.jpg",
+            "genre_ids": [
+                16,
+                28,
+                878
+            ],
+            "overview": "",
+            "poster_path": "/nBaVsNvUxIuvhPw3xTaAJIw8me4.jpg",
+            "release_date": "2022-10-17",
+            "title": "\ubc30\ud2b8\ub9e8\uacfc \uc288\ud37c\ub9e8: \uc544\ub4e4\ub4e4\uc758 \uc804\ud22c",
+            "vote_average": 7.9,
+            "vote_count": 135
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 812488,
+        "fields": {
+            "backdrop_path": "/6VtzCw8Wd9UWSA5FcXK6Kh2y5FE.jpg",
+            "genre_ids": [
+                53,
+                14,
+                27
+            ],
+            "overview": "",
+            "poster_path": "/tMJnQ3loIIIjkX5pVxv5foMJeaz.jpg",
+            "release_date": "2022-09-02",
+            "title": "Mete miedo",
+            "vote_average": 6.1,
+            "vote_count": 21
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 86328,
+        "fields": {
+            "backdrop_path": "/bJa3RcFKgtVKJqTJCSSuBQeP9c8.jpg",
+            "genre_ids": [
+                27
+            ],
+            "overview": "",
+            "poster_path": "/gb6rq2nD0jRrN0dCzigg2MxXNsB.jpg",
+            "release_date": "2011-08-09",
+            "title": "\ud14c\ub9ac\ud30c\uc774\uc5b4",
+            "vote_average": 6.6,
+            "vote_count": 46
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 811061,
+        "fields": {
+            "backdrop_path": "/mk9LcqxSPVxvquFhQYg8vRhC1zM.jpg",
+            "genre_ids": [
+                27,
+                53
+            ],
+            "overview": "",
+            "poster_path": "/dhnFKLefUEFTq35XGM6GpKUyi4D.jpg",
+            "release_date": "2022-03-25",
+            "title": "So Cold the River",
+            "vote_average": 5.5,
+            "vote_count": 27
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 960875,
+        "fields": {
+            "backdrop_path": "/u1KFDIP64LjG3iD1dbSRBSDNyge.jpg",
+            "genre_ids": [
+                27,
+                53,
+                9648
+            ],
+            "overview": "",
+            "poster_path": "/z0iZuYNM0hUyHZeldIdXf4aSrPy.jpg",
+            "release_date": "2022-09-09",
+            "title": "Jaula",
+            "vote_average": 6.3,
+            "vote_count": 116
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 335795,
+        "fields": {
+            "backdrop_path": "/sobIeWp1a3saZTBkoRTAf8sfC7J.jpg",
+            "genre_ids": [
+                12,
+                10751,
+                10770
+            ],
+            "overview": "",
+            "poster_path": "/tn3GWm0Erehkpur8PUuYWxGpul5.jpg",
+            "release_date": "2022-10-06",
+            "title": "\ubaac\uc2a4\ud130 \ud558\uc774: \ub354 \ubb34\ube44",
+            "vote_average": 7.1,
+            "vote_count": 128
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 982317,
+        "fields": {
+            "backdrop_path": "/cbeRY8ItWaU9ShHezg3cys1mAJk.jpg",
+            "genre_ids": [
+                27
+            ],
+            "overview": "",
+            "poster_path": "/kkWEQx1qJfdOkCvXQTIOQDrMaa1.jpg",
+            "release_date": "2022-07-05",
+            "title": "11th Hour Cleaning",
+            "vote_average": 5.8,
+            "vote_count": 15
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 969160,
+        "fields": {
+            "backdrop_path": "/23sJzwaYazdzqnp2gm6GAQk4sCc.jpg",
+            "genre_ids": [
+                27,
+                53
+            ],
+            "overview": "",
+            "poster_path": "/gLnrBoSENk32SKjHDiZv7E4zwzK.jpg",
+            "release_date": "2022-10-01",
+            "title": "Deinfluencer",
+            "vote_average": 6,
+            "vote_count": 3
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 921360,
+        "fields": {
+            "backdrop_path": "/6AxdvA5hiBGF5ajSKsyt0q7rHei.jpg",
+            "genre_ids": [
+                28,
+                80,
+                53
+            ],
+            "overview": "",
+            "poster_path": "/b9ykj4v8ykjRoGB7SpI1OuxblNU.jpg",
+            "release_date": "2022-09-02",
+            "title": "\uc640\uc774\uc5b4 \ub8f8",
+            "vote_average": 6.8,
+            "vote_count": 104
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 801071,
+        "fields": {
+            "backdrop_path": "/xHRabofjmMGoIV3mb6xgy4nwOcS.jpg",
+            "genre_ids": [
+                27
+            ],
+            "overview": "",
+            "poster_path": "/3Ib8vlWTrAKRrTWUrTrZPOMW4jp.jpg",
+            "release_date": "2022-02-24",
+            "title": "The Jack in the Box: Awakening",
+            "vote_average": 6.4,
+            "vote_count": 187
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 941959,
+        "fields": {
+            "backdrop_path": "/aMBCjbwCw51ino91kmS7VbmxbAl.jpg",
+            "genre_ids": [
+                53
+            ],
+            "overview": "",
+            "poster_path": "/1iGVhDwTaLMPYVK2DeOLa1uAKjN.jpg",
+            "release_date": "2022-08-25",
+            "title": "Un crimen argentino",
+            "vote_average": 6.2,
+            "vote_count": 11
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 1015724,
+        "fields": {
+            "backdrop_path": "/pnuPFr2yfneFOiCjgyROzMMNN0W.jpg",
+            "genre_ids": [
+                12,
+                9648,
+                35,
+                16,
+                10751
+            ],
+            "overview": "",
+            "poster_path": "/wZccw4Hj9ZF1yimnfPsX9rl3HvB.jpg",
+            "release_date": "2022-10-04",
+            "title": "Trick or Treat Scooby-Doo!",
+            "vote_average": 7.4,
+            "vote_count": 114
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 1005776,
+        "fields": {
+            "backdrop_path": "/o8tThg5KqX3t32vbAIxNuS8Fmlj.jpg",
+            "genre_ids": [
+                27,
+                53
+            ],
+            "overview": "",
+            "poster_path": "/g4Tg6R1MUTw0hef6Q7ohZHWk3O8.jpg",
+            "release_date": "2022-09-15",
+            "title": "V/H/S/99",
+            "vote_average": 6.4,
+            "vote_count": 90
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 968857,
+        "fields": {
+            "backdrop_path": "/zlLQXKsSa2CEkz3UBFWPUPX90PN.jpg",
+            "genre_ids": [
+                53
+            ],
+            "overview": "",
+            "poster_path": "/1uy2PNFwtkqH3mhGd6irk5aeIrF.jpg",
+            "release_date": "2022-02-01",
+            "title": "Looks Can Kill",
+            "vote_average": 4.5,
+            "vote_count": 10
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 1039627,
+        "fields": {
+            "backdrop_path": "/bEvQgIO51dgrvnlxHFDpApbwG47.jpg",
+            "genre_ids": [
+                16
+            ],
+            "overview": "",
+            "poster_path": "/ik65OsEXbik1I0Di7SX9Sqv04e9.jpg",
+            "release_date": "2022-10-24",
+            "title": "L.O.L. Surprise! Winter Fashion Show",
+            "vote_average": 7.6,
+            "vote_count": 16
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 1007401,
+        "fields": {
+            "backdrop_path": "/endVnEgUGjibpLaF0yjUX2CWhh4.jpg",
+            "genre_ids": [
+                16,
+                28,
+                14
+            ],
+            "overview": "",
+            "poster_path": "/xvjCiv1xNlK1kNnoe1nul899vIp.jpg",
+            "release_date": "2022-10-09",
+            "title": "Mortal Kombat Legends: Snow Blind",
+            "vote_average": 8,
+            "vote_count": 78
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 1008779,
+        "fields": {
+            "backdrop_path": "/iGHFjqxH5c8zRibnZbh9qEYTBho.jpg",
+            "genre_ids": [
+                28
+            ],
+            "overview": "",
+            "poster_path": "/ksxiXqwPuEjh3gct1zUpyzNoQFt.jpg",
+            "release_date": "2022-02-01",
+            "title": "La Princesa",
+            "vote_average": 7.4,
+            "vote_count": 74
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 1006381,
+        "fields": {
+            "backdrop_path": "/1MM62NRtGsnoT55nybELpU3OMYq.jpg",
+            "genre_ids": [
+                12,
+                878,
+                35
+            ],
+            "overview": "",
+            "poster_path": "/bm77tBJy28DA1DzP7qExKOPWsEL.jpg",
+            "release_date": "2022-09-22",
+            "title": "Acampamento Intergal\u00e1ctico",
+            "vote_average": 6,
+            "vote_count": 1
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 975120,
+        "fields": {
+            "backdrop_path": "/i9BtOklh2txI78wNSTNjoAZ6Fvj.jpg",
+            "genre_ids": [
+                35,
+                10751
+            ],
+            "overview": "",
+            "poster_path": "/k2v9xSPtiyxCNxaRGtj7COwdgG3.jpg",
+            "release_date": "2022-07-15",
+            "title": "Padre no hay mas que Uno 3",
+            "vote_average": 7.7,
+            "vote_count": 150
+        }
+    },
+    {
+        "model": "movies.movie",
+        "pk": 750466,
+        "fields": {
+            "backdrop_path": "/k3eb1B7fNNPhe1VMuAIIJna4AUT.jpg",
+            "genre_ids": [
+                18,
+                35,
+                10749
+            ],
+            "overview": "",
+            "poster_path": "/crwSI9AJmzTh6JA1NLbNzE5Rd0D.jpg",
+            "release_date": "2022-02-03",
+            "title": "Wundersch\u00f6n",
+            "vote_average": 7.3,
+            "vote_count": 32
+        }
+    }
+]

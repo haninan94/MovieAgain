@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import axios from 'axios'
 import router from '@/router'
 import createPersistedState from 'vuex-persistedstate'
+import router from '@/router'
 Vue.use(Vuex)
 
 const API_URL = 'http://127.0.0.1:8000'
@@ -18,17 +19,37 @@ export default new Vuex.Store({
   getters: {
     isLogin(state) {
       return state.token ? true : false
-    }
+    },
   },
   mutations: {
+    GET_MOVIES(state, movies) {
+      state.movies = movies
+    },
     // 회원가입 && 로그인
     SAVE_TOKEN(state, token) {
       state.token = token
       console.log('로그인 성공~')
-      router.push({ name: 'HomeView' })
-    }
+      router.push({ name: 'MovieView' })
+    },
   },
   actions: {
+    getMovies(context) {
+      axios({
+        method: 'get',
+        url: `${API_URL}/api/v1/movies/`,
+        headers: {
+          Authorization: `Token ${context.state.token}`
+        }
+      })
+        .then((res) => {
+          // console.log(res, context)
+          // console.log(res.data)
+          context.commit('GET_MOVIES', res.data)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
     signUp(context, payload) {
       axios({
         method: 'post',
@@ -44,7 +65,7 @@ export default new Vuex.Store({
           context.commit('SAVE_TOKEN', res.data.key)
         })
         .catch((err) => {
-          console.log(err) 
+          console.log(err)
         })
     },
     logIn(context, payload) {
@@ -59,10 +80,10 @@ export default new Vuex.Store({
         .then((res) => {
           console.log(res)
           context.commit('SAVE_TOKEN', res.data.key)
+
         })
     },
   },
   modules: {
   }
 })
-

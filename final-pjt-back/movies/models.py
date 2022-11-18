@@ -6,8 +6,12 @@ from django.conf import settings
 class Genre(models.Model):
     name = models.TextField()
 
+    def __self__(self):
+        return self.name
+
 
 class Movie(models.Model):
+    backdrop_path = models.CharField(max_length=220, null=True)
     genre_ids = models.ManyToManyField(Genre)
     overview = models.TextField()
     poster_path = models.CharField(max_length=220, null=True)
@@ -15,10 +19,16 @@ class Movie(models.Model):
     title = models.CharField(max_length=100)
     vote_average = models.FloatField()
     vote_count = models.IntegerField()
-    like_users = models.TextField(null=True)
+
+    def __str__(self):
+        return self.title
 
 class Comment(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.content

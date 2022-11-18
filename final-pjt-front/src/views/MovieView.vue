@@ -1,11 +1,10 @@
 <template>
   <div>
-    <h1>Movie Page</h1>
+    <h1>Movie page</h1>
     <hr />
     <MovieList />
   </div>
 </template>
-
 <script>
 import MovieList from "@/components/MovieList";
 
