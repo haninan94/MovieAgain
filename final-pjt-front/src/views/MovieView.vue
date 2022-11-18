@@ -1,17 +1,40 @@
 <template>
   <div>
-    <h1>Movie page</h1>
-    <hr />
-    <MovieList />
+    <div class="movieview">
+      <MovieList />
+    </div>
+    <h2>AdventureMovie</h2>
+    <AdventureMovieList />
+    <hr>
+    <h2>HorrorMovie</h2>
+    <HorrorMovieList />
+    <h2>Documentary</h2>
+    <DocumentaryMovieList />
+    <h2>Animation</h2>
+    <AnimationMovieList />
+    <h2>Romance</h2>
+    <RomanceMovieList />
   </div>
 </template>
+
+
 <script>
 import MovieList from "@/components/MovieList";
+import AdventureMovieList from "@/components/AdventureMovieList";
+import HorrorMovieList from "@/components/HorrorMovieList";
+import DocumentaryMovieList from "@/components/DocumentaryMovieList";
+import AnimationMovieList from "@/components/AnimationMovieList";
+import RomanceMovieList from "@/components/RomanceMovieList";
 
 export default {
   name: "MovieView",
   components: {
     MovieList,
+    AdventureMovieList,
+    HorrorMovieList,
+    DocumentaryMovieList,
+    AnimationMovieList,
+    RomanceMovieList,
   },
   computed: {
     // isLogin() {
@@ -20,10 +43,15 @@ export default {
   },
   created() {
     this.getMovies();
+    this.getAdventureMovies();
+    this.getHorrorMovies();
+    this.getAnimationMovies()
+    this.getDocumentaryMovies()
+    this.getRomanceMovies()
   },
   methods: {
     getMovies() {
-      this.$store.dispatch("getMovies")
+      this.$store.dispatch("getMovies");
       // if (this.isLogin === true) {
       //   this.$store.dispatch("getMovies");
       // } else {
@@ -31,9 +59,28 @@ export default {
       //   this.$router.push({ name: "LogInView" });
       // }
     },
+    getAdventureMovies() {
+      this.$store.dispatch("getAdventureMovies");
+    },
+    getHorrorMovies() {
+      this.$store.dispatch("getHorrorMovies");
+    },
+    getAnimationMovies() {
+      this.$store.dispatch("getAnimationMovies")
+    },
+    getDocumentaryMovies() {
+      this.$store.dispatch("getDocumentaryMovies")
+    },
+    getRomanceMovies() {
+      this.$store.dispatch("getRomanceMovies")
+    }
   },
 };
 </script>
 
 <style>
+.movieview {
+  display: flex;
+  justify-content: center;
+}
 </style>

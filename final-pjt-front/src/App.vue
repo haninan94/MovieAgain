@@ -1,22 +1,17 @@
 <template>
   <div id="app">
     <nav>
-<<<<<<< HEAD
-    <router-link :to="{ name: 'HomeView' }">Home</router-link> | 
-    <router-link :to="{ name: 'FundingView' }">Funding</router-link> | 
-    <router-link :to="{ name: 'SignUpView' }">SignUp</router-link> | 
-    <router-link :to="{ name: 'LogInView' }">LogIn</router-link>
-=======
+      <router-link :to="{ name: 'MovieView' }">Home</router-link> |
       <template v-if="check">
         <button @click="logOut">LogOut</button>
       </template>
       <template v-else>
-        <router-link :to="{ name: 'SignUpView' }">SignUpPage</router-link> | 
+        <router-link :to="{ name: 'SignUpView' }">SignUpPage</router-link> |
         <router-link :to="{ name: 'LogInView' }">LogInPage</router-link>
       </template>
->>>>>>> 4dea9b100a2813278d8b30b8d4e7105ca37715f9
+      >>>>>>> 4dea9b100a2813278d8b30b8d4e7105ca37715f9
     </nav>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
@@ -25,17 +20,17 @@ export default {
   name: "App",
   computed: {
     check() {
-      return this.$store.getters.isLogin
-    }
+      return this.$store.getters.isLogin;
+    },
   },
   methods: {
     logOut() {
-      console.log("go")
-      this.$store.commit("LOGOUT")
-      this.$router.push({ name: "MovieView" })
-    }
+      // console.log("go")
+      this.$store.commit("LOGOUT");
+      // this.$router.push({ name: "MovieView" })
+    },
   },
-}
+};
 </script>
 
 <style>
