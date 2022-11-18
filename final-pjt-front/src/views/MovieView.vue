@@ -1,8 +1,11 @@
 <template>
-  <div class="movieview">
-    <MovieList />
+  <div>
+    <div class="movieview">
+      <MovieList />
+    </div>
     <h2>AdventureMovie</h2>
     <AdventureMovieList />
+    <hr>
     <h2>HorrorMovie</h2>
     <HorrorMovieList />
     <h2>Documentary</h2>
@@ -42,6 +45,9 @@ export default {
     this.getMovies();
     this.getAdventureMovies();
     this.getHorrorMovies();
+    this.getAnimationMovies()
+    this.getDocumentaryMovies()
+    this.getRomanceMovies()
   },
   methods: {
     getMovies() {
@@ -59,6 +65,15 @@ export default {
     getHorrorMovies() {
       this.$store.dispatch("getHorrorMovies");
     },
+    getAnimationMovies() {
+      this.$store.dispatch("getAnimationMovies")
+    },
+    getDocumentaryMovies() {
+      this.$store.dispatch("getDocumentaryMovies")
+    },
+    getRomanceMovies() {
+      this.$store.dispatch("getRomanceMovies")
+    }
   },
 };
 </script>

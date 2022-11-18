@@ -1,6 +1,6 @@
 <template>
   <div class="movielist">
-    <carousel-3d :controls-visible="true" :clickable="false" :width="300" :height="450">
+    <carousel-3d :controls-visible="true" :clickable="false" width="300" height="450">
       <slide class="slide" v-for="(movie, index) in movies" :key="movie.id" :index="index">
         <figure>
           <router-link :to="{ name: 'MovieDetailView', params: { id: movie.id } }">
@@ -54,6 +54,11 @@ export default {
 <style>
 .movielist {
   width: 100%;
+}
+
+.carousel {
+  width: 2rem;
+  height: 2rem;
 }
 
 figure {
