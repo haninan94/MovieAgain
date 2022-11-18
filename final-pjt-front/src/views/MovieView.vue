@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <!-- <h1>Movie page</h1>
-    <hr /> -->
+  <div class="movieview">
     <MovieList />
   </div>
 </template>
@@ -36,4 +34,8 @@ export default {
 </script>
 
 <style>
+.movieview {
+  display: flex;
+  justify-content: center;
+}
 </style>
