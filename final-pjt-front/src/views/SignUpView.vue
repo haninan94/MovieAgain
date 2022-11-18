@@ -1,7 +1,6 @@
 <template>
-  <div>
-    <h1>Sign Up Page</h1>
-    <form @submit.prevent="signUp">
+  <div id="signup">
+    <!-- <form @submit.prevent="signUp">
       <label for="username">username : </label>
       <input type="text" id="username" v-model="username"><br>
 
@@ -12,7 +11,40 @@
       <input type="password" id="password2" v-model="password2">
       
       <input type="submit" value="SignUp">
-    </form>
+    </form> -->
+    <b-form  @submit.prevent="signUp">
+      <h1>회원가입</h1>
+      <b-form-group id="input-group-1" label="ID" label-for="input-1">
+        <b-form-input
+          id="input-1"
+          v-model="username"
+          placeholder="ID"
+          required
+        ></b-form-input>
+      </b-form-group>
+      <br>
+      <b-form-group id="input-group-2" label="Password" label-for="input-2">
+        <b-form-input
+          type="password"
+          id="input-2"
+          v-model="password1"
+          placeholder="Password"
+          required
+        ></b-form-input>
+      </b-form-group>
+      <br>
+      <b-form-group id="input-group-3" label="Password Confirmation" label-for="input-3">
+        <b-form-input
+          type="password"
+          id="input-3"
+          v-model="password2"
+          placeholder="Password Confirmation"
+        >
+        </b-form-input>
+      </b-form-group>
+      <br>
+      <b-button type="submit" variant="outline-primary">회원가입</b-button>
+    </b-form>
   </div>
 </template>
 
@@ -47,3 +79,11 @@ export default {
   }
 }
 </script>
+
+<style>
+#signup {
+  display: flex;
+  justify-content: center;
+  
+}
+</style>

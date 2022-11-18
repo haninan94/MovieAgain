@@ -27,11 +27,11 @@ export default new Vuex.Store({
     // 회원가입 && 로그인
     SAVE_TOKEN(state, token) {
       state.token = token
-      console.log('로그인 성공~')
+      // console.log('로그인 성공~')
       router.push({ name: 'MovieView' })
     },
     LOGOUT(state) {
-      console.log("ok")
+      // console.log("ok")
       state.token = null
     },
   },
@@ -81,7 +81,7 @@ export default new Vuex.Store({
         }
       })
         .then((res) => {
-          console.log(res)
+          // console.log(res)
           context.commit('SAVE_TOKEN', res.data.key)
 
         })

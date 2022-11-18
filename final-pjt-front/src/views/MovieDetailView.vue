@@ -54,7 +54,7 @@ export default {
         url: `${API_URL}/api/v1/movies/${this.$route.params.id}`,
       })
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           this.movie = res.data;
           this.img_url =
             "https://image.tmdb.org/t/p/original" + res.data.poster_path;

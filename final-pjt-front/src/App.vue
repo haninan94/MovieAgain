@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <nav>
+      <router-link :to="{ name: 'MovieView'}">Home</router-link> |
       <template v-if="check">
         <button @click="logOut">LogOut</button>
       </template>
@@ -23,9 +24,9 @@ export default {
   },
   methods: {
     logOut() {
-      console.log("go")
+      // console.log("go")
       this.$store.commit("LOGOUT")
-      this.$router.push({ name: "MovieView" })
+      // this.$router.push({ name: "MovieView" })
     }
   },
 }
@@ -36,7 +37,7 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /* text-align: center; */
   color: #2c3e50;
 }
 
