@@ -24,6 +24,9 @@ export default new Vuex.Store({
     GET_MOVIES(state, movies) {
       state.movies = movies
     },
+    GET_ADVENTURE_MOVIES(state, adventure_movies) {
+      state.adventure_movies = adventure_movies
+    },
     // 회원가입 && 로그인
     SAVE_TOKEN(state, token) {
       state.token = token
@@ -37,13 +40,26 @@ export default new Vuex.Store({
         method: 'get',
         url: `${API_URL}/api/v1/movies/`,
         headers: {
-          Authorization: `Token ${context.state.token}`
+          // Authorization: `Token ${context.state.token}`
+        },
+      })
+        .then((res) => {
+          context.commit('GET_MOVIES', res.data)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
+    getAdventureMovies(context) {
+      axios({
+        method: 'post',
+        url: `${API_URL}/api/v1/movies/`,
+        data: {
+          genre: 12,
         }
       })
         .then((res) => {
-          // console.log(res, context)
-          // console.log(res.data)
-          context.commit('GET_MOVIES', res.data)
+          context.commit('GET_ADVENTURE_MOVIES', res.data)
         })
         .catch((err) => {
           console.log(err)

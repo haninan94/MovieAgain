@@ -1,6 +1,6 @@
-
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+
 # Authentication Decorators
 # from rest_framework.decorators import authentication_classes
 
@@ -11,21 +11,20 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from django.shortcuts import get_object_or_404, get_list_or_404
 from .serializers import MovieListSerializer, MovieSerializer, CommentSerializer
-from .models import Movie, Comment, Genre
-
+from .models import Movie, Comment
 
 
 @api_view(['GET', 'POST'])
-@permission_classes([IsAuthenticated])
-
+# @permission_classes([IsAuthenticated])
 def movie_list(request):
     if request.method == 'GET':
         movies = get_list_or_404(Movie)
-        #
-        # 공포영화만
-        serializer = MovieListSerializer(movies, many=True)
-        return Response(serializer.data)
-
+    elif request.method == 'POST':
+        genre = request.data['genre']
+        movies = get_list_or_404(Movie)
+        movies = Movie.objects.filter(genre_ids=genre)
+    serializer = MovieListSerializer(movies, many=True)
+    return Response(serializer.data)
 
     # elif request.method == 'POST':
     #     serializer = MovieSerializer(data=request.data)
@@ -42,7 +41,7 @@ def movie_detail(request, movie_pk):
     if request.method == 'GET':
         serializer = MovieSerializer(movie)
         return Response(serializer.data)
-    
+
     elif request.method == 'DELETE':
         movie.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
@@ -74,7 +73,6 @@ def comment_detail(request, comment_pk, username):
         serializer = CommentSerializer(comment)
         return Response(serializer.data)
 
-        
     if str(comment.user) == str(username):
         if request.method == 'DELETE':
             comment.delete()
@@ -85,8 +83,6 @@ def comment_detail(request, comment_pk, username):
             if serializer.is_valid(raise_exception=True):
                 serializer.save()
                 return Response(serializer.data)
-
-    
 
 
 @api_view(['POST'])
