@@ -13,41 +13,52 @@
       <button v-for="genre in genres" :key="genre.id">{{ genre }}</button>
     </p>
     <p>줄거리 : {{ movie?.overview }}</p>
-
+    <p id="idTag">{{ movie?.id }}</p>
     <hr />
-    <router-link :to="{ name: 'MovieView'}">뒤로가기</router-link>
+    <router-link :to="{ name: 'MovieView' }">뒤로가기</router-link>
 
     <!-- 댓글 작성 폼 -->
-    <!-- <div>
-      <form @submit="createComment" style="width: 1000px"></form>
-      <input
-        type="text"
-        v-model="comment"
-        placeholder="댓글을 입력해 주세요."
-      />
-    </div> -->
+    <!-- <MovieCommentForm /> -->
+    <MovieCommentForm :movieId="movieId" />
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import MovieCommentForm from "@/components/MovieCommentForm";
 
 const API_URL = "http://127.0.0.1:8000";
 
 export default {
   name: "MovieDetailView",
+  components: {
+    MovieCommentForm,
+  },
   data() {
     return {
       movie: null,
       img_url: null,
       genres: [],
       comment: "",
+      movieId: null,
+      // movieId: this.movie.id,
     };
   },
   created() {
     this.getMovieDetail();
+    this.getId();
   },
   methods: {
+    getId() {
+      const idTag = document.querySelector("#idTag");
+      console.log(idTag);
+      console.log(idTag.innerText);
+      // this.movieId = idTag.innerText;
+      // const movieTag = document.querySelector("#movieId");
+      // console.log(movieTag);
+      // console.log(movieTag.innertext);
+      // this.movieId = movieId;
+    },
     getMovieDetail() {
       axios({
         method: "get",

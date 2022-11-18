@@ -40,8 +40,9 @@ export default new Vuex.Store({
       state.romance_movies = romance_movies
     },
     // 회원가입 && 로그인
-    SAVE_TOKEN(state, token) {
+    SAVE_TOKEN(state, token, username) {
       state.token = token
+      state.username = username
       // console.log('로그인 성공~')
       router.push({ name: 'MovieView' })
     },
@@ -166,8 +167,7 @@ export default new Vuex.Store({
         }
       })
         .then((res) => {
-          // console.log(res)
-          context.commit('SAVE_TOKEN', res.data.key)
+          context.commit('SAVE_TOKEN', res.data.key, payload.username)
 
         })
     },
