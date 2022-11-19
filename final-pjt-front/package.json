@@ -12,6 +12,7 @@
     "bootstrap": "^5.2.2",
     "bootstrap-vue": "^2.23.1",
     "core-js": "^3.8.3",
+    "nes.css": "^2.3.0",
     "vue": "^2.7.14",
     "vue-carousel-3d": "^1.0.1",
     "vue-persistedstate": "^1.2.5",
