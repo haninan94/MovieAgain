@@ -1,12 +1,21 @@
 <template>
-  <div>
-    <h1>Detail</h1>
+  <div class="moviedetail" :style="{ backgroundImage: `url('https://image.tmdb.org/t/p/original${movie?.backdrop_path}')`}">
+    <!-- <img :src="`https://image.tmdb.org/t/p/original${movie?.backdrop_path}`" alt=""> -->
+    <!-- <div :style="{ backgroundImage: `url('https://image.tmdb.org/t/p/original${movie?.backdrop_path}')`}"></div>   -->
     <!-- <p>글 번호 : {{ movie?.id }}</p> -->
-    <img :src="img_url" alt="이미지 자리" />
-    <p>제목 : {{ movie?.title }}</p>
-    <p>줄거리 : {{ movie?.overview }}</p>
-    <p>개봉일 : {{ movie?.release_date }}</p>
-    <p>평점 : {{ movie?.vote_average }}</p>
+
+    <div class='movie-information'>
+      <div>
+        <img class='movie-poster' :src="img_url" alt="이미지 자리" />
+      </div>
+      <div>
+        <p>제목 : {{ movie?.title }}</p>
+        <p>개봉일 : {{ movie?.release_date }}</p>
+        <p>평점 : {{ movie?.vote_average }}</p>
+        <p>줄거리 : {{ movie?.overview }}</p>
+      </div>
+    </div>
+
 
     <p>
       장르 :
@@ -42,6 +51,7 @@ export default {
       img_url: null,
       genres: [],
       comment: "",
+      backgroundImgUrl: null,
     };
   },
   created() {
@@ -57,7 +67,11 @@ export default {
           // console.log(res);
           this.movie = res.data;
           this.img_url =
-            "https://image.tmdb.org/t/p/original" + res.data.poster_path;
+            "https://image.tmdb.org/t/p/w200" + res.data.poster_path;
+
+            // console.log(res.data.poster_path)
+            // console.log(res.data.backdrop_path)
+
           for (let object of this.movie.genre_ids) {
             this.genres.push(object.name);
           }
@@ -69,3 +83,17 @@ export default {
   },
 };
 </script>
+
+<style>
+.moviedetail {
+  background-repeat: no-repeat;
+}
+
+.movie-poster {
+  display: flex;
+}
+
+.movie-information {
+  display: flex;
+}
+</style>
