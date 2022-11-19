@@ -3,7 +3,7 @@
     "model": "fundings.funding",
     "pk": 1,
     "fields": {
-      "goal_moeny": 3000000,
+      "goal_money": 3000000,
       "minimum_money": 30000,
       "now_money": 0,
       "poster_path": "/yNib9QAiyaopUJbaayKQ2xK7mYf.jpg",
@@ -17,7 +17,7 @@
     "model": "fundings.funding",
     "pk": 2,
     "fields": {
-      "goal_moeny": 3000000,
+      "goal_money": 3000000,
       "minimum_money": 30000,
       "now_money": 0,
       "poster_path": "/yNib9QAiyaopUJbaayKQ2xK7mYf.jpg",
@@ -31,7 +31,7 @@
     "model": "fundings.funding",
     "pk": 3,
     "fields": {
-      "goal_moeny": 3000000,
+      "goal_money": 3000000,
       "minimum_money": 30000,
       "now_money": 0,
       "poster_path": "/yNib9QAiyaopUJbaayKQ2xK7mYf.jpg",
@@ -45,7 +45,7 @@
     "model": "fundings.funding",
     "pk": 4,
     "fields": {
-      "goal_moeny": 3000000,
+      "goal_money": 3000000,
       "minimum_money": 30000,
       "now_money": 0,
       "poster_path": "/yNib9QAiyaopUJbaayKQ2xK7mYf.jpg",

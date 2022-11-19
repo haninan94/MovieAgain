@@ -23,7 +23,7 @@ from rest_framework.permissions import IsAuthenticated
 
 # @login_required
 @api_view(['GET', 'POST'])
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 def funding_list(request):
     if request.method == 'GET':
         # articles = Article.objects.all()
@@ -42,7 +42,7 @@ def funding_list(request):
 
 
 @api_view(['GET', 'DELETE', 'POST'])
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 def funding_detail(request, funding_pk):
     # article = Article.objects.get(pk=article_pk)
     funding = get_object_or_404(Funding, pk=funding_pk)
