@@ -88,7 +88,7 @@ def comment_detail(request, comment_pk, username):
 
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 def comment_create(request, movie_pk):
     movie = get_object_or_404(Movie, pk=movie_pk)
     serializer = CommentSerializer(data=request.data)

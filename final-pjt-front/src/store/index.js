@@ -40,16 +40,20 @@ export default new Vuex.Store({
       state.romance_movies = romance_movies
     },
     // 회원가입 && 로그인
-    SAVE_TOKEN(state, token, username) {
-      state.token = token
-      state.username = username
-      // console.log('로그인 성공~')
+    SAVE_TOKEN(state, data) {
+      state.token = data.token
+      state.username = data.username
+      console.log('로그인 성공~')
+      console.log(this.state.username)
       router.push({ name: 'MovieView' })
     },
     LOGOUT(state) {
       // console.log("ok")
       state.token = null
     },
+    GET_MOVIE_COMMENTS(state, new_comment) {
+      state.comment = new_comment
+    }
   },
   actions: {
     getMovies(context) {
@@ -166,11 +170,41 @@ export default new Vuex.Store({
           password: payload.password,
         }
       })
+        // 3번째 인자인 payload.username 이 data로 전달이 안되는듯
+        // 두번째 인자에 token, username 같이 묶어서 data로 넘김
+        // 우리가 필요한 건 user id 
+        // 하지만 res.data에는 key 만 있고 장고로그인은 settings 에서 해줘서 따로 view 로 response 줄 수 없음
+        // 그럼 username 으로 comment 생성? comment 모델 변경??
         .then((res) => {
-          context.commit('SAVE_TOKEN', res.data.key, payload.username)
+          console.log(res)
+          console.log('11111111111111111111111111111111111111111111111111')
+          const data = {
+            // 'id': res.data.id,
+            'token': res.data.key,
+            'username': payload.username,
+          }
+          context.commit('SAVE_TOKEN', data)
 
         })
     },
+    createComment(context, payload) {
+      axios({
+        method: 'post',
+        url: `${API_URL}/api/v1/movies/${payload.movie}/comments/`,
+        data: {
+          user: payload.user,
+          content: payload.content,
+          movie: payload.movie
+        }
+      })
+        .then((res) => {
+          context.commit('GET_MOVIE_COMMENTS', res.data)
+        })
+        .catch((err) => {
+          console.log(`${payload.user}`)
+          console.log(err)
+        })
+    }
     // logOut(context) {
     //   context.commit("")
     // }

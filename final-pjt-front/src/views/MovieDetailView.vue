@@ -19,7 +19,7 @@
 
     <!-- 댓글 작성 폼 -->
     <!-- <MovieCommentForm /> -->
-    <MovieCommentForm :movieId="movieId" />
+    <MovieCommentForm :movieId="movie.id" />
   </div>
 </template>
 
@@ -40,7 +40,7 @@ export default {
       img_url: null,
       genres: [],
       comment: "",
-      movieId: null,
+      // movieId: null,
       // movieId: this.movie.id,
     };
   },
