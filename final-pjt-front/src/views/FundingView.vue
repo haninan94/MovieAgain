@@ -1,36 +1,29 @@
 <template>
   <div>
-    <h1>Movie Page</h1>
+    <h1>Funding Page</h1>
     <hr />
-    <MovieList />
+    <FundingList/>
   </div>
 </template>
 
 <script>
-import MovieList from "@/components/MovieList";
+import FundingList from '@/components/FundingList'
 
 export default {
-  name: "MovieView",
+  name: "FundingView",
   components: {
-    MovieList,
+    FundingList,
   },
   computed: {
-    isLogin() {
-      return this.$store.getters.isLogin;
-    },
+
   },
   created() {
-    this.getMovies();
+    this.getFundings()
   },
   methods: {
-    getMovies() {
-      if (this.isLogin === true) {
-        this.$store.dispatch("getMovies");
-      } else {
-        alert("로그인이 필요한 서비스 입니다.");
-        this.$router.push({ name: "LogInView" });
-      }
-    },
+    getFundings() {
+      this.$store.dispatch("getFundings")
+    }
   },
 };
 </script>

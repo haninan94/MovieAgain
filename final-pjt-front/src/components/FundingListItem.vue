@@ -1,6 +1,9 @@
 <template>
   <div>
-    funding item
+    {{ funding.movie_title }}
+    <br>
+    {{ funding.content }}
+    <hr>
   </div>
 </template>
 
@@ -8,7 +11,10 @@
 
 
 export default {
-  name:'FundingListItem'
+  name:'FundingListItem',
+  props: {
+    funding: Object,
+  },
 }
 </script>
 

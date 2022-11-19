@@ -4,7 +4,7 @@ import SignUpView from '@/views/SignUpView'
 import LogInView from '@/views/LogInView'
 import MovieView from '@/views/MovieView'
 import MovieDetailView from '@/views/MovieDetailView'
-
+import FundingView from '@/views/FundingView'
 
 Vue.use(VueRouter)
 
@@ -32,6 +32,11 @@ const routes = [
     name: 'MovieDetailView',
     component: MovieDetailView,
   },
+  {
+    path: '/fundings',
+    name: 'FundingView',
+    component: FundingView
+  }
 ]
 
 const router = new VueRouter({

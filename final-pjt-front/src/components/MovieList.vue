@@ -67,5 +67,3 @@ figure {
 
 
 </style>
-
-</style>

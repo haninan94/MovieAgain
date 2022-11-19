@@ -3,13 +3,13 @@
     <nav>
       <router-link :to="{ name: 'MovieView' }">Home</router-link> |
       <template v-if="check">
-        <button @click="logOut">LogOut</button>
+        <button @click="logOut">LogOut</button> |
       </template>
       <template v-else>
         <router-link :to="{ name: 'SignUpView' }">SignUpPage</router-link> |
-        <router-link :to="{ name: 'LogInView' }">LogInPage</router-link>
+        <router-link :to="{ name: 'LogInView' }">LogInPage</router-link> |
       </template>
-      >>>>>>> 4dea9b100a2813278d8b30b8d4e7105ca37715f9
+      <router-link :to="{ name: 'FundingView'}">Funding</router-link>
     </nav>
     <router-view />
   </div>

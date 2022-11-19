@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import axios from 'axios'
 import router from '@/router'
 import createPersistedState from 'vuex-persistedstate'
-import router from '@/router'
+
 Vue.use(Vuex)
 
 const API_URL = 'http://127.0.0.1:8000'
@@ -39,6 +39,9 @@ export default new Vuex.Store({
     },
     GET_ROMANCE_MOVIES(state, romance_movies) {
       state.romance_movies = romance_movies
+    },
+    GET_FUNDINGS(state, fundings) {
+      state.fundings = fundings
     },
     // 회원가입 && 로그인
     SAVE_TOKEN(state, token) {
@@ -137,6 +140,15 @@ export default new Vuex.Store({
         })
         .catch((err) => {
           console.log(err)
+        })
+    },
+    getFundings(context) {
+      axios({
+        method: "get",
+        url: `${API_URL}/api/v1/fundings/`,
+      })
+        .then((res) => {
+          context.commit("GET_FUNDINGS", res.data)
         })
     },
     signUp(context, payload) {

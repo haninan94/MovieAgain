@@ -1,7 +1,10 @@
 <template>
   <div>
-    Fundinglist
-    <FundingListItem/>
+    <FundingListItem
+      v-for="funding in fundings"
+      :key="funding.id"
+      :funding="funding"
+    />
   </div>
 </template>
 
@@ -11,6 +14,11 @@ export default {
   name:'FundingList',
   components:{
     FundingListItem,
+  },
+  computed: {
+    fundings() {
+      return this.$store.state.fundings
+    },
   }
 }
 </script>
