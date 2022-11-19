@@ -9,7 +9,7 @@
         <router-link :to="{ name: 'SignUpView' }">SignUpPage</router-link> |
         <router-link :to="{ name: 'LogInView' }">LogInPage</router-link> |
       </template>
-      <router-link :to="{ name: 'FundingView'}">Funding</router-link>
+      <router-link :to="{ name: 'FundingView'}">FundingPage</router-link>
     </nav>
     <router-view />
   </div>

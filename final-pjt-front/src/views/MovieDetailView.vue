@@ -38,7 +38,7 @@ export default {
   name: "MovieDetailView",
   data() {
     return {
-      movie: null,
+      movie: [],
       img_url: null,
       genres: [],
       comment: "",
