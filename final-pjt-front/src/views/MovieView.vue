@@ -3,7 +3,7 @@
     <div class="movieview">
       <MovieList />
     </div>
-    <h2>AdventureMovie</h2>
+    <h2 class="nes-text is-primary">AdventureMovie</h2>
     <AdventureMovieList />
     <hr>
     <h2>HorrorMovie</h2>

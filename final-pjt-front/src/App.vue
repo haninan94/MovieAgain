@@ -1,16 +1,25 @@
 <template>
   <div id="app">
     <nav>
-      <router-link :to="{ name: 'MovieView' }">Home</router-link> |
+      <router-link :to="{ name: 'MovieView' }">
+        <button class="nes-btn is-success">Home</button>
+      </router-link>
       <template v-if="check">
-        <button @click="logOut">LogOut</button> |
+        <button class="nes-btn is-success" @click="logOut">LogOut</button> |
       </template>
       <template v-else>
-        <router-link :to="{ name: 'SignUpView' }">SignUpPage</router-link> |
-        <router-link :to="{ name: 'LogInView' }">LogInPage</router-link> |
+        <router-link :to="{ name: 'SignUpView' }">
+          <button class="nes-btn is-success">SignUp</button>
+        </router-link>
+        <router-link :to="{ name: 'LogInView' }">
+          <button class="nes-btn is-success">Login</button>
+        </router-link>
       </template>
       <router-link :to="{ name: 'FundingView'}">
-        <i class="nes-icon coin is-medium"></i>
+        <i class="nes-icon coin is-medium mb-2"></i>
+      </router-link>
+      <router-link :to="{ name: 'UserProfileView'}">
+        <button class="nes-btn is-success">Profile</button>
       </router-link>
     </nav>
     <router-view />
@@ -37,12 +46,13 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  /* font-family: Avenir, Helvetica, Arial, sans-serif; */
+  font-family: Kongtext;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background-color: black;
+  background-color: white;
 }
 
 nav {

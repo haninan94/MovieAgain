@@ -6,6 +6,7 @@ import MovieView from '@/views/MovieView'
 import MovieDetailView from '@/views/MovieDetailView'
 import FundingView from '@/views/FundingView'
 import FundingDetailView from '@/views/FundingDetailView'
+import UserProfileView from '@/views/UserProfileView'
 
 Vue.use(VueRouter)
 
@@ -42,8 +43,12 @@ const routes = [
     path: '/fundings/:id',
     name: 'FundingDetailView',
     component: FundingDetailView
-  }
-
+  },
+  {
+    path: '/profile/:id',
+    name: 'UserProfileView',
+    component: UserProfileView,
+  },
 ]
 
 const router = new VueRouter({

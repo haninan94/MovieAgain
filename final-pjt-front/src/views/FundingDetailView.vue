@@ -8,25 +8,25 @@
     <template v-else>
       <progress class="nes-progress" :value="fundingRate" max="1"></progress>
     </template> -->
-    <template>
+    <!-- <template>
       <progress class="nes-progress" :value="fundingMoney" :max="funding.goal_money"></progress>
     </template>
     <FundingDonateForm
       @donate-funding="getFundingMoney"
-    />
+    /> -->
   </div>
 </template>
 
 <script>
 import axios from 'axios'
-import FundingDonateForm from '@/components/FundingDonateForm'
+// import FundingDonateForm from '@/components/FundingDonateForm'
 
 const API_URL = "http://127.0.0.1:8000"
 
 export default {
   name: "FundingDetailView",
   components: {
-    FundingDonateForm,
+    // FundingDonateForm,
   },
   data() {
     return {
@@ -48,10 +48,10 @@ export default {
           console.log(err)
         })
     },
-    getFundingMoney(payload) {
-      console.log("Yes")
-      this.fundingMoney += payload
-    }
+    // getFundingMoney(payload) {
+    //   console.log("Yes")
+    //   this.fundingMoney += payload
+    // }
   },
   created() {
     this.getFundingDetail()

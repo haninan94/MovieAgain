@@ -9,7 +9,7 @@ from django.shortcuts import get_object_or_404, get_list_or_404
 from fundings.models import Backers
 
 # Create your views here.
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 @api_view(['GET'])
 def profile(request, user_pk):
     if request.method == 'GET':
