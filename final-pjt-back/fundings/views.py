@@ -62,7 +62,7 @@ def funding_detail(request, funding_pk):
     #         serializer.save()
     #         return Response(serializer.data)
 
-    #  내가 쓴글이면 도네이션 참여 x
+    #  내가 쓴글이면 도네이션 참여 x 하는 기능 추가해야함
     elif request.method == 'POST':
         serializer1 = BackerSerializer(data=request.data)
         if serializer1.is_valid(raise_exception=True):
