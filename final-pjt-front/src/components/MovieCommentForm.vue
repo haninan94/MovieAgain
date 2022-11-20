@@ -29,6 +29,7 @@ export default {
     createComment(event) {
       event.preventDefault();
       const newComment = {
+        // 새로운 무비커멘트
         // userid 를 가져와야함
         // username 가져오는중 근데 undefined 임
         user: this.$store.state.token,
