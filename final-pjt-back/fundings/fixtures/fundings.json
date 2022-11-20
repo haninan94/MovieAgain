@@ -3,56 +3,60 @@
     "model": "fundings.funding",
     "pk": 1,
     "fields": {
-      "goal_moeny": 3000000,
+      "goal_money": 3000000,
       "minimum_money": 30000,
       "now_money": 0,
       "poster_path": "/yNib9QAiyaopUJbaayKQ2xK7mYf.jpg",
       "movie_title": "웰컴투동막골",
       "content": "줄거리어쩌고",
       "user_id": 1,
-      "expired_date": "2022-12-19"
+      "expired_date": "2022-12-19",
+      "created_at": "2022-11-20"
     }
   },
   {
     "model": "fundings.funding",
     "pk": 2,
     "fields": {
-      "goal_moeny": 3000000,
+      "goal_money": 3000000,
       "minimum_money": 30000,
       "now_money": 0,
       "poster_path": "/yNib9QAiyaopUJbaayKQ2xK7mYf.jpg",
       "movie_title": "웰컴투동막골222",
       "content": "줄거리어쩌고",
       "user_id": 1,
-      "expired_date": "2022-12-19"
+      "expired_date": "2022-12-19",
+      "created_at": "2022-11-22"
     }
   },
   {
     "model": "fundings.funding",
     "pk": 3,
     "fields": {
-      "goal_moeny": 3000000,
+      "goal_money": 3000000,
       "minimum_money": 30000,
       "now_money": 0,
       "poster_path": "/yNib9QAiyaopUJbaayKQ2xK7mYf.jpg",
       "movie_title": "웰컴투동막골333",
       "content": "줄거리어쩌고",
       "user_id": 2,
-      "expired_date": "2022-12-19"
+      "expired_date": "2022-12-19",
+      "created_at": "2022-11-10"
     }
   },
   {
     "model": "fundings.funding",
     "pk": 4,
     "fields": {
-      "goal_moeny": 3000000,
+      "goal_money": 3000000,
       "minimum_money": 30000,
       "now_money": 0,
       "poster_path": "/yNib9QAiyaopUJbaayKQ2xK7mYf.jpg",
       "movie_title": "웰컴투동막골44444",
       "content": "줄거리어쩌고",
       "user_id": 2,
-      "expired_date": "2022-12-19"
+      "expired_date": "2022-12-19",
+      "created_at": "2022-11-2"
     }
   }
 ]
