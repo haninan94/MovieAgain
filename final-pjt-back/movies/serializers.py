@@ -1,11 +1,12 @@
 from rest_framework import serializers
 from .models import Movie, Comment, Genre
 
-class GenreSerializer(serializers.ModelSerializer):
 
+class GenreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Genre
-        fields = ('name', )
+        fields = ('name',)
+
 
 class MovieListSerializer(serializers.ModelSerializer):
     # username = serializers.CharField(source='user.username', read_only=True)
@@ -16,12 +17,13 @@ class MovieListSerializer(serializers.ModelSerializer):
         # exclude = '['like_users']'
         fields = '__all__'
 
-class CommentSerializer(serializers.ModelSerializer):
 
+class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = '__all__'
         read_only_fields = ('movie',)
+
 
 class MovieSerializer(serializers.ModelSerializer):
     comment_set = CommentSerializer(many=True, read_only=True)
@@ -32,7 +34,4 @@ class MovieSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
         fields = '__all__'
-        read_only_fields = ('user', )
-
-
-
+        read_only_fields = ('user',)

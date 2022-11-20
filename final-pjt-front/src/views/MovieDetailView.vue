@@ -12,11 +12,10 @@
       장르 :
       <button v-for="genre in genres" :key="genre.id">{{ genre }}</button>
     </p>
-    <p>줄거리 : {{ movie?.overview }}</p>
 
     <hr />
-    <router-link :to="{ name: 'MovieView'}">뒤로가기</router-link>
-
+    <router-link :to="{ name: 'MovieView' }">뒤로가기</router-link>
+    <MovieCommentForm />
     <!-- 댓글 작성 폼 -->
     <!-- <div>
       <form @submit="createComment" style="width: 1000px"></form>
@@ -31,11 +30,15 @@
 
 <script>
 import axios from "axios";
+import MovieCommentForm from "@/components/MovieCommentForm";
 
 const API_URL = "http://127.0.0.1:8000";
 
 export default {
   name: "MovieDetailView",
+  components: {
+    MovieCommentForm,
+  },
   data() {
     return {
       movie: [],
@@ -57,7 +60,7 @@ export default {
           // console.log(res);
           this.movie = res.data;
           this.img_url =
-            "https://image.tmdb.org/t/p/original" + res.data.poster_path;
+            "https://image.tmdb.org/t/p/w200" + res.data.poster_path;
           for (let object of this.movie.genre_ids) {
             this.genres.push(object.name);
           }

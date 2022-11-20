@@ -87,11 +87,20 @@ def comment_detail(request, comment_pk, username):
                 return Response(serializer.data)
 
 
-@api_view(['POST'])
+@api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
 def comment_create(request, movie_pk):
-    movie = get_object_or_404(Movie, pk=movie_pk)
-    serializer = CommentSerializer(data=request.data)
-    if serializer.is_valid(raise_exception=True):
-        serializer.save(movie=movie)
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    if request.method == 'POST':
+        movie = get_object_or_404(Movie, pk=movie_pk)
+        serializer = CommentSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save(movie=movie)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+    elif request.method == 'GET':
+        print(movie_pk)
+        comment = Comment.objects.filter(movie_id=movie_pk)
+        print(comment)
+        serializer = CommentSerializer(comment)
+        print('*******')
+        print(serializer)
+        return Response(serializer.data)
