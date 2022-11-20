@@ -9,21 +9,29 @@
       <progress class="nes-progress" :value="fundingRate" max="1"></progress>
     </template> -->
     <template>
-      <progress class="nes-progress" :value="funding.now_money" :max="funding.goal_money"></progress>
+      <progress class="nes-progress" :value="fundingMoney" :max="funding.goal_money"></progress>
     </template>
+    <FundingDonateForm
+      @donate-funding="getFundingMoney"
+    />
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import FundingDonateForm from '@/components/FundingDonateForm'
 
 const API_URL = "http://127.0.0.1:8000"
 
 export default {
   name: "FundingDetailView",
+  components: {
+    FundingDonateForm,
+  },
   data() {
     return {
       funding: [],
+      fundingMoney: 0,
     }
   },
   methods: {
@@ -34,11 +42,16 @@ export default {
       })
         .then((res) => {
           this.funding = res.data
+          // this.fundingMoney = res.data.now_money
         })
         .catch((err) => {
           console.log(err)
         })
     },
+    getFundingMoney(payload) {
+      console.log("Yes")
+      this.fundingMoney += payload
+    }
   },
   created() {
     this.getFundingDetail()

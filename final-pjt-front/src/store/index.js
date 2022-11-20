@@ -162,7 +162,6 @@ export default new Vuex.Store({
         }
       })
         .then((res) => {
-          // console.log(res)
           context.commit('SAVE_TOKEN', res.data.key)
         })
         .catch((err) => {
@@ -181,7 +180,6 @@ export default new Vuex.Store({
         .then((res) => {
           // console.log(res)
           context.commit('SAVE_TOKEN', res.data.key)
-
         })
     },
     // logOut(context) {
