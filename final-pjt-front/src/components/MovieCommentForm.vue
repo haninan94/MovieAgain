@@ -5,7 +5,11 @@
       <button>등록하기</button>
     </form>
     <p>무비 아이디 :{{ movieId }}</p>
-    <MovieCommentItem />
+    <MovieCommentItem
+      v-for="comment in comments"
+      :key="comment.id"
+      :comment="comment"
+    />
   </div>
 </template>
 
@@ -25,6 +29,11 @@ export default {
       comment: "",
     };
   },
+  computed: {
+    comments() {
+      return this.$store.state.comments;
+    },
+  },
   methods: {
     createComment(event) {
       event.preventDefault();
@@ -36,9 +45,9 @@ export default {
         content: this.comment,
         movie: this.movieId,
       };
-      console.log(newComment);
-      console.log(`${this.$store.state.token} `);
-      // this.$store.dispatch("createComment", newComment);
+      // console.log(newComment);
+      // console.log(`${this.$store.state.token} `);
+      this.$store.dispatch("createComment", newComment);
       this.comment = "";
     },
   },

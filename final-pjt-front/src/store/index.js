@@ -14,11 +14,15 @@ export default new Vuex.Store({
   ],
   state: {
     token: null,
+    comments: [],
   },
   getters: {
     isLogin(state) {
       return state.token ? true : false
     },
+    getMovieComments: (state) => {
+      return state.comments
+    }
   },
   mutations: {
     GET_MOVIES(state, movies) {
@@ -43,16 +47,16 @@ export default new Vuex.Store({
     SAVE_TOKEN(state, data) {
       state.token = data.token
       state.username = data.username
-      console.log('로그인 성공~')
-      console.log(this.state.username)
+      // console.log('로그인 성공~')
+      // console.log(this.state.username)
       router.push({ name: 'MovieView' })
     },
     LOGOUT(state) {
       // console.log("ok")
       state.token = null
     },
-    GET_MOVIE_COMMENTS(state, new_comment) {
-      state.comment = new_comment
+    CREATE_COMMENTS(state, new_comment) {
+      state.comments.push(new_comment)
     }
   },
   actions: {
@@ -177,7 +181,7 @@ export default new Vuex.Store({
         // 그럼 username 으로 comment 생성? comment 모델 변경??
         .then((res) => {
           console.log(res)
-          console.log('11111111111111111111111111111111111111111111111111')
+          // console.log('11111111111111111111111111111111111111111111111111')
           const data = {
             // 'id': res.data.id,
             'token': res.data.key,
@@ -191,23 +195,23 @@ export default new Vuex.Store({
       axios({
         method: 'post',
         url: `${API_URL}/api/v1/movies/${payload.movie}/comments/`,
+        headers: {
+          Authorization: `Token ${this.state.token}`
+        },
         data: {
-          user: payload.user,
+          user: payload.token,
           content: payload.content,
           movie: payload.movie
         }
       })
         .then((res) => {
-          context.commit('GET_MOVIE_COMMENTS', res.data)
+          context.commit('CREATE_COMMENTS', res.data)
         })
         .catch((err) => {
-          console.log(`${payload.user}`)
+          console.log(`${payload.token}`)
           console.log(err)
         })
     }
-    // logOut(context) {
-    //   context.commit("")
-    // }
   },
   modules: {
   }

@@ -13,7 +13,7 @@
       <button v-for="genre in genres" :key="genre.id">{{ genre }}</button>
     </p>
     <p>줄거리 : {{ movie?.overview }}</p>
-    <p id="idTag">{{ movie?.id }}</p>
+    <p>{{ movieId }}</p>
     <hr />
     <router-link :to="{ name: 'MovieView' }">뒤로가기</router-link>
 
@@ -36,29 +36,21 @@ export default {
   },
   data() {
     return {
-      movie: null,
+      movie: [],
       img_url: null,
       genres: [],
       comment: "",
-      // movieId: null,
-      // movieId: this.movie.id,
     };
   },
   created() {
     this.getMovieDetail();
-    this.getId();
+  },
+  computed: {
+    movieId() {
+      return this.movie.id;
+    },
   },
   methods: {
-    getId() {
-      const idTag = document.querySelector("#idTag");
-      console.log(idTag);
-      console.log(idTag.innerText);
-      // this.movieId = idTag.innerText;
-      // const movieTag = document.querySelector("#movieId");
-      // console.log(movieTag);
-      // console.log(movieTag.innertext);
-      // this.movieId = movieId;
-    },
     getMovieDetail() {
       axios({
         method: "get",
