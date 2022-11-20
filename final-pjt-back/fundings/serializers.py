@@ -3,11 +3,20 @@ from .models import Funding, Backers, Comment
 
 
 class FundingListSerializer(serializers.ModelSerializer):
-    created_at = serializers.DateTimeField(read_only=True)
+    # created_at = serializers.DateTimeField(read_only=True)
 
     class Meta:
         model = Funding
-        fields = '__all__'
+        fields = (
+            'user',
+            'goal_money',
+            'now_money',
+            'poster_path',
+            'expired_date',
+            'movie_title',
+            'content',
+            'created_at',
+        )
         read_only_fields = ('user',)
 
 

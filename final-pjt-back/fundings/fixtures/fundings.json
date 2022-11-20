@@ -10,7 +10,8 @@
       "movie_title": "웰컴투동막골",
       "content": "줄거리어쩌고",
       "user_id": 1,
-      "expired_date": "2022-12-19"
+      "expired_date": "2022-12-19",
+      "created_at": "2022-11-20"
     }
   },
   {
@@ -24,7 +25,8 @@
       "movie_title": "웰컴투동막골222",
       "content": "줄거리어쩌고",
       "user_id": 1,
-      "expired_date": "2022-12-19"
+      "expired_date": "2022-12-19",
+      "created_at": "2022-11-22"
     }
   },
   {
@@ -38,7 +40,8 @@
       "movie_title": "웰컴투동막골333",
       "content": "줄거리어쩌고",
       "user_id": 2,
-      "expired_date": "2022-12-19"
+      "expired_date": "2022-12-19",
+      "created_at": "2022-11-10"
     }
   },
   {
@@ -52,7 +55,8 @@
       "movie_title": "웰컴투동막골44444",
       "content": "줄거리어쩌고",
       "user_id": 2,
-      "expired_date": "2022-12-19"
+      "expired_date": "2022-12-19",
+      "created_at": "2022-11-2"
     }
   }
 ]

@@ -20,7 +20,7 @@ from django.db.models import Q
 def movie_list(request):
     if request.method == 'GET':
         movies = get_list_or_404(Movie)[0:5]
-        
+
     elif request.method == 'POST':
         genre = request.data['genre']
         movies = get_list_or_404(Movie)
