@@ -10,6 +10,7 @@
         <router-link :to="{ name: 'LogInView' }">LogInPage</router-link> |
       </template>
       <router-link :to="{ name: 'FundingView'}">FundingPage</router-link>
+      <router-link :to="{ name: 'FundingSearchView'}">Search</router-link>
     </nav>
     <router-view />
   </div>

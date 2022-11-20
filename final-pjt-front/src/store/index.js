@@ -148,6 +148,7 @@ export default new Vuex.Store({
         url: `${API_URL}/api/v1/fundings/`,
       })
         .then((res) => {
+          console.log("first")
           context.commit("GET_FUNDINGS", res.data)
         })
     },
