@@ -16,11 +16,17 @@ export default new Vuex.Store({
   ],
   state: {
     token: null,
+    movieComments: [],
+    userId: '',
+    temp: [],
   },
   getters: {
     isLogin(state) {
       return state.token ? true : false
     },
+    getMovieComments(state) {
+      return state.temp
+    }
   },
   mutations: {
     GET_MOVIES(state, movies) {
@@ -50,13 +56,23 @@ export default new Vuex.Store({
       // console.log('로그인 성공~')
       router.push({ name: 'MovieView' })
     },
+    // 댓글 작성
+    CREATE_MOVIE_COMMENT(state, newMovieComment) {
+      state.movieComments.push(newMovieComment)
+    },
     LOGOUT(state) {
       // console.log("ok")
       state.token = null
+      state.userid = null
     },
-    GET_FUNDING_SEARCH(state, payload) {
-      state.fundingSearched = payload
+    SAVE_USERID(state, userId) {
+      state.userId = userId.userId
+      // console.log('앵 되세요??')
+      // console.log(state.userId)
     },
+    GET_MOVIE_COMMENTS(state, comments) {
+      state.temp = comments
+    }
   },
   actions: {
     getMovies(context) {
@@ -184,23 +200,68 @@ export default new Vuex.Store({
         .then((res) => {
           // console.log(res)
           context.commit('SAVE_TOKEN', res.data.key)
+
+        })
+        .then(() => {
+          axios({
+            method: 'post',
+            url: `${API_URL}/accounts/userinfo/`,
+            headers: {
+              Authorization: `Token ${context.state.token}`
+            },
+            data: {
+              username: payload.username
+            },
+            // withCredentials: true
+          })
+            .then((res) => {
+              // console.log(res.data)
+              context.commit('SAVE_USERID', res.data)
+            })
         })
     },
-    getFundingSearch(context, payload) {
+
+    // 댓글 작성
+    createMovieComment(context, newMovieComment) {
       axios({
-        method: 'get',
-        url: `${API_URL}/api/v1/fundings`,
+        method: 'post',
+        url: `${API_URL}/api/v1/movies/${newMovieComment.movie}/comments/`,
+        headers: {
+          Authorization: `Token ${context.state.token}`
+        },
+        data: {
+          user: newMovieComment.user,
+          content: newMovieComment.content,
+          movie: newMovieComment.movie
+        }
       })
         .then((res) => {
-          const filteredData = res.data.filter((el) => {
-            el.movive_title = payload
-          })
-          context.commit("GET_FUNDING_SEARCH", filteredData)
+          context.commit('CREATE_MOVIE_COMMENT', res.data)
         })
-    }
-    // logOut(context) {
-    //   context.commit("")
-    // }
+        .catch((err) => {
+          console.log('here')
+          console.log(err)
+        })
+    },
+    getMovieComments(context, movieId) {
+      axios({
+        method: 'get',
+        url: `${API_URL}/api/v1/movies/${movieId}/comments/`,
+        headers: {
+          Authorization: `Token ${context.state.token}`
+        }
+      })
+        .then((res) => {
+          context.commit('GET_MOVIE_COMMENTS', res.data)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+
+      // logOut(context) {
+      //   context.commit("")
+      // }
+    },
   },
   modules: {
   }

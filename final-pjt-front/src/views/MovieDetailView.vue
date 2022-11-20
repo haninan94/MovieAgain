@@ -35,11 +35,15 @@
 
 <script>
 import axios from "axios";
+import MovieCommentForm from "@/components/MovieCommentForm";
 
 const API_URL = "http://127.0.0.1:8000";
 
 export default {
   name: "MovieDetailView",
+  components: {
+    MovieCommentForm,
+  },
   data() {
     return {
       movie: [],
