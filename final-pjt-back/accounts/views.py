@@ -1,12 +1,14 @@
 from django.contrib.auth import get_user_model
-from django.http import JsonResponse
-from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from fundings.serializers import BackerSerializer
+
 from rest_framework.decorators import permission_classes
 from rest_framework.permissions import IsAuthenticated
+
 from django.shortcuts import get_object_or_404, get_list_or_404
 from fundings.models import Backers
+from rest_framework.decorators import api_view
+from rest_framework import status
 
 # Create your views here.
 @permission_classes([IsAuthenticated])
@@ -21,3 +23,17 @@ def profile(request, user_pk):
         serializer1 = BackerSerializer(backers, many=True)
         username = user.username
         return Response({'data': serializer1.data, 'username': username})
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def userinfo(request):
+    if request.method == 'POST':
+        compare = request.data['username']
+        User = get_user_model()
+        user = User.objects.get(username=compare)
+        userid = user.id
+        # return Response({'userid': userid })
+        print('9999999999999999999999999999999999999999999999999')
+        print(userid)
+        return Response({'userid': userid})

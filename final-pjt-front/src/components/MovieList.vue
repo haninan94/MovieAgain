@@ -1,13 +1,27 @@
 <template>
   <div class="movielist">
-    <carousel-3d :controls-visible="true" :clickable="false" width="300" height="450">
-      <slide class="slide" v-for="(movie, index) in movies" :key="movie.id" :index="index">
+    <carousel-3d
+      :controls-visible="true"
+      :clickable="false"
+      width="300"
+      height="450"
+    >
+      <slide
+        class="slide"
+        v-for="(movie, index) in movies"
+        :key="movie.id"
+        :index="index"
+      >
         <figure>
-          <router-link :to="{ name: 'MovieDetailView', params: { id: movie.id } }">
-            <img :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" alt="">
+          <router-link
+            :to="{ name: 'MovieDetailView', params: { id: movie.id } }"
+          >
+            <img
+              :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
+              alt=""
+            />
           </router-link>
         </figure>
-
       </slide>
     </carousel-3d>
   </div>
@@ -28,7 +42,6 @@
       :movie="movie"
     />    
   </carousel-3d> -->
-
 </template>
 
 <script>
@@ -47,7 +60,6 @@ export default {
       return "https://image.tmdb.org/t/p/w200" + this.movie.poster_path;
     },
   },
-
 };
 </script>
 
@@ -64,8 +76,4 @@ export default {
 figure {
   margin: 0;
 }
-
-
-</style>
-
 </style>

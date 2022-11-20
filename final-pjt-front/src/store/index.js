@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
-import router from '@/router'
 import createPersistedState from 'vuex-persistedstate'
 import router from '@/router'
+
 Vue.use(Vuex)
 
 const API_URL = 'http://127.0.0.1:8000'
@@ -15,6 +15,7 @@ export default new Vuex.Store({
   ],
   state: {
     token: null,
+    // userid: null
   },
   getters: {
     isLogin(state) {
@@ -43,13 +44,21 @@ export default new Vuex.Store({
     // 회원가입 && 로그인
     SAVE_TOKEN(state, token) {
       state.token = token
+      console.log(state.token)
       // console.log('로그인 성공~')
       router.push({ name: 'MovieView' })
     },
     LOGOUT(state) {
       // console.log("ok")
       state.token = null
+      state.userid = null
     },
+    SAVE_USERID(state, userid) {
+      state.userid = userid
+      console.log('앵 되세요??')
+      console.log(state.userid)
+
+    }
   },
   actions: {
     getMovies(context) {
@@ -170,6 +179,23 @@ export default new Vuex.Store({
           // console.log(res)
           context.commit('SAVE_TOKEN', res.data.key)
 
+        })
+        .then(() => {
+          axios({
+            method: 'post',
+            url: `${API_URL}/accounts/userinfo/`,
+            headers: {
+              Authorization: `Token ${context.state.token}`
+            },
+            data: {
+              username: payload.username
+            },
+            // withCredentials: true
+          })
+            .then((res) => {
+              // console.log(res.data)
+              context.commit('SAVE_USERID', res.data)
+            })
         })
     },
     // logOut(context) {
