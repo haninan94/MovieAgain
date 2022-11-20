@@ -19,6 +19,7 @@
       <div>
         <hr />
         <router-link :to="{ name: 'MovieView'}">뒤로가기</router-link>
+        <MovieCommentForm/>
           <!-- 댓글 작성 폼 -->
           <!-- <div>
             <form @submit="createComment" style="width: 1000px"></form>
