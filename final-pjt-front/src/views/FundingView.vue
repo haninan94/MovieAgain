@@ -1,5 +1,6 @@
 <template>
   <div>
+    <router-link :to="{ name: 'FundingSearchView'}">Search</router-link>
     <h1>Funding Page</h1>
     <hr />
     <FundingList/>

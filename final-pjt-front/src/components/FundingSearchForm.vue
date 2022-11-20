@@ -1,7 +1,7 @@
 <template>
   <div>
     <form @submit.prevent="searchFunding">
-      <input type="text" v-model.trim="searchTitle">
+      <input type="text" v-model.trim="searchFundingData">
       <button>Search</button>
     </form>
   </div>
@@ -12,9 +12,14 @@ export default {
   name: "FundingSearchForm",
   data() {
     return {
-      searchTitle: null,
+      searchFundingData: null,
     }
   },
+  methods: {
+    searchFunding() {
+      this.$emit("get-funding-search", this.searchFundingData)
+    }
+  }
 }
 </script>
 

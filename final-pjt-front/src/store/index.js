@@ -4,6 +4,7 @@ import axios from 'axios'
 import router from '@/router'
 import createPersistedState from 'vuex-persistedstate'
 
+
 Vue.use(Vuex)
 
 const API_URL = 'http://127.0.0.1:8000'
@@ -52,6 +53,9 @@ export default new Vuex.Store({
     LOGOUT(state) {
       // console.log("ok")
       state.token = null
+    },
+    GET_FUNDING_SEARCH(state, payload) {
+      state.fundingSearched = payload
     },
   },
   actions: {
@@ -148,7 +152,6 @@ export default new Vuex.Store({
         url: `${API_URL}/api/v1/fundings/`,
       })
         .then((res) => {
-          console.log("first")
           context.commit("GET_FUNDINGS", res.data)
         })
     },
@@ -183,6 +186,18 @@ export default new Vuex.Store({
           context.commit('SAVE_TOKEN', res.data.key)
         })
     },
+    getFundingSearch(context, payload) {
+      axios({
+        method: 'get',
+        url: `${API_URL}/api/v1/fundings`,
+      })
+        .then((res) => {
+          const filteredData = res.data.filter((el) => {
+            el.movive_title = payload
+          })
+          context.commit("GET_FUNDING_SEARCH", filteredData)
+        })
+    }
     // logOut(context) {
     //   context.commit("")
     // }

@@ -8,6 +8,7 @@ class FundingListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Funding
         fields = (
+            'id',
             'user',
             'goal_money',
             'now_money',

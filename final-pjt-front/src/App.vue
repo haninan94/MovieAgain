@@ -9,8 +9,8 @@
         <router-link :to="{ name: 'SignUpView' }">SignUpPage</router-link> |
         <router-link :to="{ name: 'LogInView' }">LogInPage</router-link> |
       </template>
-      <router-link :to="{ name: 'FundingView'}">FundingPage</router-link>
-      <router-link :to="{ name: 'FundingSearchView'}">Search</router-link>
+      <router-link :to="{ name: 'FundingView'}">FundingPage</router-link> |
+      <!-- <router-link :to="{ name: 'FundingSearchView'}">Search</router-link> -->
     </nav>
     <router-view />
   </div>
@@ -41,7 +41,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background-color: black;
+  background-color: white;
 }
 
 nav {
