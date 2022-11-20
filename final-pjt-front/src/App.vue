@@ -9,7 +9,9 @@
         <router-link :to="{ name: 'SignUpView' }">SignUpPage</router-link> |
         <router-link :to="{ name: 'LogInView' }">LogInPage</router-link> |
       </template>
-      <router-link :to="{ name: 'FundingView'}">FundingPage</router-link>
+      <router-link :to="{ name: 'FundingView'}">
+        <i class="nes-icon coin is-medium"></i>
+      </router-link>
     </nav>
     <router-view />
   </div>

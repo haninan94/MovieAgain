@@ -10,7 +10,7 @@
 
     <p>
       장르 :
-      <button v-for="genre in genres" :key="genre.id">{{ genre }}</button>
+      <button class="nes-btn is-success" v-for="genre in genres" :key="genre.id">{{ genre }}</button>
     </p>
     <p>줄거리 : {{ movie?.overview }}</p>
 
