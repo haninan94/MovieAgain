@@ -1,7 +1,10 @@
 <template>
   <div>
     <h1>Funding Page</h1>
-    <hr />
+    <router-link :to="{ name: 'FundingCreateView'}">
+      Create
+    </router-link>
+    <hr>
     <FundingList/>
   </div>
 </template>

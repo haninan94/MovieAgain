@@ -5,7 +5,7 @@
         <button class="nes-btn is-success">Home</button>
       </router-link>
       <template v-if="check">
-        <button class="nes-btn is-success" @click="logOut">LogOut</button> |
+        <button class="nes-btn is-success" @click="logOut">LogOut</button>
       </template>
       <template v-else>
         <router-link :to="{ name: 'SignUpView' }">
@@ -18,9 +18,9 @@
       <router-link :to="{ name: 'FundingView'}">
         <i class="nes-icon coin is-medium mb-2"></i>
       </router-link>
-      <router-link :to="{ name: 'UserProfileView'}">
+      <!-- <router-link :to="{ name: 'UserProfileView'}">
         <button class="nes-btn is-success">Profile</button>
-      </router-link>
+      </router-link> -->
     </nav>
     <router-view />
   </div>

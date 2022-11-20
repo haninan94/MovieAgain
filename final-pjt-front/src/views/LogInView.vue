@@ -1,14 +1,14 @@
 <template>
-  <div>
+  <div class="nes-field">
     <h1>LogIn Page</h1>
     <form @submit.prevent="logIn">
-      <label for="username">username : </label>
-      <input type="text" id="username" v-model="username"><br>
+      <label for="name_field"></label>
+      <input type="text" id="name_field" class="nes-input" v-model="username" placeholder="ID"><br>
 
-      <label for="password"> password : </label>
-      <input type="password" id="password" v-model="password"><br>
+      <label for="password"></label>
+      <input type="password" id="password" class="nes-input" v-model="password" placeholder="Password"><br>
 
-      <input type="submit" value="logIn">
+      <button class="nes-btn is-success">Login</button>
     </form>
   </div>
 </template>

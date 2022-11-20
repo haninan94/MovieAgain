@@ -14,6 +14,7 @@
     <FundingDonateForm
       @donate-funding="getFundingMoney"
     /> -->
+    <router-link :to="{ name: 'FundingView'}">뒤로 가기</router-link>
   </div>
 </template>
 

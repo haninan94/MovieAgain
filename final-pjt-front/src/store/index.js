@@ -53,6 +53,11 @@ export default new Vuex.Store({
       // console.log("ok")
       state.token = null
     },
+    CREATE_FUNDING(state, funding) {
+      console.log("OK!")
+      state.fundings.push(funding)
+      state.funding_id += 1
+    },
   },
   actions: {
     getMovies(context) {
@@ -182,9 +187,21 @@ export default new Vuex.Store({
           context.commit('SAVE_TOKEN', res.data.key)
         })
     },
-    // logOut(context) {
-    //   context.commit("")
-    // }
+    createFunding(context, payload) {
+      console.log("ok?")
+      const funding = {
+        id: context.state.funding_id,
+        // user: ,
+        movie_title: payload.title,
+        content: payload.content,
+        poster_path: payload.imgUrl,
+        goal_money: payload.goalMoney,
+        now_money: payload.now_money,
+        expired_date: payload.expiredDate,
+        created_at: new Date().getTime(),
+      }
+      context.commit("CREATE_FUNDING", funding)
+    },
   },
   modules: {
   }

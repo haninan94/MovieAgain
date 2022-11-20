@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{ funding }}
     {{ funding.movie_title }}
     <br>
     {{ funding.content }}
