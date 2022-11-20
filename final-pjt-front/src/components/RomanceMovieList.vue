@@ -1,12 +1,13 @@
 <template>
-  <div class="movie-list">
-    <h3>Movie List</h3>
-    <RomanceMovieListItem
-      v-for="movie in movies"
-      :key="movie.id"
-      :movie="movie"
-    />
-  </div>
+  <b-container fluid class="p-4 bg-dark border-top border-danger">
+    <b-row>
+      <RomanceMovieListItem
+        v-for="movie in movies"
+        :key="movie.id"
+        :movie="movie"
+      />
+    </b-row>
+  </b-container>
 </template>
 
 <script>

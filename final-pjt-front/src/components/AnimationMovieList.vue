@@ -1,12 +1,17 @@
 <template>
-  <div class="movie-list">
-    <h3>Movie List</h3>
-    <AnimationMovieListItem
+  <b-container fluid class="p-4 bg-dark border-top border-danger">
+    <b-row>
+      <AnimationMovieListItem
       v-for="movie in movies"
       :key="movie.id"
       :movie="movie"
     />
-  </div>
+    </b-row>
+  </b-container>
+  <!-- <b-container fluid class="p-4 bg-dark">
+    <b-row>
+    </b-row>
+  </b-container> -->
 </template>
 
 <script>

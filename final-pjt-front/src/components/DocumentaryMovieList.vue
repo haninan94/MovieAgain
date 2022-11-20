@@ -1,12 +1,21 @@
 <template>
-  <div class="movie-list">
+  <!-- <div class="movie-list">
     <h3>Movie List</h3>
     <DocumentaryMovieListItem
       v-for="movie in movies"
       :key="movie.id"
       :movie="movie"
     />
-  </div>
+  </div> -->
+  <b-container fluid class="p-4 bg-dark border-top border-danger">
+    <b-row>
+      <DocumentaryMovieListItem
+      v-for="movie in movies"
+      :key="movie.id"
+      :movie="movie"
+    />
+    </b-row>
+  </b-container>
 </template>
 
 <script>

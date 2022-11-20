@@ -1,14 +1,9 @@
 <template>
-  <div>
-    <h5>{{ movie.id }}</h5>
-    <p>{{ movie.title }}</p>
-    <img :src="imgUrl" alt="" />
-    <br />
+  <b-col>
     <router-link :to="{ name: 'MovieDetailView', params: { id: movie.id } }">
-      [DETAIL]
+      <b-img thumbnail fluid :src="imgUrl"></b-img>
     </router-link>
-    <hr />
-  </div>
+  </b-col>
 </template>
 
 <script>
