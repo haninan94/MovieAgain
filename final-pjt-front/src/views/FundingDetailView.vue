@@ -49,7 +49,7 @@ export default {
     getFundingDetail() {
       axios({
         method: "get",
-        url: `${API_URL}/api/v1/fundings/${this.$route.params.id}`
+        url: `${API_URL}/api/v2/fundings/${this.$route.params.id}`
       })
         .then((res) => {
           this.funding = res.data
