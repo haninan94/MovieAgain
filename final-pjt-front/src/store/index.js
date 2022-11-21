@@ -77,7 +77,11 @@ export default new Vuex.Store({
       console.log('mutation CREATE_FUNDING_COMMENT 111111111111111111111')
       console.log(state.newFundingComment)
       state.fundingComments.push(newFundingComment)
-    }
+    },
+    CREATE_FUNDING(state, payload) {
+      state.fundings.push(payload)
+      router.push({ name: 'FundingView' })
+    },
   },
   actions: {
     getMovies(context) {
@@ -317,6 +321,31 @@ export default new Vuex.Store({
           console.log(newFundingComment)
           console.log(err)
         })
+    },
+    createFunding(context, payload) {
+      axios({
+        method: "post",
+        url: `${API_URL}/api/v1/fundings/`,
+        headers: {
+          Authorization: `Token ${context.state.token}`
+        },
+        data: {
+          user: payload.user,
+          goal_money: payload.goal_money,
+          minimum_money: payload.minimum_money,
+          poster_path: payload.poster_path,
+          expired_date: payload.expired_date,
+          movie_title: payload.movie_title,
+          content: payload.content
+        },
+      })
+        .then((res) => {
+          context.commit("CREATE_FUNDING", res.data)
+        })
+        // .catch((err) => {
+        //   console.log(err)
+        //   console.log('here')
+        // })
     }
   },
   modules: {

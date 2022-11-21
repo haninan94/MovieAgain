@@ -58,9 +58,10 @@ export default {
   /* font-family: "font-family you want to use"; */
 }
 
-/* * {
+* {
   font-family: 'dunggeunmo';
-} */
+  font-size: 20px;
+}
 
 
 

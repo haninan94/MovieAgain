@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img :src="`https://image.tmdb.org/t/p/w200${funding.poster_path}`" alt="">
+    <img :src="`https://image.tmdb.org/t/p/w200${funding?.poster_path}`" alt="">
     <p>영화 제목 : {{ funding.movie_title }}</p> <br>
     <!-- <template v-if="check">
       <progress class="nes-progress is-error" :value="fundingRate" max="1"></progress>
