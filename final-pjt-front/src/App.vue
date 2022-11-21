@@ -1,15 +1,20 @@
 <template>
   <div id="app">
     <nav>
-      <router-link class="nes-text" :to="{ name: 'MovieView' }">Home</router-link> |
+      <router-link class="nes-text" :to="{ name: 'MovieView' }"
+        >Home</router-link
+      >
+      |
       <template v-if="check">
-        <button class="nes-btn is-success small" @click="logOut">LOGOUT</button> |
+        <button class="nes-btn is-success small" @click="logOut">LOGOUT</button>
+        |
+        <router-link :to="{ name: 'ProfileView' }">MyPage</router-link>|
       </template>
       <template v-else>
         <router-link :to="{ name: 'SignUpView' }">SignUpPage</router-link> |
         <router-link :to="{ name: 'LogInView' }">LogInPage</router-link> |
       </template>
-      <router-link :to="{ name: 'FundingView'}">FundingPage</router-link> |
+      <router-link :to="{ name: 'FundingView' }">FundingPage</router-link> |
       <!-- <router-link :to="{ name: 'FundingSearchView'}">Search</router-link> -->
     </nav>
     <router-view />
@@ -35,7 +40,12 @@ export default {
 </script>
 
 <style>
-html, body, pre, code, kbd, samp {
+html,
+body,
+pre,
+code,
+kbd,
+samp {
   font-family: "font-family you want to use";
 }
 

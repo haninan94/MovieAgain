@@ -7,7 +7,7 @@ import MovieDetailView from '@/views/MovieDetailView'
 import FundingView from '@/views/FundingView'
 import FundingDetailView from '@/views/FundingDetailView'
 import FundingSearchView from '@/views/FundingSearchView'
-
+import ProfileView from '@/views/ProfileView'
 Vue.use(VueRouter)
 
 const routes = [
@@ -47,6 +47,11 @@ const routes = [
     path: '/fundings/search',
     name: 'FundingSearchView',
     component: FundingSearchView
+  },
+  {
+    path: '/profile/:id',
+    name: 'ProfileView',
+    component: ProfileView
   }
 
 ]
