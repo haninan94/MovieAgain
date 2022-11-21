@@ -4,7 +4,7 @@
       <input type="text" v-model="fundingComment" />
       <button>등록하기</button>
     </form>
-    <p id="idTag"> {{ fundingId }}번째 펀딩글</p>
+    <p id="idTag">{{ fundingId }}번째 펀딩글</p>
     <FundingCommentItem
       v-for="fundingComment in fundingComments"
       :key="fundingComment.id"
@@ -26,7 +26,7 @@ export default {
   },
   computed: {
     fundingComments() {
-      return this.$store.getters.getFundingComments;
+      return this.$store.state.fundingComments;
     },
   },
   data() {
@@ -34,25 +34,17 @@ export default {
       fundingComment: "",
     };
   },
-  created() {
-    this.getFundingComments();
-    this.$store.dispatch("getFundingComments", this.$route.params.id);
-  },
+  // created() {
+  //   this.getFundingComments();
+  //   this.$store.dispatch("getFundingComments", this.$route.params.id);
+  // },
   methods: {
-    createFundingComment(event) {
-      event.preventDefault();
+    createFundingComment() {
       const newFundingComment = {
-        // 새로운 무비커멘트
-        // userid 를 가져와야함
-        // username 가져오는중 근데 undefined 임
         user: this.$store.state.userId,
         content: this.fundingComment,
         funding: this.$route.params.id,
       };
-      console.log('createFundingComment메소드')
-      console.log(this.$store.state.userId)
-      console.log('-------------------------------')
-      console.log(newFundingComment.user)
       this.$store.dispatch("createFundingComment", newFundingComment);
       this.fundingComment = "";
     },
@@ -62,6 +54,7 @@ export default {
     },
   },
 };
+// fundingCommentForm 완료
 </script>
 
 <style>
