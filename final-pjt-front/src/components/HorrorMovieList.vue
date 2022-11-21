@@ -1,7 +1,7 @@
 <template>
   <b-container fluid class="p-4 bg-dark border-top border-danger">
     <b-row>
-      <h1>Horror</h1>
+      <h1 class="nes-text is-warning">Horror</h1>
       <HorrorMovieListItem
       v-for="movie in movies"
       :key="movie.id"

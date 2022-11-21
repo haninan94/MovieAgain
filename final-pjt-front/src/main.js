@@ -8,10 +8,12 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import Carousel3d from 'vue-carousel-3d'
 import "nes.css/css/nes.min.css";
+import VueNesCss from 'vuenes.css'
 
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(Carousel3d)
+Vue.use(VueNesCss)
 
 Vue.config.productionTip = false
 

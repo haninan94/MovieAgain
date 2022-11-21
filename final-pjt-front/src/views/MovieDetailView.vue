@@ -12,13 +12,15 @@
             <p>개봉일 : {{ movie?.release_date }}</p>
             <p>평점 : {{ movie?.vote_average }}</p>
             <p>장르 :
-              <button class="mx-1" v-for="genre in genres" :key="genre.id">{{ genre }}</button>
+              <button class="nes-btn small mx-1 " v-for="genre in genres" :key="genre.id">{{ genre }}</button>
             </p>
           </b-card>
         </div>
         <div>
           <hr class="hr">
-          <router-link :to="{ name: 'MovieView'}">뒤로가기</router-link>
+          <router-link :to="{ name: 'MovieView'}">
+            <button class="nes-btn is-primary">Back</button>
+          </router-link>
           <!-- <MovieCommentForm/> -->
             <!-- 댓글 작성 폼 -->
             <!-- <div>

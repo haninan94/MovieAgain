@@ -17,6 +17,7 @@
     "vue-carousel-3d": "^1.0.1",
     "vue-persistedstate": "^1.2.5",
     "vue-router": "^3.5.1",
+    "vuenes.css": "^2.1.0",
     "vuex": "^3.6.2",
     "vuex-persistedstate": "^4.1.0"
   },

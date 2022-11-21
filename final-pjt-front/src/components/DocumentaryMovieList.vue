@@ -9,7 +9,7 @@
   </div> -->
   <b-container fluid class="p-4 bg-dark border-top border-danger">
     <b-row>
-      <h1>Documentary</h1>
+      <h1 class="nes-text is-warning">Documentary</h1>
       <DocumentaryMovieListItem
       v-for="movie in movies"
       :key="movie.id"

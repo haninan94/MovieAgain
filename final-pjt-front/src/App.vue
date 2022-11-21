@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <nav>
-      <router-link :to="{ name: 'MovieView' }">Home</router-link> |
+      <router-link class="nes-text" :to="{ name: 'MovieView' }">Home</router-link> |
       <template v-if="check">
-        <button @click="logOut">LogOut</button> |
+        <button class="nes-btn is-success small" @click="logOut">LOGOUT</button> |
       </template>
       <template v-else>
         <router-link :to="{ name: 'SignUpView' }">SignUpPage</router-link> |
@@ -35,8 +35,11 @@ export default {
 </script>
 
 <style>
+html, body, pre, code, kbd, samp {
+  font-family: "font-family you want to use";
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
