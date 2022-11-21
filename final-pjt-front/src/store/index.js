@@ -18,7 +18,6 @@ export default new Vuex.Store({
     token: null,
     movieComments: [],
     userId: '',
-    // temp: [],
   },
   getters: {
     isLogin(state) {
@@ -67,15 +66,17 @@ export default new Vuex.Store({
     },
     SAVE_USERID(state, userId) {
       state.userId = userId.userId
-      // console.log('앵 되세요??')
-      // console.log(state.userId)
     },
     GET_MOVIE_COMMENTS(state, comments) {
-      console.log(comments)
+      state.movieComments = comments
       // state.temp = comments
     },
-    DELETE_COMMENT() {
-      console.log('삭제 완료')
+    DELETE_MOVIE_COMMENT(state, payload) {
+      console.log(payload.movieId)
+      // router.go({ name: 'MovieDetailView', params: { id: payload.movieId } }).catch(() => { })
+      // router.go(router.currentRoute)
+      // router.push('')
+      router.push({ name: "MovieDetailView", params: { id: payload.movieId } })
     }
   },
   actions: {
@@ -202,7 +203,7 @@ export default new Vuex.Store({
         }
       })
         .then((res) => {
-          // console.log(res)
+          console.log(res)
           context.commit('SAVE_TOKEN', res.data.key)
 
         })
@@ -226,26 +227,26 @@ export default new Vuex.Store({
     },
 
     // 댓글 작성
-    // createMovieComment(context, newMovieComment) {
-    //   axios({
-    //     method: 'post',
-    //     url: `${API_URL}/api/v1/movies/${newMovieComment.movie}/commentcreate/`,
-    //     headers: {
-    //       Authorization: `Token ${context.state.token}`
-    //     },
-    //     data: {
-    //       user: newMovieComment.user,
-    //       content: newMovieComment.content,
-    //       movie: newMovieComment.movie
-    //     }
-    //   })
-    //     .then((res) => {
-    //       context.commit('CREATE_MOVIE_COMMENT', res.data)
-    //     })
-    //     .catch((err) => {
-    //       console.log(err)
-    //     })
-    // },
+    createMovieComment(context, newMovieComment) {
+      axios({
+        method: 'post',
+        url: `${API_URL}/api/v1/movies/${newMovieComment.movie}/commentcreate/`,
+        headers: {
+          Authorization: `Token ${context.state.token}`
+        },
+        data: {
+          user: newMovieComment.user,
+          content: newMovieComment.content,
+          movie: newMovieComment.movie
+        }
+      })
+        .then((res) => {
+          context.commit('CREATE_MOVIE_COMMENT', res.data)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
 
     // 댓글 목록 받기
     getMovieComments(context, movieId) {
@@ -257,8 +258,6 @@ export default new Vuex.Store({
         // },
       })
         .then((res) => {
-          console.log('여기')
-          console.log(res)
           context.commit('GET_MOVIE_COMMENTS', res.data)
         })
         .catch((err) => {
@@ -271,21 +270,47 @@ export default new Vuex.Store({
     },
 
     // 댓글 삭제
-    deleteComment(context, payload) {
-      console.log(payload.movieCommentId)
+    // deleteComment(context, payload) {
+    //   console.log(payload.movieCommentId)
+    //   axios({
+    //     method: 'delete',
+    //     url: `${API_URL}/api/v1/movies/comments/${payload.movieCommentId}/`,
+    //     headers: {
+    //       Authorization: `Token ${context.state.token}`
+    //     }
+    //   })
+    //     .then((res) => {
+    //       context.commit('DELETE_COMMENT', res.data)
+    //     })
+    //     .catch((err) => {
+    //       console.log(err)
+    //     })
+    // }
+    deleteMovieComment(context, payload) {
+
       axios({
         method: 'delete',
-        url: `${API_URL}/api/v1/movies/comments/${payload.movieCommentId}/`,
+        url: `${API_URL}/api/v1/movies/comments/${payload.commentId}/`,
         headers: {
           Authorization: `Token ${context.state.token}`
         }
       })
-        .then((res) => {
-          context.commit('DELETE_COMMENT', res.data)
+        .then(() => {
+          axios({
+            method: 'get',
+            url: `${API_URL}/api/v1/movies/${payload.movieId}/comments/`,
+            // headers: {
+            //   Authorization: `Token ${context.state.token}`
+            // },
+          })
+            .then((res) => {
+              context.commit('GET_MOVIE_COMMENTS', res.data)
+            })
+            .catch((err) => {
+              console.log(err)
+            })
         })
-        .catch((err) => {
-          console.log(err)
-        })
+
     }
   },
   modules: {
