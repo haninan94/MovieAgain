@@ -1,24 +1,31 @@
 <template>
-  <div>
-    <img :src="`https://image.tmdb.org/t/p/w200${funding?.poster_path}`" alt="">
-    <p>영화 제목 : {{ funding.movie_title }}</p> <br>
-    <!-- <template v-if="check">
-      <progress class="nes-progress is-error" :value="fundingRate" max="1"></progress>
-    </template>
-    <template v-else>
-      <progress class="nes-progress" :value="fundingRate" max="1"></progress>
-    </template> -->
-    <!-- <template>
-      <progress class="nes-progress" :value="fundingMoney" :max="funding.goal_money"></progress>
-    </template>
-    <FundingDonateForm
-      @donate-funding="getFundingMoney"
-    /> -->
+  <div id="fundingdetail">
+    <div class="container"> 
+      <div>
+        <img :src="`https://image.tmdb.org/t/p/w200${funding?.poster_path}`" alt="">
+      </div>
+      <div>
+        <div>
+          <p>영화 제목 : {{ funding.movie_title }}</p> <br>
+        </div>
+        <div>
+          <template>
+            <progress progress class="nes-progress is-warning" :value="funding.now_money" :max="funding.goal_money"></progress>
+          </template>
+        </div>
+      </div>
+    </div>
     <router-link :to="{ name: 'FundingView' }">뒤로가기</router-link>
-    <FundingCommentForm
-    :fundingId = "this.funding.id"/>
+    <FundingCommentForm :fundingId = "this.funding.id"/>
+  </div>        
 
-  </div>
+
+  <!-- <template v-if="check">
+          <progress class="nes-progress is-error" :value="fundingRate" max="1"></progress>
+        </template>
+        <template v-else>
+          <progress class="nes-progress" :value="fundingRate" max="1"></progress>
+        </template> -->
 </template>
 
 <script>
@@ -46,7 +53,6 @@ export default {
       })
         .then((res) => {
           this.funding = res.data
-          // this.fundingMoney = res.data.now_money
         })
         .catch((err) => {
           console.log(err)
@@ -64,5 +70,8 @@ export default {
 </script>
 
 <style>
-
+.container {
+  display: flex;
+  justify-content: space-evenly;
+}
 </style>

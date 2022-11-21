@@ -178,6 +178,9 @@ export default new Vuex.Store({
         .then((res) => {
           context.commit("GET_FUNDINGS", res.data)
         })
+        .catch((err) => {
+          console.log(err)
+        })
     },
     signUp(context, payload) {
       axios({
