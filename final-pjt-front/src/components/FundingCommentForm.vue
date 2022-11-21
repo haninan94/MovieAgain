@@ -4,7 +4,7 @@
       <input type="text" v-model="fundingComment" />
       <button>등록하기</button>
     </form>
-    <p id="idTag">{{ fundingId }}번째 펀딩글</p>
+    <!-- <p id="idTag">{{ fundingId }}번째 펀딩글</p> -->
     <FundingCommentItem
       v-for="fundingComment in fundingComments"
       :key="fundingComment.id"

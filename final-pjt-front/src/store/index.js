@@ -50,6 +50,9 @@ export default new Vuex.Store({
     GET_FUNDINGS(state, fundings) {
       state.fundings = fundings
     },
+    GET_RECOMMEND_FUNDINGS(state, recommend_fundings) {
+      state.recommend_fundings = recommend_fundings
+    },
     // 회원가입 && 로그인
     SAVE_TOKEN(state, token) {
       state.token = token
@@ -92,6 +95,18 @@ export default new Vuex.Store({
       })
         .then((res) => {
           context.commit('GET_MOVIES', res.data)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
+    getRecommendFundings(context) {
+      axios({
+        method: 'get',
+        url: `${API_URL}/api/v1/fundings/`,
+      })
+        .then((res) => {
+          context.commit('GET_RECOMMEND_FUNDINGS', res.data)
         })
         .catch((err) => {
           console.log(err)
@@ -346,6 +361,27 @@ export default new Vuex.Store({
             })
         })
 
+    },
+    createFunding(context, payload) {
+      axios({
+        method: "post",
+        url: `${API_URL}/api/v2/fundings/`,
+        headers: {
+          Authorization: `Token ${context.state.token}`
+        },
+        data: {
+          user: payload.user,
+          goal_money: payload.goal_money,
+          minimum_money: payload.minimum_money,
+          poster_path: payload.poster_path,
+          expired_date: payload.expired_date,
+          movie_title: payload.movie_title,
+          content: payload.content
+        },
+      })
+        .then((res) => {
+          context.commit("CREATE_FUNDING", res.data)
+        })
     }
   },
   modules: {
