@@ -1,36 +1,37 @@
 <template>
   <div>
     <!-- <div class="container" :style="{ backgroundImage: `url('https://image.tmdb.org/t/p/w500${movie?.backdrop_path}')`}"> -->
-    <div>
-      <div class="moviedetail">
-        <div class="border border-dark mx-3">
-          <img class='poster' :src="img_url" alt="이미지 자리"/>
-        </div>
-        <b-card border-variant="dark" class="me-3">
-          <p>제목 : {{ movie?.title }}</p>
-          <p>{{ movie?.overview }}</p>
-          <p>개봉일 : {{ movie?.release_date }}</p>
-          <p>평점 : {{ movie?.vote_average }}</p>
-          <p>장르 :
-            <button class="mx-1" v-for="genre in genres" :key="genre.id">{{ genre }}</button>
-          </p>
-        </b-card>
-      </div>
       <div>
-        <hr class="hr">
-        <router-link :to="{ name: 'MovieView'}">뒤로가기</router-link>
-        <!-- <MovieCommentForm/> -->
-          <!-- 댓글 작성 폼 -->
-          <!-- <div>
-            <form @submit="createComment" style="width: 1000px"></form>
-            <input
-              type="text"
-              v-model="comment"
-              placeholder="댓글을 입력해 주세요."
-            />
-          </div> -->
+        <div class="moviedetail">
+          <div class="border border-dark mx-3">
+            <img class='poster' :src="img_url" alt="이미지 자리"/>
+          </div>
+          <b-card border-variant="dark" class="card me-3">
+            <p>제목 : {{ movie?.title }}</p>
+            <p>{{ movie?.overview }}</p>
+            <p>개봉일 : {{ movie?.release_date }}</p>
+            <p>평점 : {{ movie?.vote_average }}</p>
+            <p>장르 :
+              <button class="mx-1" v-for="genre in genres" :key="genre.id">{{ genre }}</button>
+            </p>
+          </b-card>
+        </div>
+        <div>
+          <hr class="hr">
+          <router-link :to="{ name: 'MovieView'}">뒤로가기</router-link>
+          <!-- <MovieCommentForm/> -->
+            <!-- 댓글 작성 폼 -->
+            <!-- <div>
+              <form @submit="createComment" style="width: 1000px"></form>
+              <input
+                type="text"
+                v-model="comment"
+                placeholder="댓글을 입력해 주세요."
+              />
+            </div> -->
+        </div>
       </div>
-    </div>
+    <!-- </div> -->
   </div>
 </template>
 
@@ -103,6 +104,10 @@ export default {
   background-color: red;
   height: 1px;
   border: 0;
+}
+
+.card {
+  max-width: 60rem;
 }
 
 /* .container {
