@@ -52,7 +52,7 @@ export default new Vuex.Store({
     // 회원가입 && 로그인
     SAVE_TOKEN(state, token) {
       state.token = token
-      // console.log('로그인 성공~')
+
       router.push({ name: 'MovieView' })
     },
     // 댓글 작성
@@ -60,7 +60,7 @@ export default new Vuex.Store({
       state.movieComments.push(newMovieComment)
     },
     LOGOUT(state) {
-      // console.log("ok")
+
       state.token = null
       state.userid = null
     },
@@ -69,15 +69,8 @@ export default new Vuex.Store({
     },
     GET_MOVIE_COMMENTS(state, comments) {
       state.movieComments = comments
-      // state.temp = comments
+
     },
-    DELETE_MOVIE_COMMENT(state, payload) {
-      console.log(payload.movieId)
-      // router.go({ name: 'MovieDetailView', params: { id: payload.movieId } }).catch(() => { })
-      // router.go(router.currentRoute)
-      // router.push('')
-      router.push({ name: "MovieDetailView", params: { id: payload.movieId } })
-    }
   },
   actions: {
     getMovies(context) {
@@ -263,29 +256,9 @@ export default new Vuex.Store({
         .catch((err) => {
           console.log(err)
         })
-
-      // logOut(context) {
-      //   context.commit("")
-      // }
     },
 
-    // 댓글 삭제
-    // deleteComment(context, payload) {
-    //   console.log(payload.movieCommentId)
-    //   axios({
-    //     method: 'delete',
-    //     url: `${API_URL}/api/v1/movies/comments/${payload.movieCommentId}/`,
-    //     headers: {
-    //       Authorization: `Token ${context.state.token}`
-    //     }
-    //   })
-    //     .then((res) => {
-    //       context.commit('DELETE_COMMENT', res.data)
-    //     })
-    //     .catch((err) => {
-    //       console.log(err)
-    //     })
-    // }
+
     deleteMovieComment(context, payload) {
 
       axios({
@@ -299,9 +272,6 @@ export default new Vuex.Store({
           axios({
             method: 'get',
             url: `${API_URL}/api/v1/movies/${payload.movieId}/comments/`,
-            // headers: {
-            //   Authorization: `Token ${context.state.token}`
-            // },
           })
             .then((res) => {
               context.commit('GET_MOVIE_COMMENTS', res.data)
