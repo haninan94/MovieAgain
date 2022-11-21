@@ -11,17 +11,19 @@
           <p>{{ movie?.overview }}</p>
           <p>개봉일 : {{ movie?.release_date }}</p>
           <p>평점 : {{ movie?.vote_average }}</p>
-          <p>장르 :
+          <p>
+            장르 :
             <button v-for="genre in genres" :key="genre.id">{{ genre }}</button>
           </p>
         </div>
       </div>
       <div>
         <hr />
-        <router-link :to="{ name: 'MovieView'}">뒤로가기</router-link>
-        <MovieCommentForm/>
-          <!-- 댓글 작성 폼 -->
-          <!-- <div>
+        <router-link :to="{ name: 'MovieView' }">뒤로가기</router-link>
+        <MovieCommentForm ref="MovieCommentForm"></MovieCommentForm>
+        <!-- <MovieCommentForm /> -->
+        <!-- 댓글 작성 폼 -->
+        <!-- <div>
             <form @submit="createComment" style="width: 1000px"></form>
             <input
               type="text"
@@ -55,6 +57,10 @@ export default {
   },
   created() {
     this.getMovieDetail();
+  },
+  updated() {
+    this.$refs.MovieCommentForm.getMovieComments();
+    this.$refs.MovieCommentForm.$on("reset", this.reset);
   },
   methods: {
     getMovieDetail() {
@@ -99,5 +105,4 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
 } */
-
 </style>
