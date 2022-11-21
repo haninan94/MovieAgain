@@ -13,6 +13,7 @@ from rest_framework import status
 from django.shortcuts import get_object_or_404, get_list_or_404
 from .serializers import (
     CommentSerializer,
+    CommentListSerializer,
     BackerSerializer,
     FundingListSerializer,
     FundingSerializer,
@@ -49,7 +50,6 @@ def funding_detail(request, funding_pk):
 
     if request.method == 'GET':
         serializer = FundingSerializer(funding)
-        print(serializer.data)
         return Response(serializer.data)
     #  지금 유저랑 비교해서 글쓴 사람이 지울 수 있게 !!
     elif request.method == 'DELETE':
@@ -67,13 +67,10 @@ def funding_detail(request, funding_pk):
         serializer1 = BackerSerializer(data=request.data)
         if serializer1.is_valid(raise_exception=True):
             serializer1.save()
-        print(request.data, '11111111111111111111111111111')
         funding.now_money += int(request.data['donation'])
         serializer2 = FundingSerializer(funding)
         # if serializer.is_valid(raise_exception=True):
-        print(funding.now_money, '333333333333333333333333333333')
         funding.save()
-        print(serializer2.data, '2222222222222222222222222222')
         return Response(serializer2.data, status=status.HTTP_200_OK)
 
 
@@ -115,3 +112,12 @@ def comment_create(request, funding_pk):
     if serializer.is_valid(raise_exception=True):
         serializer.save(funding=funding)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+@api_view(['GET'])
+# @permission_classes([IsAuthenticated])
+def funding_comment_list(request, funding_pk):
+    if request.method == 'GET':
+        comment = Comment.objects.filter(funding_id=funding_pk)
+        serializer = CommentListSerializer(comment, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
