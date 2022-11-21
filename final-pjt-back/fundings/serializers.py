@@ -22,14 +22,20 @@ class FundingListSerializer(serializers.ModelSerializer):
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    updated_at = serializers.DateTimeField(read_only=True)
-    created_at = serializers.DateTimeField(read_only=True)
-
+    # updated_at = serializers.DateTimeField(read_only=True)
+    # created_at = serializers.DateTimeField(read_only=True)
+    username = serializers.CharField(source='user.username', read_only=True)
     class Meta:
         model = Comment
         fields = '__all__'
         read_only_fields = ('user', 'funding')
 
+class CommentListSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(source='user.username', read_only=True)
+    class Meta:
+        model = Comment
+        fields = '__all__'
+        read_only_fields = ('movie', 'user',)
 
 class FundingSerializer(serializers.ModelSerializer):
     # user_funding_comment = CommentSerializer(many=True, read_only=True)
