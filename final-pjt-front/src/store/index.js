@@ -76,7 +76,11 @@ export default new Vuex.Store({
     },
     CREATE_FUNDING_COMMENT(state, newFundingComment) {
       state.fundingComments.push(newFundingComment)
-    }
+    },
+    CREATE_FUNDING(state, payload) {
+      state.fundings.push(payload)
+      router.push({ name: 'FundingView' })
+    },
   },
   actions: {
     getMovies(context) {

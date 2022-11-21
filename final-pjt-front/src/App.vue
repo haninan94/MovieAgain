@@ -1,15 +1,23 @@
 <template>
-  <div id="app">
+  <div id="app" class="bg-dark">
     <nav>
-      <router-link class="nes-text" :to="{ name: 'MovieView' }">Home</router-link> |
+      <router-link :to="{ name: 'MovieView' }">
+        <button class="nes-btn is-success">HOME</button>
+      </router-link>
       <template v-if="check">
-        <button class="nes-btn is-success small" @click="logOut">LOGOUT</button> |
+        <button class="nes-btn is-primary" @click="logOut">LOGOUT</button>
       </template>
       <template v-else>
-        <router-link :to="{ name: 'SignUpView' }">SignUpPage</router-link> |
-        <router-link :to="{ name: 'LogInView' }">LogInPage</router-link> |
+        <router-link :to="{ name: 'SignUpView' }">
+          <button class="nes-btn is-primary">SIGNUP</button>
+        </router-link>
+        <router-link :to="{ name: 'LogInView' }">
+          <button class="nes-btn is-primary">LOGIN</button>
+        </router-link>
       </template>
-      <router-link :to="{ name: 'FundingView'}">FundingPage</router-link> |
+      <router-link :to="{ name: 'FundingView'}">
+        <button class="nes-btn is-warning">FUND</button>
+      </router-link>
       <!-- <router-link :to="{ name: 'FundingSearchView'}">Search</router-link> -->
     </nav>
     <router-view />
@@ -35,21 +43,31 @@ export default {
 </script>
 
 <style>
-html, body, pre, code, kbd, samp {
-  font-family: "font-family you want to use";
+@font-face {
+  font-family: 'dunggeunmo';
+  src: url('../src/fonts/DungGeunMo.ttf') format('truetype');
 }
 
 #app {
+  /* font-family: Avenir, Helvetica, Arial, sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background-color: white;
+  /* background-color: white; */
+  /* font-family: "font-family you want to use"; */
 }
+
+* {
+  font-family: 'dunggeunmo';
+  font-size: 20px;
+}
+
+
 
 nav {
   padding: 30px;
-  background-color: white;
+  /* background-color: white; */
 }
 
 nav a {
@@ -57,7 +75,7 @@ nav a {
   color: #2c3e50;
 }
 
-nav a.router-link-exact-active {
+/* nav a.router-link-exact-active {
   color: #42b983;
-}
+} */
 </style>
