@@ -17,6 +17,7 @@ export default new Vuex.Store({
   state: {
     token: null,
     movieComments: [],
+    fundingComments: [],
     userId: '',
   },
   getters: {
@@ -71,7 +72,7 @@ export default new Vuex.Store({
 
     // 펀딩 댓글
     GET_FUNDING_COMMENTS(state, comments) {
-      state.tempFunding = comments
+      state.fundingComments = comments
     },
     CREATE_FUNDING_COMMENT(state, newFundingComment) {
       console.log('mutation CREATE_FUNDING_COMMENT 111111111111111111111')
@@ -275,7 +276,6 @@ export default new Vuex.Store({
             url: `${API_URL}/api/v1/movies/${payload.movieId}/comments/`,
           })
             .then((res) => {
-              console.log(res.data)
               context.commit('GET_MOVIE_COMMENTS', res.data)
             })
             .catch((err) => {
@@ -283,22 +283,26 @@ export default new Vuex.Store({
             })
         })
     },
+    // 펀딩댓글 
     getFundingComments(context, fundingId) {
       axios({
         method: 'get',
         url: `${API_URL}/api/v1/fundings/${fundingId}/comments/`,
       })
         .then((res) => {
+          console.log('-292929292921321')
+          console.log(res.data)
           context.commit('GET_FUNDING_COMMENTS', res.data)
         })
         .catch((err) => {
+          console.log('2148247249214871297412977921479')
           console.log(err)
         })
     },
     createFundingComment(context, newFundingComment) {
       axios({
         method: 'post',
-        url: `${API_URL}/api/v1/fundings/${newFundingComment.funding}/comments/`,
+        url: `${API_URL}/api/v1/fundings/${newFundingComment.funding}/commentcreate/`,
         headers: {
           Authorization: `Token ${context.state.token}`
         },
@@ -309,15 +313,35 @@ export default new Vuex.Store({
         }
       })
         .then((res) => {
-          console.log(res.data)
-          // context.commit('CREATE_FUNDING_COMMENT', res.data)
+          // console.log(res.data)
+          context.commit('CREATE_FUNDING_COMMENT', res.data)
         })
         .catch((err) => {
-          // console.log('here')
-          console.log('post 요청   create오류남요')
           console.log(newFundingComment)
           console.log(err)
         })
+    },
+    deleteFundingComment(context, payload) {
+      axios({
+        method: 'delete',
+        url: `${API_URL}/api/v1/fundings/comments/${payload.commentId}/`,
+        headers: {
+          Authorization: `Token ${context.state.token}`
+        }
+      })
+        .then(() => {
+          axios({
+            method: 'get',
+            url: `${API_URL}/api/v1/fundings/${payload.fundingId}/comments/`,
+          })
+            .then((res) => {
+              context.commit('GET_FUNDING_COMMENTS', res.data)
+            })
+            .catch((err) => {
+              console.log(err)
+            })
+        })
+
     }
   },
   modules: {

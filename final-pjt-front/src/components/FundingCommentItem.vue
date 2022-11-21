@@ -4,7 +4,9 @@
     <p>내용 : {{ fundingComment.content }}</p>
     <p>작성 시각 : {{ getCreatedAt }}</p>
     <button
-      @click.prevent="deleteMovieComment(fundingComment.id, fundingComment.funding)"
+      @click.prevent="
+        deleteFundingComment(fundingComment.id, fundingComment.funding)
+      "
     >
       삭제하기
     </button>
@@ -22,22 +24,24 @@ export default {
     return {};
   },
   computed: {
-    getUsername(){
-      const username = this.fundingComment.username
-      return username
+    getUsername() {
+      const username = this.fundingComment.username;
+      return username;
     },
     getCreatedAt() {
-      const createdAt = new Date(this.fundingComment.created_at).toLocaleString();
+      const createdAt = new Date(
+        this.fundingComment.created_at
+      ).toLocaleString();
       return createdAt;
     },
   },
   methods: {
-      deleteMovieComment(commentId, movieId) {
-        const payload = {
-          commentId: commentId,
-          fundingId: fundingId,
-        };
-        this.$store.dispatch("deleteFundingComment", payload);
+    deleteFundingComment(commentId, fundingId) {
+      const payload = {
+        commentId: commentId,
+        fundingId: fundingId,
+      };
+      this.$store.dispatch("deleteFundingComment", payload);
     },
   },
 };
