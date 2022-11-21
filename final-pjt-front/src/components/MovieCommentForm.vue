@@ -1,12 +1,12 @@
 <template>
   <div>
-    <form @submit="createMovieComment">
+    <form @submit.prevent="createMovieComment">
       <input type="text" v-model="movieComment" />
       <button>등록하기</button>
     </form>
     <p id="idTag">{{ movieId }}</p>
     <MovieCommentItem
-      v-for="movieComment in movieComments"
+      v-for="movieComment in MovieComments"
       :key="movieComment.id"
       :movieComment="movieComment"
     />
@@ -25,8 +25,8 @@ export default {
     movieId: Number,
   },
   computed: {
-    movieComments() {
-      return this.$store.getters.getMovieComments;
+    MovieComments() {
+      return this.$store.state.movieComments;
     },
   },
   data() {
@@ -34,17 +34,12 @@ export default {
       movieComment: "",
     };
   },
-  created() {
-    this.getMovieComments();
-    this.$store.dispatch("getMovieComments", this.$route.params.id);
-  },
+  // created() {
+  //   this.getMovieComments();
+  // },
   methods: {
-    createMovieComment(event) {
-      event.preventDefault();
+    createMovieComment() {
       const newMovieComment = {
-        // 새로운 무비커멘트
-        // userid 를 가져와야함
-        // username 가져오는중 근데 undefined 임
         user: this.$store.state.userId,
         content: this.movieComment,
         movie: this.$route.params.id,

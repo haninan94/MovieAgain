@@ -10,7 +10,7 @@ from rest_framework.permissions import IsAuthenticated
 
 from rest_framework import status
 from django.shortcuts import get_object_or_404, get_list_or_404
-from .serializers import MovieListSerializer, MovieSerializer, CommentSerializer
+from .serializers import MovieListSerializer, MovieSerializer, CommentSerializer, CommentListSerializer
 from .models import Movie, Comment
 from django.db.models import Q
 
@@ -56,7 +56,7 @@ def movie_detail(request, movie_pk):
 
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 def comment_list(request):
     if request.method == 'GET':
         # comments = Comment.objects.all()
@@ -67,19 +67,16 @@ def comment_list(request):
 
 @api_view(['GET', 'DELETE', 'PUT'])
 @permission_classes([IsAuthenticated])
-def comment_detail(request, comment_pk, username):
+def comment_detail(request, comment_pk):
     # comment = Comment.objects.get(pk=comment_pk)
     comment = get_object_or_404(Comment, pk=comment_pk)
-
     if request.method == 'GET':
         serializer = CommentSerializer(comment)
         return Response(serializer.data)
-
-    if str(comment.user) == str(username):
+    if str(comment.user) == str(request.user):
         if request.method == 'DELETE':
             comment.delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
-
         elif request.method == 'PUT':
             serializer = CommentSerializer(comment, data=request.data)
             if serializer.is_valid(raise_exception=True):
@@ -87,7 +84,7 @@ def comment_detail(request, comment_pk, username):
                 return Response(serializer.data)
 
 
-@api_view(['GET', 'POST'])
+@api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def comment_create(request, movie_pk):
     if request.method == 'POST':
@@ -96,11 +93,12 @@ def comment_create(request, movie_pk):
         if serializer.is_valid(raise_exception=True):
             serializer.save(movie=movie)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-    elif request.method == 'GET':
-        print(movie_pk)
+
+
+@api_view(['GET'])
+# @permission_classes([IsAuthenticated])
+def movie_comment_list(request, movie_pk):
+    if request.method == 'GET':
         comment = Comment.objects.filter(movie_id=movie_pk)
-        print(comment)
-        serializer = CommentSerializer(comment)
-        print('*******')
-        print(serializer)
-        return Response(serializer.data)
+        serializer = CommentListSerializer(comment, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)

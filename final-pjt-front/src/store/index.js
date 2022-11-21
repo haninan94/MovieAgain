@@ -18,14 +18,13 @@ export default new Vuex.Store({
     token: null,
     movieComments: [],
     userId: '',
-    temp: [],
   },
   getters: {
     isLogin(state) {
       return state.token ? true : false
     },
     getMovieComments(state) {
-      return state.temp
+      return state.movieComments
     }
   },
   mutations: {
@@ -67,11 +66,17 @@ export default new Vuex.Store({
     },
     SAVE_USERID(state, userId) {
       state.userId = userId.userId
-      // console.log('앵 되세요??')
-      // console.log(state.userId)
     },
     GET_MOVIE_COMMENTS(state, comments) {
-      state.temp = comments
+      state.movieComments = comments
+      // state.temp = comments
+    },
+    DELETE_MOVIE_COMMENT(state, payload) {
+      console.log(payload.movieId)
+      // router.go({ name: 'MovieDetailView', params: { id: payload.movieId } }).catch(() => { })
+      // router.go(router.currentRoute)
+      // router.push('')
+      router.push({ name: "MovieDetailView", params: { id: payload.movieId } })
     }
   },
   actions: {
@@ -198,7 +203,7 @@ export default new Vuex.Store({
         }
       })
         .then((res) => {
-          // console.log(res)
+          console.log(res)
           context.commit('SAVE_TOKEN', res.data.key)
 
         })
@@ -225,7 +230,7 @@ export default new Vuex.Store({
     createMovieComment(context, newMovieComment) {
       axios({
         method: 'post',
-        url: `${API_URL}/api/v1/movies/${newMovieComment.movie}/comments/`,
+        url: `${API_URL}/api/v1/movies/${newMovieComment.movie}/commentcreate/`,
         headers: {
           Authorization: `Token ${context.state.token}`
         },
@@ -239,17 +244,18 @@ export default new Vuex.Store({
           context.commit('CREATE_MOVIE_COMMENT', res.data)
         })
         .catch((err) => {
-          console.log('here')
           console.log(err)
         })
     },
+
+    // 댓글 목록 받기
     getMovieComments(context, movieId) {
       axios({
         method: 'get',
         url: `${API_URL}/api/v1/movies/${movieId}/comments/`,
-        headers: {
-          Authorization: `Token ${context.state.token}`
-        }
+        // headers: {
+        //   Authorization: `Token ${context.state.token}`
+        // },
       })
         .then((res) => {
           context.commit('GET_MOVIE_COMMENTS', res.data)
@@ -262,6 +268,50 @@ export default new Vuex.Store({
       //   context.commit("")
       // }
     },
+
+    // 댓글 삭제
+    // deleteComment(context, payload) {
+    //   console.log(payload.movieCommentId)
+    //   axios({
+    //     method: 'delete',
+    //     url: `${API_URL}/api/v1/movies/comments/${payload.movieCommentId}/`,
+    //     headers: {
+    //       Authorization: `Token ${context.state.token}`
+    //     }
+    //   })
+    //     .then((res) => {
+    //       context.commit('DELETE_COMMENT', res.data)
+    //     })
+    //     .catch((err) => {
+    //       console.log(err)
+    //     })
+    // }
+    deleteMovieComment(context, payload) {
+
+      axios({
+        method: 'delete',
+        url: `${API_URL}/api/v1/movies/comments/${payload.commentId}/`,
+        headers: {
+          Authorization: `Token ${context.state.token}`
+        }
+      })
+        .then(() => {
+          axios({
+            method: 'get',
+            url: `${API_URL}/api/v1/movies/${payload.movieId}/comments/`,
+            // headers: {
+            //   Authorization: `Token ${context.state.token}`
+            // },
+          })
+            .then((res) => {
+              context.commit('GET_MOVIE_COMMENTS', res.data)
+            })
+            .catch((err) => {
+              console.log(err)
+            })
+        })
+
+    }
   },
   modules: {
   }
