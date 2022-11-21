@@ -26,7 +26,7 @@ export default {
   },
   computed: {
     fundingComments() {
-      return this.$store.getters.getFundingComments;
+      return this.$store.state.fundingComments;
     },
   },
   data() {
@@ -34,13 +34,13 @@ export default {
       fundingComment: "",
     };
   },
-  created() {
-    this.getFundingComments();
-    this.$store.dispatch("getFundingComments", this.$route.params.id);
-  },
+  // created() {
+  //   this.getFundingComments();
+  //   this.$store.dispatch("getFundingComments", this.$route.params.id);
+  // },
   methods: {
     createFundingComment(event) {
-      event.preventDefault();
+      // event.preventDefault();
       const newFundingComment = {
         // 새로운 무비커멘트
         // userid 를 가져와야함
@@ -49,10 +49,6 @@ export default {
         content: this.fundingComment,
         funding: this.$route.params.id,
       };
-      console.log('createFundingComment메소드')
-      console.log(this.$store.state.userId)
-      console.log('-------------------------------')
-      console.log(newFundingComment.user)
       this.$store.dispatch("createFundingComment", newFundingComment);
       this.fundingComment = "";
     },
@@ -62,6 +58,7 @@ export default {
     },
   },
 };
+// fundingCommentForm 완료
 </script>
 
 <style>

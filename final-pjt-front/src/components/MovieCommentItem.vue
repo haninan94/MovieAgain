@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>작성자 : {{ movieComment.username }}</p>
+    <p>작성자 : {{ getUsername }}</p>
     <p>내용 : {{ movieComment.content }}</p>
     <p>작성 시각 : {{ getCreatedAt }}</p>
     <button
@@ -22,6 +22,10 @@ export default {
     return {};
   },
   computed: {
+    getUsername(){
+      const username = this.movieComment.username
+      return username
+    },
     getCreatedAt() {
       const createdAt = new Date(this.movieComment.created_at).toLocaleString();
       return createdAt;

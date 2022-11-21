@@ -275,6 +275,7 @@ export default new Vuex.Store({
             url: `${API_URL}/api/v1/movies/${payload.movieId}/comments/`,
           })
             .then((res) => {
+              console.log(res.data)
               context.commit('GET_MOVIE_COMMENTS', res.data)
             })
             .catch((err) => {

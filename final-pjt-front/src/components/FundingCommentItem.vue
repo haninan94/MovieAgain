@@ -1,7 +1,14 @@
 <template>
   <div>
-    <p>댓글</p>
-    <p>{{ fundingComment.content }}</p>
+    <p>작성자 : {{ getUsername }}</p>
+    <p>내용 : {{ fundingComment.content }}</p>
+    <p>작성 시각 : {{ getCreatedAt }}</p>
+    <button
+      @click.prevent="deleteMovieComment(fundingComment.id, fundingComment.funding)"
+    >
+      삭제하기
+    </button>
+    <hr />
   </div>
 </template>
 
@@ -11,7 +18,30 @@ export default {
   props: {
     fundingComment: Object,
   },
+  data() {
+    return {};
+  },
+  computed: {
+    getUsername(){
+      const username = this.fundingComment.username
+      return username
+    },
+    getCreatedAt() {
+      const createdAt = new Date(this.fundingComment.created_at).toLocaleString();
+      return createdAt;
+    },
+  },
+  methods: {
+      deleteMovieComment(commentId, movieId) {
+        const payload = {
+          commentId: commentId,
+          fundingId: fundingId,
+        };
+        this.$store.dispatch("deleteFundingComment", payload);
+    },
+  },
 };
+// fundingCommentItem 완
 </script>
 
 <style>
