@@ -67,11 +67,21 @@ export default new Vuex.Store({
     },
     SAVE_USERID(state, userId) {
       state.userId = userId.userId
-      // console.log('앵 되세요??')
-      // console.log(state.userId)
+      console.log('앵 되세요??')
+      console.log(state.userId)
     },
     GET_MOVIE_COMMENTS(state, comments) {
       state.temp = comments
+    },
+
+    // 펀딩 댓글
+    GET_FUNDING_COMMENTS(state, comments){
+      state.tempFunding = comments
+    },
+    CREATE_FUNDING_COMMENT(state, newFundingComment){
+      console.log('mutation CREATE_FUNDING_COMMENT 111111111111111111111')
+      console.log(state.newFundingComment)
+      state.fundingComments.push(newFundingComment)
     }
   },
   actions: {
@@ -262,6 +272,48 @@ export default new Vuex.Store({
       //   context.commit("")
       // }
     },
+    getFundingComments(context, fundingId) {
+      axios({
+        method: 'get',
+        url: `${API_URL}/api/v1/fundings/${fundingId}/comments/`,
+        headers: {
+          Authorization: `Token ${context.state.token}`
+        }
+      })
+        .then((res) => {
+          context.commit('GET_FUNDING_COMMENTS', res.data)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+      },
+    createFundingComment(context, newFundingComment){
+      axios({
+        method: 'post',
+        url: `${API_URL}/api/v1/fundings/${newFundingComment.funding}/comments/`,
+        headers: {
+          Authorization: `Token ${context.state.token}`
+        },
+        data: {
+          user: newFundingComment.user,
+          content: newFundingComment.content,
+          funding: newFundingComment.funding
+        }
+      })
+        .then((res) => {
+          console.log(res.data)
+          // context.commit('CREATE_FUNDING_COMMENT', res.data)
+        })
+        .catch((err) => {
+          // console.log('here')
+          console.log('post 요청   create오류남요')
+          console.log(newFundingComment)
+          console.log(err)
+        })
+    }
+
+
+
   },
   modules: {
   }
