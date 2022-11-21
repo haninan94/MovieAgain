@@ -1,7 +1,7 @@
 <template>
   <b-col>
     <router-link :to="{ name: 'MovieDetailView', params: { id: movie.id } }">
-      <b-img thumbnail fluid :src="imgUrl"></b-img>
+      <b-img class="image" thumbnail fluid :src="imgUrl"></b-img>
     </router-link>
   </b-col>
 </template>
@@ -21,4 +21,15 @@ export default {
 </script>
 
 <style>
+.image{
+  -webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+
+.image:hover {
+  -webkit-filter: grayscale(0);
+	filter: grayscale(0);
+}
 </style>
