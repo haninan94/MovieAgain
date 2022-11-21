@@ -14,20 +14,23 @@
     <FundingDonateForm
       @donate-funding="getFundingMoney"
     /> -->
-    <router-link :to="{ name: 'FundingView' }">돌아가기</router-link>
+    <router-link :to="{ name: 'FundingView' }">뒤로가기</router-link>
+    <FundingCommentForm
+    :fundingId = "this.funding.id"/>
+
   </div>
 </template>
 
 <script>
 import axios from 'axios'
-// import FundingDonateForm from '@/components/FundingDonateForm'
+import FundingCommentForm from '@/components/FundingCommentForm'
 
 const API_URL = "http://127.0.0.1:8000"
 
 export default {
   name: "FundingDetailView",
   components: {
-    // FundingDonateForm,
+    FundingCommentForm
   },
   data() {
     return {

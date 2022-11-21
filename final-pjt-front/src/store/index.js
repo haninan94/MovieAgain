@@ -52,7 +52,6 @@ export default new Vuex.Store({
     // 회원가입 && 로그인
     SAVE_TOKEN(state, token) {
       state.token = token
-
       router.push({ name: 'MovieView' })
     },
     // 댓글 작성
@@ -60,7 +59,6 @@ export default new Vuex.Store({
       state.movieComments.push(newMovieComment)
     },
     LOGOUT(state) {
-
       state.token = null
       state.userid = null
     },
@@ -69,8 +67,17 @@ export default new Vuex.Store({
     },
     GET_MOVIE_COMMENTS(state, comments) {
       state.movieComments = comments
-
     },
+
+    // 펀딩 댓글
+    GET_FUNDING_COMMENTS(state, comments) {
+      state.tempFunding = comments
+    },
+    CREATE_FUNDING_COMMENT(state, newFundingComment) {
+      console.log('mutation CREATE_FUNDING_COMMENT 111111111111111111111')
+      console.log(state.newFundingComment)
+      state.fundingComments.push(newFundingComment)
+    }
   },
   actions: {
     getMovies(context) {
@@ -213,13 +220,12 @@ export default new Vuex.Store({
             // withCredentials: true
           })
             .then((res) => {
-              // console.log(res.data)
               context.commit('SAVE_USERID', res.data)
             })
         })
     },
 
-    // 댓글 작성
+    // 영화 댓글 작성
     createMovieComment(context, newMovieComment) {
       axios({
         method: 'post',
@@ -246,9 +252,6 @@ export default new Vuex.Store({
       axios({
         method: 'get',
         url: `${API_URL}/api/v1/movies/${movieId}/comments/`,
-        // headers: {
-        //   Authorization: `Token ${context.state.token}`
-        // },
       })
         .then((res) => {
           context.commit('GET_MOVIE_COMMENTS', res.data)
@@ -257,8 +260,6 @@ export default new Vuex.Store({
           console.log(err)
         })
     },
-
-
     deleteMovieComment(context, payload) {
 
       axios({
@@ -280,7 +281,42 @@ export default new Vuex.Store({
               console.log(err)
             })
         })
-
+    },
+    getFundingComments(context, fundingId) {
+      axios({
+        method: 'get',
+        url: `${API_URL}/api/v1/fundings/${fundingId}/comments/`,
+      })
+        .then((res) => {
+          context.commit('GET_FUNDING_COMMENTS', res.data)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
+    createFundingComment(context, newFundingComment) {
+      axios({
+        method: 'post',
+        url: `${API_URL}/api/v1/fundings/${newFundingComment.funding}/comments/`,
+        headers: {
+          Authorization: `Token ${context.state.token}`
+        },
+        data: {
+          user: newFundingComment.user,
+          content: newFundingComment.content,
+          funding: newFundingComment.funding
+        }
+      })
+        .then((res) => {
+          console.log(res.data)
+          // context.commit('CREATE_FUNDING_COMMENT', res.data)
+        })
+        .catch((err) => {
+          // console.log('here')
+          console.log('post 요청   create오류남요')
+          console.log(newFundingComment)
+          console.log(err)
+        })
     }
   },
   modules: {
