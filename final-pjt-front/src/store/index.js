@@ -75,8 +75,6 @@ export default new Vuex.Store({
       state.fundingComments = comments
     },
     CREATE_FUNDING_COMMENT(state, newFundingComment) {
-      console.log('mutation CREATE_FUNDING_COMMENT 111111111111111111111')
-      console.log(state.newFundingComment)
       state.fundingComments.push(newFundingComment)
     }
   },
@@ -171,7 +169,7 @@ export default new Vuex.Store({
     getFundings(context) {
       axios({
         method: "get",
-        url: `${API_URL}/api/v1/fundings/`,
+        url: `${API_URL}/api/v2/fundings/`,
       })
         .then((res) => {
           context.commit("GET_FUNDINGS", res.data)
@@ -287,7 +285,7 @@ export default new Vuex.Store({
     getFundingComments(context, fundingId) {
       axios({
         method: 'get',
-        url: `${API_URL}/api/v1/fundings/${fundingId}/comments/`,
+        url: `${API_URL}/api/v2/fundings/${fundingId}/comments/`,
       })
         .then((res) => {
           console.log('-292929292921321')
@@ -302,7 +300,7 @@ export default new Vuex.Store({
     createFundingComment(context, newFundingComment) {
       axios({
         method: 'post',
-        url: `${API_URL}/api/v1/fundings/${newFundingComment.funding}/commentcreate/`,
+        url: `${API_URL}/api/v2/fundings/${newFundingComment.funding}/commentcreate/`,
         headers: {
           Authorization: `Token ${context.state.token}`
         },
@@ -324,7 +322,7 @@ export default new Vuex.Store({
     deleteFundingComment(context, payload) {
       axios({
         method: 'delete',
-        url: `${API_URL}/api/v1/fundings/comments/${payload.commentId}/`,
+        url: `${API_URL}/api/v2/fundings/comments/${payload.commentId}/`,
         headers: {
           Authorization: `Token ${context.state.token}`
         }
@@ -332,7 +330,7 @@ export default new Vuex.Store({
         .then(() => {
           axios({
             method: 'get',
-            url: `${API_URL}/api/v1/fundings/${payload.fundingId}/comments/`,
+            url: `${API_URL}/api/v2/fundings/${payload.fundingId}/comments/`,
           })
             .then((res) => {
               context.commit('GET_FUNDING_COMMENTS', res.data)
