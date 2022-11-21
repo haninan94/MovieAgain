@@ -92,9 +92,10 @@ def comment_detail(request, comment_pk):
         serializer = CommentSerializer(comment)
         return Response(serializer.data)
 
-    elif request.method == 'DELETE':
-        comment.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+    if str(comment.user) == str(request.user):
+        if request.method == 'DELETE':
+            comment.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
 
     elif request.method == 'PUT':
         serializer = CommentSerializer(comment, data=request.data)
