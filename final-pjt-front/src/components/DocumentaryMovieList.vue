@@ -9,6 +9,7 @@
   </div> -->
   <b-container fluid class="p-4 bg-dark border-top border-danger">
     <b-row>
+      <h1>Documentary</h1>
       <DocumentaryMovieListItem
       v-for="movie in movies"
       :key="movie.id"
@@ -37,5 +38,9 @@ export default {
 <style>
 .movie-list {
   text-align: start;
+}
+
+h1 {
+  color: whitesmoke;
 }
 </style>

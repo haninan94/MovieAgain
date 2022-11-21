@@ -1,6 +1,7 @@
 <template>
   <b-container fluid class="p-4 bg-dark border-top border-danger">
     <b-row>
+      <h1>Animation</h1>
       <AnimationMovieListItem
       v-for="movie in movies"
       :key="movie.id"
@@ -33,5 +34,9 @@ export default {
 <style>
 .movie-list {
   text-align: start;
+}
+
+h1 {
+  color: whitesmoke;
 }
 </style>

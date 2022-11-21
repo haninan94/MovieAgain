@@ -1,19 +1,23 @@
 <template>
   <div>
-    <div class="movieview">
+    <div class="movieview bg-dark">
       <MovieList />
     </div>
-    <h2>AdventureMovie</h2>
-    <AdventureMovieList />
-    <hr>
-    <h2>HorrorMovie</h2>
-    <HorrorMovieList />
-    <h2>Documentary</h2>
-    <DocumentaryMovieList />
-    <h2>Animation</h2>
-    <AnimationMovieList />
-    <h2>Romance</h2>
-    <RomanceMovieList />
+    <div>
+      <AdventureMovieList />
+    </div>
+    <div>
+      <HorrorMovieList />
+    </div>
+    <div>
+      <DocumentaryMovieList />
+    </div>
+    <div>
+      <AnimationMovieList />
+    </div>
+    <div>
+      <RomanceMovieList />
+    </div>
   </div>
 </template>
 
@@ -82,5 +86,10 @@ export default {
 .movieview {
   display: flex;
   justify-content: center;
+}
+
+h2 {
+  background-color: black;
+  margin-bottom: 0%;
 }
 </style>
