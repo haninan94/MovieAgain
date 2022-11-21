@@ -107,6 +107,7 @@ def comment_detail(request, comment_pk):
 
 
 @api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def comment_create(request, funding_pk):
     # article = Article.objects.get(pk=article_pk)
     funding = get_object_or_404(Funding, pk=funding_pk)

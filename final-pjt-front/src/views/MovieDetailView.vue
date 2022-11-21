@@ -21,6 +21,7 @@
           <button class="nes-btn is-primary">Back</button>
         </router-link>
       <MovieCommentForm ref="MovieCommentForm"></MovieCommentForm>
+      </div>
     </div>
   </div>
 </template>
