@@ -75,8 +75,6 @@ export default new Vuex.Store({
       state.fundingComments = comments
     },
     CREATE_FUNDING_COMMENT(state, newFundingComment) {
-      console.log('mutation CREATE_FUNDING_COMMENT 111111111111111111111')
-      console.log(state.newFundingComment)
       state.fundingComments.push(newFundingComment)
     },
     CREATE_FUNDING(state, payload) {
@@ -266,7 +264,6 @@ export default new Vuex.Store({
         })
     },
     deleteMovieComment(context, payload) {
-
       axios({
         method: 'delete',
         url: `${API_URL}/api/v1/movies/comments/${payload.commentId}/`,
@@ -294,12 +291,10 @@ export default new Vuex.Store({
         url: `${API_URL}/api/v1/fundings/${fundingId}/comments/`,
       })
         .then((res) => {
-          console.log('-292929292921321')
           console.log(res.data)
           context.commit('GET_FUNDING_COMMENTS', res.data)
         })
         .catch((err) => {
-          console.log('2148247249214871297412977921479')
           console.log(err)
         })
     },
@@ -345,7 +340,27 @@ export default new Vuex.Store({
               console.log(err)
             })
         })
-
+    },
+    createFunding(context, payload) {
+      axios({
+        method: "post",
+        url: `${API_URL}/api/v1/fundings/`,
+        headers: {
+          Authorization: `Token ${context.state.token}`
+        },
+        data: {
+          user: payload.user,
+          goal_money: payload.goal_money,
+          minimum_money: payload.minimum_money,
+          poster_path: payload.poster_path,
+          expired_date: payload.expired_date,
+          movie_title: payload.movie_title,
+          content: payload.content
+        },
+      })
+        .then((res) => {
+          context.commit("CREATE_FUNDING", res.data)
+        })
     }
   },
   modules: {
