@@ -21,16 +21,6 @@
           <button class="nes-btn is-primary">Back</button>
         </router-link>
       <MovieCommentForm ref="MovieCommentForm"></MovieCommentForm>
-      <!-- <MovieCommentForm /> -->
-      <!-- 댓글 작성 폼 -->
-      <!-- <div>
-          <form @submit="createComment" style="width: 1000px"></form>
-          <input
-            type="text"
-            v-model="comment"
-            placeholder="댓글을 입력해 주세요."
-          />
-        </div> -->
     </div>
   </div>
 </template>
