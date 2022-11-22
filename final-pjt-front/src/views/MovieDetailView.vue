@@ -3,24 +3,31 @@
     <div>
       <div class="moviedetail">
         <div class="border border-dark mx-3">
-          <img class='poster' :src="img_url" alt="이미지 자리"/>
+          <img class="poster" :src="img_url" alt="이미지 자리" />
         </div>
         <b-card border-variant="dark" class="card me-3">
           <p>제목 : {{ movie?.title }}</p>
           <p>{{ movie?.overview }}</p>
           <p>개봉일 : {{ movie?.release_date }}</p>
           <p>평점 : {{ movie?.vote_average }}</p>
-          <p>장르 :
-            <button class="nes-btn small mx-1 " v-for="genre in genres" :key="genre.id">{{ genre }}</button>
+          <p>
+            장르 :
+            <button
+              class="nes-btn small mx-1"
+              v-for="genre in genres"
+              :key="genre.id"
+            >
+              {{ genre }}
+            </button>
           </p>
         </b-card>
       </div>
       <div>
-        <hr class="hr">
-        <router-link :to="{ name: 'MovieView'}">
+        <hr class="hr" />
+        <router-link :to="{ name: 'MovieView' }">
           <button class="nes-btn is-primary">Back</button>
         </router-link>
-      <MovieCommentForm ref="MovieCommentForm"></MovieCommentForm>
+        <MovieCommentForm ref="MovieCommentForm"></MovieCommentForm>
       </div>
     </div>
   </div>
@@ -59,7 +66,7 @@ export default {
         url: `${API_URL}/api/v1/movies/${this.$route.params.id}`,
       })
         .then((res) => {
-          // console.log(res);
+          console.log(res);
           this.movie = res.data;
           this.img_url =
             "https://image.tmdb.org/t/p/w200" + res.data.poster_path;
@@ -109,7 +116,6 @@ export default {
   background-size: cover;
   background-repeat: no-repeat;
 } */
-
 
 /* .backdrop {
   position: fixed;

@@ -1,0 +1,47 @@
+<template>
+  <!-- <div>
+    <h5>{{ movie.id }}</h5>
+    <p>{{ movie.title }}</p>
+    <img :src="imgUrl" alt="" />
+    <br />
+    <router-link :to="{ name: 'MovieDetailView', params: { id: movie.id } }">
+      [DETAIL]
+    </router-link>
+    <hr />
+  </div> -->
+  <b-col>
+    <router-link
+      :to="{ name: 'FundingDetailView', params: { id: funding.id } }"
+    >
+      <b-img class="documentaryimage" thumbnail fluid :src="imgUrl"></b-img>
+    </router-link>
+  </b-col>
+</template>
+
+<script>
+export default {
+  name: "FundingRecommendListItem",
+  props: {
+    funding: Object,
+  },
+  computed: {
+    imgUrl() {
+      return "https://image.tmdb.org/t/p/w200" + this.funding.poster_path;
+    },
+  },
+};
+</script>
+
+<style>
+.documentaryimage {
+  -webkit-filter: grayscale(0) blur(0);
+  filter: grayscale(0) blur(0);
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.documentaryimage:hover {
+  -webkit-filter: grayscale(100%) blur(1px);
+  filter: grayscale(100%) blur(1px);
+}
+</style>

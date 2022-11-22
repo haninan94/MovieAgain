@@ -3,6 +3,7 @@
     {{ funding.movie_title }}
     <br>
     {{ funding.content }}
+    <br>
     <router-link :to="{ name: 'FundingDetailView', params: { id: funding.id } }" >Detail</router-link>
     <hr>
   </div>

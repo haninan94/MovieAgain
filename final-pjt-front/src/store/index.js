@@ -26,6 +26,9 @@ export default new Vuex.Store({
     },
     getMovieComments(state) {
       return state.movieComments
+    },
+    getFundingComments(state) {
+      return state.fundingComments
     }
   },
   mutations: {
@@ -49,6 +52,9 @@ export default new Vuex.Store({
     },
     GET_FUNDINGS(state, fundings) {
       state.fundings = fundings
+    },
+    GET_RECOMMEND_FUNDINGS(state, recommend_fundings) {
+      state.recommend_fundings = recommend_fundings
     },
     // 회원가입 && 로그인
     SAVE_TOKEN(state, token) {
@@ -75,10 +81,12 @@ export default new Vuex.Store({
       state.fundingComments = comments
     },
     CREATE_FUNDING_COMMENT(state, newFundingComment) {
-      console.log('mutation CREATE_FUNDING_COMMENT 111111111111111111111')
-      console.log(state.newFundingComment)
       state.fundingComments.push(newFundingComment)
-    }
+    },
+    CREATE_FUNDING(state, payload) {
+      state.fundings.push(payload)
+      router.push({ name: 'FundingView' })
+    },
   },
   actions: {
     getMovies(context) {
@@ -88,6 +96,18 @@ export default new Vuex.Store({
       })
         .then((res) => {
           context.commit('GET_MOVIES', res.data)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
+    getRecommendFundings(context) {
+      axios({
+        method: 'get',
+        url: `${API_URL}/api/v2/fundings/`,
+      })
+        .then((res) => {
+          context.commit('GET_RECOMMEND_FUNDINGS', res.data)
         })
         .catch((err) => {
           console.log(err)
@@ -171,10 +191,13 @@ export default new Vuex.Store({
     getFundings(context) {
       axios({
         method: "get",
-        url: `${API_URL}/api/v1/fundings/`,
+        url: `${API_URL}/api/v2/fundings/`,
       })
         .then((res) => {
           context.commit("GET_FUNDINGS", res.data)
+        })
+        .catch((err) => {
+          console.log(err)
         })
     },
     signUp(context, payload) {
@@ -262,7 +285,6 @@ export default new Vuex.Store({
         })
     },
     deleteMovieComment(context, payload) {
-
       axios({
         method: 'delete',
         url: `${API_URL}/api/v1/movies/comments/${payload.commentId}/`,
@@ -287,22 +309,20 @@ export default new Vuex.Store({
     getFundingComments(context, fundingId) {
       axios({
         method: 'get',
-        url: `${API_URL}/api/v1/fundings/${fundingId}/comments/`,
+        url: `${API_URL}/api/v2/fundings/${fundingId}/comments/`,
       })
         .then((res) => {
-          console.log('-292929292921321')
           console.log(res.data)
           context.commit('GET_FUNDING_COMMENTS', res.data)
         })
         .catch((err) => {
-          console.log('2148247249214871297412977921479')
           console.log(err)
         })
     },
     createFundingComment(context, newFundingComment) {
       axios({
         method: 'post',
-        url: `${API_URL}/api/v1/fundings/${newFundingComment.funding}/commentcreate/`,
+        url: `${API_URL}/api/v2/fundings/${newFundingComment.funding}/commentcreate/`,
         headers: {
           Authorization: `Token ${context.state.token}`
         },
@@ -313,7 +333,6 @@ export default new Vuex.Store({
         }
       })
         .then((res) => {
-          // console.log(res.data)
           context.commit('CREATE_FUNDING_COMMENT', res.data)
         })
         .catch((err) => {
@@ -324,7 +343,7 @@ export default new Vuex.Store({
     deleteFundingComment(context, payload) {
       axios({
         method: 'delete',
-        url: `${API_URL}/api/v1/fundings/comments/${payload.commentId}/`,
+        url: `${API_URL}/api/v2/fundings/comments/${payload.commentId}/`,
         headers: {
           Authorization: `Token ${context.state.token}`
         }
@@ -332,7 +351,7 @@ export default new Vuex.Store({
         .then(() => {
           axios({
             method: 'get',
-            url: `${API_URL}/api/v1/fundings/${payload.fundingId}/comments/`,
+            url: `${API_URL}/api/v2/fundings/${payload.fundingId}/comments/`,
           })
             .then((res) => {
               context.commit('GET_FUNDING_COMMENTS', res.data)
@@ -341,7 +360,29 @@ export default new Vuex.Store({
               console.log(err)
             })
         })
+    },
 
+    // 펀딩 삭제
+    createFunding(context, payload) {
+      axios({
+        method: "post",
+        url: `${API_URL}/api/v2/fundings/`,
+        headers: {
+          Authorization: `Token ${context.state.token}`
+        },
+        data: {
+          user: payload.user,
+          goal_money: payload.goal_money,
+          minimum_money: payload.minimum_money,
+          poster_path: payload.poster_path,
+          expired_date: payload.expired_date,
+          movie_title: payload.movie_title,
+          content: payload.content
+        },
+      })
+        .then((res) => {
+          context.commit("CREATE_FUNDING", res.data)
+        })
     }
   },
   modules: {
