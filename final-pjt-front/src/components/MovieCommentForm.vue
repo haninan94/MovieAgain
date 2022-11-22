@@ -1,15 +1,19 @@
 <template>
-  <div>
-    <form @submit.prevent="createMovieComment">
-      <input type="text" v-model="movieComment" />
-      <button>등록하기</button>
-    </form>
+  <div class="moviecommentform">
     <p id="idTag">{{ movieId }}</p>
-    <MovieCommentItem
-      v-for="movieComment in MovieComments"
-      :key="movieComment.id"
-      :movieComment="movieComment"
-    />
+      <MovieCommentItem
+        v-for="movieComment in MovieComments"
+        :key="movieComment.id"
+        :movieComment="movieComment"
+      />
+      <div>
+        <form @submit.prevent="createMovieComment">
+          <label for="movie-comment"></label>
+          <input type="text" id="movie-comment" class="nes-input is-dark" v-model="movieComment" />
+          <br>
+          <button>댓글 달기</button>
+        </form>
+      </div>
   </div>
 </template>
 
@@ -56,4 +60,14 @@ export default {
 </script>
 
 <style>
+#movie-comment {
+  width: 75%;
+  margin-bottom: 2rem;
+}
+
+.moviecommentform {
+  justify-content: center;
+}
+
+
 </style>

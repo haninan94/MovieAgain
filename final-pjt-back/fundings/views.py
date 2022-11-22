@@ -17,6 +17,7 @@ from .serializers import (
     BackerSerializer,
     FundingListSerializer,
     FundingSerializer,
+    FundingRecommendSerializer
 )
 from .models import Funding, Comment, Backers
 from rest_framework.permissions import IsAuthenticated
@@ -45,9 +46,10 @@ def funding_list(request):
 def funding_recommend_list(request):
     if request.method == 'GET':
         
-        fundings = get_list_or_404(Funding)
-            
-        serializer = FundingListSerializer(fundings, many=True)
+
+        fundings = Funding.objects.all().order_by('now_money/goal_money')[0:5]
+        
+        serializer = FundingSerializer(fundings, many=True)
         return Response(serializer.data)
 
 @api_view(['GET', 'DELETE', 'POST'])

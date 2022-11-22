@@ -26,23 +26,6 @@
       </slide>
     </carousel-3d>
   </div>
-  <!-- <div class="movie-list">
-    <h3>Movie List</h3>
-    <MovieListItem 
-      v-for="(movie, index) in movies" 
-      :key="movie.id"
-      :index="index"
-      :movie="movie"
-    />
-  </div> -->
-  <!-- <carousel-3d :controls-visible="true" :clickable="false">
-    <MovieListItem 
-      v-for="(movie, index) in movies" 
-      :key="movie.id"
-      :index="index"
-      :movie="movie"
-    />    
-  </carousel-3d> -->
 </template>
 
 <script>
@@ -57,19 +40,13 @@ export default {
     movies() {
       return this.$store.state.movies;
     },
-    imgUrl() {
-      return (
-        "https://image.tmdb.org/t/p/w300_and_h450_bestv2" +
-        this.movie.poster_path
-      );
-    },
   },
 };
 </script>
 
 <style>
 .movielist {
-  width: 100%;
+  width: 150%;
 }
 
 .carousel {
