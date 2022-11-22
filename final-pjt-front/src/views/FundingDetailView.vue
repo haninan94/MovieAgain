@@ -25,7 +25,7 @@
       </div>
     </div>
     <router-link :to="{ name: 'FundingView' }">뒤로가기</router-link>
-
+    <FundingDonateForm/>
     <FundingCommentForm :fundingId="this.funding.id" ref="FundingCommentForm" />
   </div>
   <!-- <template v-if="check">
@@ -39,6 +39,7 @@
 <script>
 import axios from "axios";
 import FundingCommentForm from "@/components/FundingCommentForm";
+import FundingDonateForm from '@/components/FundingDonateForm'
 
 const API_URL = "http://127.0.0.1:8000";
 
@@ -46,6 +47,7 @@ export default {
   name: "FundingDetailView",
   components: {
     FundingCommentForm,
+    FundingDonateForm,
   },
   data() {
     return {
