@@ -20,7 +20,7 @@
         <router-link :to="{ name: 'MovieView'}">
           <button class="nes-btn is-primary">Back</button>
         </router-link>
-      <MovieCommentForm ref="MovieCommentForm"></MovieCommentForm>
+        <MovieCommentForm ref="MovieCommentForm"></MovieCommentForm>
       </div>
     </div>
   </div>
@@ -59,7 +59,7 @@ export default {
         url: `${API_URL}/api/v1/movies/${this.$route.params.id}`,
       })
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           this.movie = res.data;
           this.img_url =
             "https://image.tmdb.org/t/p/w200" + res.data.poster_path;

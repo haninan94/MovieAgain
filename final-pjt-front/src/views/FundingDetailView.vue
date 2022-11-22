@@ -16,7 +16,7 @@
       </div>
     </div>
     <router-link :to="{ name: 'FundingView' }">뒤로가기</router-link>
-    <FundingCommentForm :fundingId = "this.funding.id"/>
+    <FundingCommentForm :fundingId = "this.funding.id" ref="FundingCommentForm"/>
   </div>        
 
 
@@ -67,6 +67,10 @@ export default {
   },
   created() {
     this.getFundingDetail();
+  },
+  updated() {
+    this.$refs.FundingCommentForm.getFundingComments();
+    this.$refs.FundingCommentForm.$on("reset", this.reset);
   },
 };
 </script>
