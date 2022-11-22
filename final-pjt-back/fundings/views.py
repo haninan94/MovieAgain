@@ -42,15 +42,16 @@ def funding_list(request):
             # serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+
 @api_view(['GET'])
 def funding_recommend_list(request):
     if request.method == 'GET':
-        
-        
+
         fundings = Funding.objects.all().order_by('expired_date')
-        
+
         serializer = FundingSerializer(fundings, many=True)
         return Response(serializer.data)
+
 
 @api_view(['GET', 'DELETE', 'POST'])
 # @permission_classes([IsAuthenticated])
@@ -73,10 +74,25 @@ def funding_detail(request, funding_pk):
     #         return Response(serializer.data)
 
     #  내가 쓴글이면 도네이션 참여 x
-    elif request.method == 'POST':
+    # elif request.method == 'POST':
+    #     serializer1 = BackerSerializer(data=request.data)
+    #     if serializer1.is_valid(raise_exception=True):
+    #         serializer1.save()
+    #     funding.now_money += int(request.data['donation'])
+    #     serializer2 = FundingSerializer(funding)
+    #     # if serializer.is_valid(raise_exception=True):
+    #     funding.save()
+    #     return Response(serializer2.data, status=status.HTTP_200_OK)
+
+
+@api_view(['POST'])
+# @permission_classes([IsAuthenticated])
+def funding_donation(request, funding_pk):
+    if request.method == 'POST':
+        funding = get_object_or_404(Funding, pk=funding_pk)
         serializer1 = BackerSerializer(data=request.data)
         if serializer1.is_valid(raise_exception=True):
-            serializer1.save()
+            serializer1.save(funding=funding)
         funding.now_money += int(request.data['donation'])
         serializer2 = FundingSerializer(funding)
         # if serializer.is_valid(raise_exception=True):

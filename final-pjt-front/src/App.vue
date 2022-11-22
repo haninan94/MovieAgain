@@ -6,8 +6,8 @@
       </router-link>
       <template v-if="check">
         <button class="nes-btn is-primary" @click="logOut">LOGOUT</button>
-        <router-link :to="{ name: 'ProfileView', params:{id:userid} }">
-          <button class="nes-btn ">MYPAGE</button>  
+        <router-link :to="{ name: 'ProfileView', params: { id: userid } }">
+          <button class="nes-btn">MYPAGE</button>
         </router-link>
       </template>
       <template v-else>
@@ -18,7 +18,7 @@
           <button class="nes-btn is-primary">LOGIN</button>
         </router-link>
       </template>
-      <router-link :to="{ name: 'FundingView'}">
+      <router-link :to="{ name: 'FundingView' }">
         <button class="nes-btn is-warning">FUND</button>
       </router-link>
       <!-- <router-link :to="{ name: 'FundingSearchView'}">Search</router-link> -->
@@ -34,9 +34,9 @@ export default {
     check() {
       return this.$store.getters.isLogin;
     },
-    userid(){
-      return this.$store.state.userId
-    }
+    userid() {
+      return this.$store.state.userId;
+    },
   },
   methods: {
     logOut() {
@@ -49,10 +49,9 @@ export default {
 </script>
 
 <style>
-
 @font-face {
-  font-family: 'dunggeunmo';
-  src: url('../src/fonts/DungGeunMo.ttf') format('truetype');
+  font-family: "dunggeunmo";
+  src: url("../src/fonts/DungGeunMo.ttf") format("truetype");
 }
 
 #app {
@@ -66,11 +65,9 @@ export default {
 }
 
 * {
-  font-family: 'dunggeunmo';
+  font-family: "dunggeunmo";
   font-size: 20px;
 }
-
-
 
 nav {
   padding: 30px;

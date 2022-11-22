@@ -19,6 +19,7 @@ export default new Vuex.Store({
     movieComments: [],
     fundingComments: [],
     userId: '',
+    funding: [],
   },
   getters: {
     isLogin(state) {
@@ -29,6 +30,9 @@ export default new Vuex.Store({
     },
     getFundingComments(state) {
       return state.fundingComments
+    },
+    getFundingDetail(state) {
+      return state.funding
     }
   },
   mutations: {
@@ -67,14 +71,13 @@ export default new Vuex.Store({
     },
     LOGOUT(state) {
       state.token = null
-      state.userid = null
+      state.userId = null
       state.username = null
     },
     SAVE_USERID(state, userId) {
       state.userId = userId.userId
     },
     SAVE_USERNAME(state, username) {
-      console.log(username)
       state.username = username
     },
     GET_MOVIE_COMMENTS(state, comments) {
@@ -96,6 +99,9 @@ export default new Vuex.Store({
       state.fundings.push(payload)
       router.push({ name: 'FundingView' })
     },
+    GET_FUNDING_DETAIL(state, funding) {
+      state.funding = funding
+    },
   },
   actions: {
     getMovies(context) {
@@ -111,7 +117,6 @@ export default new Vuex.Store({
         })
     },
     getRecommendFundings(context) {
-      console.log('***************************')
       axios({
         method: 'get',
         url: `${API_URL}/api/v2/fundings/recommendlist/`,
@@ -338,7 +343,6 @@ export default new Vuex.Store({
         url: `${API_URL}/api/v2/fundings/${fundingId}/comments/`,
       })
         .then((res) => {
-          console.log(res.data)
           context.commit('GET_FUNDING_COMMENTS', res.data)
         })
         .catch((err) => {
@@ -387,7 +391,19 @@ export default new Vuex.Store({
             })
         })
     },
-
+    // 펀딩 디테일 받아오기
+    getFundingDetail(context, fundingId) {
+      axios({
+        method: "get",
+        url: `${API_URL}/api/v2/fundings/${fundingId}`,
+      })
+        .then((res) => {
+          context.commit('GET_FUNDING_DETAIL', res.data)
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
     // 펀딩 삭제
     createFunding(context, payload) {
       axios({
@@ -409,7 +425,34 @@ export default new Vuex.Store({
         .then((res) => {
           context.commit("CREATE_FUNDING", res.data)
         })
-    }
+    },
+    // 펀딩 하기
+    donateFunding(context, payload) {
+      axios({
+        method: "post",
+        url: `${API_URL}/api/v2/fundings/${payload.fundingId}/donation/`,
+        headers: {
+          Authorization: `Token ${context.state.token}`,
+        },
+        data: {
+          funding_id: payload.fundingId,
+          user: payload.user,
+          donation: payload.donation
+        },
+      })
+        .then(() => {
+          axios({
+            method: "get",
+            url: `${API_URL}/api/v2/fundings/${payload.fundingId}`,
+          })
+            .then((res) => {
+              context.commit('GET_FUNDING_DETAIL', res.data)
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        });
+    },
   },
   modules: {
   }

@@ -2,21 +2,20 @@
   <div id="fundingdetail">
     <div class="container">
       <div>
-        <img
-          :src="funding?.poster_path"
-          alt=""
-        />
+        <img :src="funding?.poster_path" alt="" />
       </div>
       <div>
         <div>
           <p>영화 제목 : {{ funding.movie_title }}</p>
+          <p>목표 금액 : {{ funding.goal_money }}</p>
+          <p>현재 금액 : {{ funding.now_money }}</p>
           <br />
         </div>
         <div>
           <template>
             <progress
               progress
-              class="nes-progress is-warning"
+              class="nes-progress is-primary"
               :value="funding.now_money"
               :max="funding.goal_money"
             ></progress>
@@ -25,7 +24,7 @@
       </div>
     </div>
     <router-link :to="{ name: 'FundingView' }">뒤로가기</router-link>
-    <FundingDonateForm/>
+    <FundingDonateForm />
     <FundingCommentForm :fundingId="this.funding.id" ref="FundingCommentForm" />
   </div>
   <!-- <template v-if="check">
@@ -37,11 +36,8 @@
 </template>
 
 <script>
-import axios from "axios";
 import FundingCommentForm from "@/components/FundingCommentForm";
-import FundingDonateForm from '@/components/FundingDonateForm'
-
-const API_URL = "http://127.0.0.1:8000";
+import FundingDonateForm from "@/components/FundingDonateForm";
 
 export default {
   name: "FundingDetailView",
@@ -51,22 +47,18 @@ export default {
   },
   data() {
     return {
-      funding: [],
       fundingMoney: 0,
     };
   },
+  computed: {
+    funding() {
+      return this.$store.getters.getFundingDetail;
+    },
+  },
   methods: {
     getFundingDetail() {
-      axios({
-        method: "get",
-        url: `${API_URL}/api/v2/fundings/${this.$route.params.id}`,
-      })
-        .then((res) => {
-          this.funding = res.data;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      const fundingId = this.$route.params.id;
+      this.$store.dispatch("getFundingDetail", fundingId);
     },
     // getFundingMoney(payload) {
     //   console.log("Yes")
