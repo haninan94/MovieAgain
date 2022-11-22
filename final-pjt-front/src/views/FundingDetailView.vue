@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import FundingCommentForm from "@/components/FundingCommentForm";
 import FundingDonateForm from '@/components/FundingDonateForm'
 import dayjs from 'dayjs'
