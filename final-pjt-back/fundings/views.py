@@ -17,9 +17,9 @@ from .serializers import (
     BackerSerializer,
     FundingListSerializer,
     FundingSerializer,
-    FundingRecommendSerializer
 )
 from .models import Funding, Comment, Backers
+from django.db.models import Q, F
 from rest_framework.permissions import IsAuthenticated
 
 
@@ -46,8 +46,8 @@ def funding_list(request):
 def funding_recommend_list(request):
     if request.method == 'GET':
         
-
-        fundings = Funding.objects.all().order_by('now_money/goal_money')[0:5]
+        
+        fundings = Funding.objects.all().order_by('expired_date')
         
         serializer = FundingSerializer(fundings, many=True)
         return Response(serializer.data)
