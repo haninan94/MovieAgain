@@ -6,8 +6,9 @@
       </router-link>
       <template v-if="check">
         <button class="nes-btn is-primary" @click="logOut">LOGOUT</button>
-          |
-        <router-link :to="{ name: 'ProfileView' }">MyPage</router-link>|
+        <router-link :to="{ name: 'ProfileView', params:{id:userid} }">
+          <button class="nes-btn ">MYPAGE</button>  
+        </router-link>
       </template>
       <template v-else>
         <router-link :to="{ name: 'SignUpView' }">
@@ -33,6 +34,9 @@ export default {
     check() {
       return this.$store.getters.isLogin;
     },
+    userid(){
+      return this.$store.state.userId
+    }
   },
   methods: {
     logOut() {

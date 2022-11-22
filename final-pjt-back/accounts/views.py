@@ -20,6 +20,8 @@ def profile(request, user_pk):
         # serializer = BackerSerializer()
         backers = Backers.objects.filter(user=user_pk)
         user = get_object_or_404(get_user_model(), pk=user_pk)
+        print('**************************************************')
+        print(user)
         serializer1 = BackerSerializer(backers, many=True)
         username = user.username
         return Response({'data': serializer1.data, 'username': username})

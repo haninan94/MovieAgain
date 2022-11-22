@@ -71,6 +71,9 @@ class FundingSerializer(serializers.ModelSerializer):
 
 
 class BackerSerializer(serializers.ModelSerializer):
+    # funding 이 참조가능해짐
+    funding = FundingSerializer(read_only=True)
+
     class Meta:
         model = Backers
         fields = '__all__'

@@ -18,7 +18,7 @@
 
     <label for="poster_path"></label>
     <input 
-      type="url"
+      type="text"
       id="poster_path"
       class="nes-input"
       v-model="funding.poster_path"
