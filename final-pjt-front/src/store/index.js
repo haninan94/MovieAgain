@@ -102,9 +102,10 @@ export default new Vuex.Store({
         })
     },
     getRecommendFundings(context) {
+      console.log('***************************')
       axios({
         method: 'get',
-        url: `${API_URL}/api/v2/fundings/`,
+        url: `${API_URL}/api/v2/fundings/recommendlist/`,
       })
         .then((res) => {
           context.commit('GET_RECOMMEND_FUNDINGS', res.data)
