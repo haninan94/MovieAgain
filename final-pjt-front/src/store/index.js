@@ -360,8 +360,9 @@ export default new Vuex.Store({
               console.log(err)
             })
         })
-
     },
+
+    // 펀딩 삭제
     createFunding(context, payload) {
       axios({
         method: "post",
