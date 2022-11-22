@@ -77,6 +77,9 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+      if(!this.movie){
+        this.$router.push({name: 'NotFound404'})
+      }
     },
   },
 };

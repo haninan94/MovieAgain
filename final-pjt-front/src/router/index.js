@@ -9,7 +9,7 @@ import FundingDetailView from '@/views/FundingDetailView'
 import FundingSearchView from '@/views/FundingSearchView'
 import ProfileView from '@/views/ProfileView'
 import FundingCreateView from '@/views/FundingCreateView'
-
+import NotFound404 from '@/views/NotFound404'
 Vue.use(VueRouter)
 
 const routes = [
@@ -18,7 +18,11 @@ const routes = [
     name: 'SignUpView',
     component: SignUpView
   },
-
+  {
+    path: '/404',
+    name: 'NotFound404',
+    component: NotFound404
+  },
   {
     path: '/login',
     name: 'LogInView',
@@ -58,7 +62,12 @@ const routes = [
     path: '/fundings/create',
     name: 'FundingCreateView',
     component: FundingCreateView
+  },
+  {
+    path: '*',
+    redirect: '/404'
   }
+
 
 ]
 
