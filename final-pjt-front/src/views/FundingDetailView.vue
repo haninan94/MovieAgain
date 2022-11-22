@@ -25,9 +25,9 @@
       </div>
     </div>
     <router-link :to="{ name: 'FundingView' }">뒤로가기</router-link>
+
     <FundingCommentForm :fundingId="this.funding.id" ref="FundingCommentForm" />
   </div>
-
   <!-- <template v-if="check">
           <progress class="nes-progress is-error" :value="fundingRate" max="1"></progress>
         </template>
