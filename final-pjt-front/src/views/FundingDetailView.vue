@@ -3,7 +3,7 @@
     <div class="container">
       <div>
         <img
-          :src="`https://image.tmdb.org/t/p/w200${funding?.poster_path}`"
+          :src="funding?.poster_path"
           alt=""
         />
       </div>

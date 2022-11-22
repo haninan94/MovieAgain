@@ -1,0 +1,47 @@
+[
+  {
+    "model": "fundings.backers",
+    "pk": 1,
+    "fields": {
+      "user_id": 1,
+      "funding_id":1,
+      "donation": 30000
+    }
+  },
+  {
+    "model": "fundings.backers",
+    "pk": 2,
+    "fields": {
+      "user_id": 1,
+      "funding_id":2,
+      "donation": 40000
+    }
+  },
+  {
+    "model": "fundings.backers",
+    "pk": 3,
+    "fields": {
+      "user_id": 1,
+      "funding_id":3,
+      "donation": 20000
+    }
+  },
+  {
+    "model": "fundings.backers",
+    "pk": 4,
+    "fields": {
+      "user_id": 2,
+      "funding_id":1,
+      "donation": 30000
+    }
+  },
+  {
+    "model": "fundings.backers",
+    "pk": 5,
+    "fields": {
+      "user_id": 2,
+      "funding_id":4,
+      "donation": 30000
+    }
+  }
+]

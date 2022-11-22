@@ -68,14 +68,23 @@ export default new Vuex.Store({
     LOGOUT(state) {
       state.token = null
       state.userid = null
+      state.username = null
     },
     SAVE_USERID(state, userId) {
       state.userId = userId.userId
     },
+    SAVE_USERNAME(state, username){
+      console.log(username)
+      state.username = username
+    },
     GET_MOVIE_COMMENTS(state, comments) {
       state.movieComments = comments
     },
-
+    GET_USER_FUNDINGS(state, res){
+      console.log(res)
+      state.userFundings = res.data
+    }
+    ,
     // 펀딩 댓글
     GET_FUNDING_COMMENTS(state, comments) {
       state.fundingComments = comments
@@ -201,6 +210,19 @@ export default new Vuex.Store({
           console.log(err)
         })
     },
+    // 마이페이지 내 펀딩 목록 받기
+    getUserFundings(context, userId){
+      axios({
+        method:"get",
+        url: `${API_URL}/accounts/profile/${userId}`
+      })
+        .then((res)=>{
+          context.commit("GET_USER_FUNDINGS", res.data)
+        })
+        .catch((err)=>{
+          console.log(err)
+        })
+    },
     signUp(context, payload) {
       axios({
         method: 'post',
@@ -213,6 +235,7 @@ export default new Vuex.Store({
       })
         .then((res) => {
           context.commit('SAVE_TOKEN', res.data.key)
+          context.commit('SAVE_USERNAME', payload.username)
         })
         .catch((err) => {
           console.log(err)
@@ -228,7 +251,6 @@ export default new Vuex.Store({
         }
       })
         .then((res) => {
-          console.log(res)
           context.commit('SAVE_TOKEN', res.data.key)
 
         })
@@ -246,6 +268,8 @@ export default new Vuex.Store({
           })
             .then((res) => {
               context.commit('SAVE_USERID', res.data)
+              context.commit('SAVE_USERNAME', payload.username)
+
             })
         })
     },
@@ -265,6 +289,7 @@ export default new Vuex.Store({
         }
       })
         .then((res) => {
+          console.log(res.data)
           context.commit('CREATE_MOVIE_COMMENT', res.data)
         })
         .catch((err) => {
