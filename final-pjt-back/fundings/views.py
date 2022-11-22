@@ -19,6 +19,7 @@ from .serializers import (
     FundingSerializer,
 )
 from .models import Funding, Comment, Backers
+from django.db.models import Q, F
 from rest_framework.permissions import IsAuthenticated
 
 
@@ -41,6 +42,15 @@ def funding_list(request):
             # serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+@api_view(['GET'])
+def funding_recommend_list(request):
+    if request.method == 'GET':
+        
+        
+        fundings = Funding.objects.all().order_by('expired_date')
+        
+        serializer = FundingSerializer(fundings, many=True)
+        return Response(serializer.data)
 
 @api_view(['GET', 'DELETE', 'POST'])
 # @permission_classes([IsAuthenticated])
@@ -84,6 +94,7 @@ def comment_list(request):
 
 
 @api_view(['GET', 'DELETE', 'PUT'])
+@permission_classes([IsAuthenticated])
 def comment_detail(request, comment_pk):
     # comment = Comment.objects.get(pk=comment_pk)
     comment = get_object_or_404(Comment, pk=comment_pk)

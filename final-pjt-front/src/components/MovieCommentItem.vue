@@ -1,14 +1,16 @@
 <template>
   <div>
-    <p>작성자 : {{ getUsername }}</p>
-    <p>내용 : {{ movieComment.content }}</p>
-    <p>작성 시각 : {{ getCreatedAt }}</p>
-    <button
-      @click.prevent="deleteMovieComment(movieComment.id, movieComment.movie)"
-    >
-      삭제하기
-    </button>
-    <hr />
+    <div class='temp'>
+      <div class="movie-comment-item">
+        <span>{{ getUsername }}</span>
+        <span>{{ movieComment.content }}</span>
+        <span>{{ getCreatedAt }}
+        <button @click.prevent="deleteMovieComment(movieComment.id, movieComment.movie)"
+      >
+      X
+        </button></span>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -54,4 +56,26 @@ export default {
 </script>
 
 <style>
+.temp {
+  display: flex;
+  justify-content: center;
+}
+.movie-comment-item{
+  display: flex;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: 1px solid white;
+  justify-content: space-between;
+  width: 75%;
+}
+
+.movie-comment-item span {
+  margin-left: 1rem;
+  margin-right: 15px;
+}
+
+.movie-comment-item button {
+  margin-left: 10px;
+}
+
 </style>

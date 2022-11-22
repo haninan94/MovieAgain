@@ -18,7 +18,7 @@
 
     <label for="poster_path"></label>
     <input 
-      type="url"
+      type="text"
       id="poster_path"
       class="nes-input"
       v-model="funding.poster_path"
@@ -29,10 +29,10 @@
     <div class="nes-select">
       <select required id="minumum_money" v-model="funding.minimum_money">
         <option value="" disabled selected hidden>select</option>
-        <option value="0">10000</option>
-        <option value="1">30000</option>
-        <option value="2">50000</option>
-        <option value="3">100000</option>
+        <option value="10000">10000</option>
+        <option value="30000">30000</option>
+        <option value="50000">50000</option>
+        <option value="100000">100000</option>
       </select>
     </div>
 
