@@ -1,15 +1,19 @@
 <template>
-  <div>
-    <form @submit.prevent="createFundingComment">
-      <input type="text" v-model="fundingComment" />
-      <button>등록하기</button>
-    </form>
+  <div class="funding-comment-form">
     <!-- <p id="idTag">{{ fundingId }}번째 펀딩글</p> -->
     <FundingCommentItem
       v-for="fundingComment in fundingComments"
       :key="fundingComment.id"
       :fundingComment="fundingComment"
     />
+    <div>
+      <form @submit.prevent="createFundingComment">
+        <label for="funding-comment"></label>
+        <input type="text" id="funding-comment" class="nes-input is-dark" v-model="fundingComment" />
+        <br>
+        <button>등록하기</button>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -58,4 +62,9 @@ export default {
 </script>
 
 <style>
+#funding-comment {
+  width: 75%;
+  margin-bottom: 2rem;
+}
+
 </style>
