@@ -1,12 +1,17 @@
 <template>
-  <div>
-    {{ funding.movie_title }}
-    <br>
-    {{ funding.content }}
-    <br>
-    <router-link :to="{ name: 'FundingDetailView', params: { id: funding.id } }" >Detail</router-link>
-    <hr>
-  </div>
+  <b-col class="container">
+    <div>
+      <router-link :to="{ name: 'FundingDetailView', params: { id: funding.id } }">
+        <b-card class="funding-card" :title="funding.movie_title" :img-src="funding.poster_path">
+        </b-card>
+      </router-link>
+    </div>
+
+    <!-- <router-link :to="{ name: 'FundingDetailView', params: { id: funding.id } }" >
+      <img class="funding-item-img" :src="funding.poster_path" alt="">
+      <p>{{ funding.movie_title }}</p>
+    </router-link> -->
+  </b-col>
 </template>
 
 <script>
@@ -21,5 +26,14 @@ export default {
 </script>
 
 <style>
+.funding-card {
+  width: 250px;
+  font-size: 16px;
+  text-align: center;
+}
 
+.container {
+  display: 200px;
+  margin-bottom: 1rem;
+}
 </style>

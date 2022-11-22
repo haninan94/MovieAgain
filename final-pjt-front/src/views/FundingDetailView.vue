@@ -10,6 +10,7 @@
       <div>
         <div>
           <p>영화 제목 : {{ funding.movie_title }}</p>
+        <p>{{ funding.content }}</p>
           <br />
         </div>
         <div>
@@ -21,10 +22,15 @@
               :max="funding.goal_money"
             ></progress>
           </template>
+          <h1>{{ funding.now_money }}원 / {{ funding.goal_money }}원</h1>
+          <h1>{{ funding.now_money / funding.goal_money * 100 }}% 달성!!</h1>
+          {{ remainDate }}일 남았다!!
         </div>
       </div>
     </div>
-    <router-link :to="{ name: 'FundingView' }">뒤로가기</router-link>
+    <router-link :to="{ name: 'FundingView' }">
+      <button class="nes-btn">뒤로 가기</button>
+    </router-link>
     <FundingDonateForm/>
     <FundingCommentForm :fundingId="this.funding.id" ref="FundingCommentForm" />
   </div>
@@ -40,6 +46,7 @@
 import axios from "axios";
 import FundingCommentForm from "@/components/FundingCommentForm";
 import FundingDonateForm from '@/components/FundingDonateForm'
+import dayjs from 'dayjs'
 
 const API_URL = "http://127.0.0.1:8000";
 
@@ -53,6 +60,7 @@ export default {
     return {
       funding: [],
       fundingMoney: 0,
+      remainDate: '',
     };
   },
   methods: {
@@ -68,6 +76,19 @@ export default {
           console.log(err);
         });
     },
+    getDday() {
+      axios({
+        method: "get",
+        url: `${API_URL}/api/v2/fundings/${this.$route.params.id}`,
+      })
+        .then((res) => {
+          const expiredDate = res.data.expired_date.split("-").map(str => Number(str))
+          const todayDate = dayjs().format("YYYY-MM-DD").split("-").map(str => Number(str))
+          const remainDate = (new Date(expiredDate) - new Date(todayDate))
+          this.remainDate = remainDate / 1000 / 60 / 60 / 24
+        })
+
+    },
     // getFundingMoney(payload) {
     //   console.log("Yes")
     //   this.fundingMoney += payload
@@ -75,6 +96,7 @@ export default {
   },
   created() {
     this.getFundingDetail();
+    this.getDday()
   },
   updated() {
     this.$refs.FundingCommentForm.getFundingComments();

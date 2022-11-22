@@ -2,13 +2,13 @@
   <div>
     <h1>LogIn Page</h1>
     <form @submit.prevent="logIn">
-      <label for="username">username : </label>
-      <input type="text" id="username" v-model="username"><br>
+      <label for="username"></label>
+      <input type="text" id="username" v-model="username" placeholder="ID"><br>
 
-      <label for="password"> password : </label>
-      <input type="password" id="password" v-model="password"><br>
+      <label for="password"></label>
+      <input type="password" id="password" v-model="password" placeholder="Password"><br>
 
-      <input type="submit" value="logIn">
+      <button class="nes-btn">LOGIN</button>
     </form>
   </div>
 </template>
