@@ -13,18 +13,21 @@ from django.shortcuts import get_object_or_404, get_list_or_404
 from .serializers import MovieListSerializer, MovieSerializer, CommentSerializer, CommentListSerializer
 from .models import Movie, Comment
 from django.db.models import Q
-
+from django.db.models import Avg
 
 @api_view(['GET', 'POST'])
 # @permission_classes([IsAuthenticated])
 def movie_list(request):
     if request.method == 'GET':
-        movies = get_list_or_404(Movie)[0:5]
+        median_n = int(Movie.objects.all().count() / 2)
+        vote_count_median = Movie.objects.all().order_by('vote_count')[median_n].vote_count
+        movies = Movie.objects.filter(Q(vote_count__gte=vote_count_median) & Q(vote_average__gte=8.5)).order_by('?')[:50]
 
     elif request.method == 'POST':
         genre = request.data['genre']
-        movies = get_list_or_404(Movie)
-        movies = Movie.objects.filter(genre_ids=genre).order_by('?')[0:5]
+        median_n = int(Movie.objects.filter(genre_ids=genre).count() / 2)
+        vote_count_median = Movie.objects.all().order_by('vote_count')[median_n].vote_count
+        movies = Movie.objects.filter(Q(genre_ids=genre) & Q(vote_average__gte=8) & Q(vote_count__gte=vote_count_median)).order_by('?')[0:5]
     serializer = MovieListSerializer(movies, many=True)
     return Response(serializer.data)
 

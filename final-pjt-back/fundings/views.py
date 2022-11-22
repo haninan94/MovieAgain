@@ -41,6 +41,14 @@ def funding_list(request):
             # serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+@api_view(['GET'])
+def funding_recommend_list(request):
+    if request.method == 'GET':
+        
+        fundings = get_list_or_404(Funding)
+            
+        serializer = FundingListSerializer(fundings, many=True)
+        return Response(serializer.data)
 
 @api_view(['GET', 'DELETE', 'POST'])
 # @permission_classes([IsAuthenticated])
