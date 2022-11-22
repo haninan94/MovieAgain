@@ -26,6 +26,9 @@ export default new Vuex.Store({
     },
     getMovieComments(state) {
       return state.movieComments
+    },
+    getFundingComments(state) {
+      return state.fundingComments
     }
   },
   mutations: {
@@ -101,7 +104,7 @@ export default new Vuex.Store({
     getRecommendFundings(context) {
       axios({
         method: 'get',
-        url: `${API_URL}/api/v1/fundings/`,
+        url: `${API_URL}/api/v2/fundings/`,
       })
         .then((res) => {
           context.commit('GET_RECOMMEND_FUNDINGS', res.data)
@@ -330,7 +333,6 @@ export default new Vuex.Store({
         }
       })
         .then((res) => {
-          // console.log(res.data)
           context.commit('CREATE_FUNDING_COMMENT', res.data)
         })
         .catch((err) => {

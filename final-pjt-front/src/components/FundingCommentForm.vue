@@ -4,7 +4,6 @@
       <input type="text" v-model="fundingComment" />
       <button>등록하기</button>
     </form>
-    <!-- <p id="idTag">{{ fundingId }}번째 펀딩글</p> -->
     <FundingCommentItem
       v-for="fundingComment in fundingComments"
       :key="fundingComment.id"
@@ -34,10 +33,6 @@ export default {
       fundingComment: "",
     };
   },
-  // created() {
-  //   this.getFundingComments();
-  //   this.$store.dispatch("getFundingComments", this.$route.params.id);
-  // },
   methods: {
     createFundingComment() {
       const newFundingComment = {
@@ -45,6 +40,7 @@ export default {
         content: this.fundingComment,
         funding: this.$route.params.id,
       };
+      console.log(newFundingComment);
       this.$store.dispatch("createFundingComment", newFundingComment);
       this.fundingComment = "";
     },
@@ -54,7 +50,6 @@ export default {
     },
   },
 };
-// fundingCommentForm 완료
 </script>
 
 <style>
