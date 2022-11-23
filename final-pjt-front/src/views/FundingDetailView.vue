@@ -40,15 +40,9 @@
 <script>
 import axios from 'axios'
 import FundingCommentForm from "@/components/FundingCommentForm";
-<<<<<<< HEAD
-import FundingDonateForm from '@/components/FundingDonateForm'
-import dayjs from 'dayjs'
-import axios from 'axios'
-=======
 import FundingDonateForm from "@/components/FundingDonateForm";
 import dayjs from "dayjs";
-import axios from "axios";
->>>>>>> e6c6b03dc41d52b3815d9a998596e07d367598b3
+
 
 const API_URL = "http://127.0.0.1:8000";
 

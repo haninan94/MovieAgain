@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>404 Not Found</h1>
+    <img src="../assets/notfoundimg.gif" alt="">
   </div>  
 </template>
 
@@ -11,5 +11,16 @@ export default {
 </script>
 
 <style>
+  /* html{
+    background-position: center;
+    background-size: cover;
 
+  } */
+  html{
+    background-color: #212529 ;
+  }
+  /* img{
+    width: 100vw;
+    height: 80vh;
+  } */
 </style>
