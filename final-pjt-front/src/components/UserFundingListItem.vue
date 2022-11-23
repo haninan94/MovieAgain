@@ -1,6 +1,11 @@
 <template>
   <b-col>
-    <router-link :to="{name: 'FundingDetailView', params: { id: userfunding.funding.id }}">
+    <router-link
+      :to="{
+        name: 'FundingDetailView',
+        params: { id: userfunding.funding.id },
+      }"
+    >
       <!-- <div class="ticket">
         <div class="ticket__content">
           <img :src="userfunding.funding.poster_path" width="100%" height="100%">
@@ -14,11 +19,11 @@
             <span>movie</span>
           </div>
           <div class="name">
-            <h2>{{username}} </h2>
+            <h2>이름어쩌꼬</h2>
             <span>name</span>
           </div>
           <div class="seat">
-            <h2>{{ userfunding.donation }} </h2>
+            <h2>{{ userfunding.donation }}</h2>
             <span>donation</span>
           </div>
           <div class="time">
@@ -35,30 +40,27 @@
           <div class="barcode"></div>
         </div>
       </div>
-
-
     </router-link>
   </b-col>
 </template>
 
 <script>
 export default {
-  name:'UserFundingListItem',
-  props:{
+  name: "UserFundingListItem",
+  props: {
     userfunding: Object,
   },
-  computed:{
+  computed: {
     // imgUrl(){
     //   // return this.userfunding.funding
     // }
-  }
-
-}
+  },
+};
 </script>
 
 <style scoped>
 body {
-  background-color: #FCD000;
+  background-color: #fcd000;
 }
 
 /* .ticket {
@@ -113,11 +115,17 @@ body {
 }
 
 .card {
-  background: linear-gradient(to bottom, #e84c3d 0%, #e84c3d 26%, #ecedef 26%, #ecedef 100%);
+  background: linear-gradient(
+    to bottom,
+    #e84c3d 0%,
+    #e84c3d 26%,
+    #ecedef 26%,
+    #ecedef 100%
+  );
   height: 11em;
   float: left;
   position: relative;
-  padding: 1px ;
+  padding: 1px;
   margin-top: 0px;
 }
 
@@ -133,7 +141,8 @@ body {
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
 }
-.cardRight:before, .cardRight:after {
+.cardRight:before,
+.cardRight:after {
   content: "";
   position: absolute;
   display: block;
@@ -209,7 +218,8 @@ h1 span {
   border-radius: 1em/0.6em;
   z-index: 1;
 }
-.eye:before, .eye:after {
+.eye:before,
+.eye:after {
   content: "";
   display: block;
   position: absolute;
@@ -250,6 +260,13 @@ h1 span {
   height: 2em;
   width: 0;
   margin: 1.2em 0 0 0.8em;
-  box-shadow: 1px 0 0 1px #343434, 5px 0 0 1px #343434, 10px 0 0 1px #343434, 11px 0 0 1px #343434, 15px 0 0 1px #343434, 18px 0 0 1px #343434, 22px 0 0 1px #343434, 23px 0 0 1px #343434, 26px 0 0 1px #343434, 30px 0 0 1px #343434, 35px 0 0 1px #343434, 37px 0 0 1px #343434, 41px 0 0 1px #343434, 44px 0 0 1px #343434, 47px 0 0 1px #343434, 51px 0 0 1px #343434, 56px 0 0 1px #343434, 59px 0 0 1px #343434, 64px 0 0 1px #343434, 68px 0 0 1px #343434, 72px 0 0 1px #343434, 74px 0 0 1px #343434, 77px 0 0 1px #343434, 81px 0 0 1px #343434;
+  box-shadow: 1px 0 0 1px #343434, 5px 0 0 1px #343434, 10px 0 0 1px #343434,
+    11px 0 0 1px #343434, 15px 0 0 1px #343434, 18px 0 0 1px #343434,
+    22px 0 0 1px #343434, 23px 0 0 1px #343434, 26px 0 0 1px #343434,
+    30px 0 0 1px #343434, 35px 0 0 1px #343434, 37px 0 0 1px #343434,
+    41px 0 0 1px #343434, 44px 0 0 1px #343434, 47px 0 0 1px #343434,
+    51px 0 0 1px #343434, 56px 0 0 1px #343434, 59px 0 0 1px #343434,
+    64px 0 0 1px #343434, 68px 0 0 1px #343434, 72px 0 0 1px #343434,
+    74px 0 0 1px #343434, 77px 0 0 1px #343434, 81px 0 0 1px #343434;
 }
 </style>
