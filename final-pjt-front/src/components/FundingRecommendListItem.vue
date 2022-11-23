@@ -26,7 +26,7 @@ export default {
   },
   computed: {
     imgUrl() {
-      return "https://image.tmdb.org/t/p/w200" + this.funding.poster_path;
+      return this.funding.poster_path;
     },
   },
 };

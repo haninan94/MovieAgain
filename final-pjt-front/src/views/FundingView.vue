@@ -1,9 +1,11 @@
 <template>
   <div>
     <!-- <router-link :to="{ name: 'FundingSearchView'}">Search</router-link> -->
-    <h1>Funding Page</h1>
+    <h1>진행중인 Funding List</h1>
     <router-link :to="{ name: 'FundingCreateView'}">
-      CREATE
+      <button class="nes-btn">
+        Create New Funding
+      </button>
     </router-link>
     <FundingList/>
   </div>

@@ -1,11 +1,13 @@
 <template>
-  <div>
-    <FundingListItem
-      v-for="funding in fundings"
-      :key="funding.id"
-      :funding="funding"
-    />
-  </div>
+  <b-container fluid class="p-4 bg-dark border-top border-danger">
+    <b-row>
+      <FundingListItem
+        v-for="funding in fundings"
+        :key="funding.id"
+        :funding="funding"
+      />
+    </b-row>
+  </b-container>
 </template>
 
 <script>

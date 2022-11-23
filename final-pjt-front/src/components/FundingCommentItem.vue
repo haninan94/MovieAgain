@@ -1,16 +1,15 @@
 <template>
-  <div>
-    <p>작성자 : {{ getUsername }}</p>
-    <p>내용 : {{ fundingComment.content }}</p>
-    <p>작성 시각 : {{ getCreatedAt }}</p>
-    <button
-      @click.prevent="
-        deleteFundingComment(fundingComment.id, fundingComment.funding)
-      "
-    >
-      삭제하기
-    </button>
-    <hr />
+  <div class="funding-comment-item-top">
+    <div class="funding-comment-item">
+      <span>{{ getUsername }}</span>
+      <span>{{ fundingComment.content }}</span>
+      <span>{{ getCreatedAt }}</span>
+      <button
+        @click.prevent="
+          deleteFundingComment(fundingComment.id, fundingComment.funding)
+        "
+      >X</button>
+    </div>
   </div>
 </template>
 
@@ -49,4 +48,28 @@ export default {
 </script>
 
 <style>
+.funding-comment-item-top {
+  display: flex;
+  justify-content: center;
+}
+
+.funding-comment-item {
+  display: flex;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: 1px solid white;
+  justify-content: space-between;
+  width: 75%;
+}
+
+.funding-comment-item span {
+  margin-left: 1rem;
+  margin-right: 15px;
+}
+
+.funding-comment-item button {
+  margin-left: 10px;
+}
+
+
 </style>

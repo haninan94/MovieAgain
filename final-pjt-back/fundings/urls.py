@@ -6,6 +6,8 @@ from . import views
 urlpatterns = [
     path('fundings/', views.funding_list),
     path('fundings/<int:funding_pk>/', views.funding_detail),
+    path('fundings/<int:funding_pk>/donation/', views.funding_donation),
+    path('fundings/recommendlist/', views.funding_recommend_list),
     path('fundings/comments/', views.comment_list),
     path('fundings/comments/<int:comment_pk>/', views.comment_detail),
     path('fundings/<int:funding_pk>/commentcreate/', views.comment_create),
