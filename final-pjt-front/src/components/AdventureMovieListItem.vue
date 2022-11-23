@@ -1,7 +1,7 @@
 <template>
   <b-col>
     <router-link :to="{ name: 'MovieDetailView', params: { id: movie.id } }">
-      <b-img class="adventureimage" thumbnail fluid :src="imgUrl"></b-img>
+      <b-img class="adventure-image" thumbnail fluid :src="imgUrl"></b-img>
     </router-link>
   </b-col>
 </template>
@@ -21,15 +21,37 @@ export default {
 </script>
 
 <style>
-.adventureimage {
+.adventure-image {
   -webkit-filter: grayscale(0) blur(0);
 	filter: grayscale(0) blur(0);
 	-webkit-transition: .3s ease-in-out;
 	transition: .3s ease-in-out;
 }
 
-.adventureimage:hover {
+.adventure-image:hover {
   -webkit-filter: grayscale(100%) blur(1px);
 	filter: grayscale(100%) blur(1px)
 }
+
+/* .adventure-image figure:hover img {
+	opacity: 1;
+	-webkit-animation: flash 1.5s;
+	animation: flash 1.5s;
+}
+@-webkit-keyframes flash {
+	0% {
+		opacity: .4;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@keyframes flash {
+	0% {
+		opacity: .4;
+	}
+	100% {
+		opacity: 1;
+	}
+} */
 </style>

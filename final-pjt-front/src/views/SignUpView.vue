@@ -14,30 +14,30 @@
     </form> -->
     <b-form  @submit.prevent="signUp">
       <h1>회원가입</h1>
-      <b-form-group id="input-group-1" label="ID" label-for="input-1">
+      <b-form-group id="input-group-1" label="아이디" label-for="input-1">
         <b-form-input
           id="input-1"
-          v-model="username"
+          v-model.trim="username"
           placeholder="ID"
           required
         ></b-form-input>
       </b-form-group>
       <br>
-      <b-form-group id="input-group-2" label="Password" label-for="input-2">
+      <b-form-group id="input-group-2" label="비밀번호" label-for="input-2">
         <b-form-input
           type="password"
           id="input-2"
-          v-model="password1"
+          v-model.trim="password1"
           placeholder="Password"
           required
         ></b-form-input>
       </b-form-group>
       <br>
-      <b-form-group id="input-group-3" label="Password Confirmation" label-for="input-3">
+      <b-form-group id="input-group-3" label="비밀번호를 한번 더 입력해주세요" label-for="input-3">
         <b-form-input
           type="password"
           id="input-3"
-          v-model="password2"
+          v-model.trim="password2"
           placeholder="Password Confirmation"
         >
         </b-form-input>
@@ -64,19 +64,30 @@ export default {
       const password1 = this.password1
       const password2 = this.password2
 
-      const payload = {
-        // username,
-        // password1,
-        // password2,
-        username: username,
-        password1: password1,
-        password2: password2,
+      if (!username) {
+        this.$dialogs.alert("ID를 입력해주세요")
+      } else if (!password1) {
+        this.$dialogs.alert("비밀번호를 입력해주세요")
+      } else if (!password2) {
+        this.$dialogs.alert("비밀번호 확인을 위해 한번 더 입력해주세요")
+      } else if (password1.length < 8) {
+        this.$dialogs.alert("비밀번호를 8글자 이상 입력해주세요")
+      } else if (password1 !== password2) {
+        this.$dialogs.alert("두 개의 비밀번호가 서로 같지 않습니다.")
+      } else {
+        const payload = {
+          // username,
+          // password1,
+          // password2,
+          username: username,
+          password1: password1,
+          password2: password2,
+        }
+  
+        this.$store.dispatch('signUp', payload)
       }
-
-      this.$store.dispatch('signUp', payload)
-
-    }
-  }
+    },
+  },
 }
 </script>
 

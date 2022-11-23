@@ -9,6 +9,7 @@ import FundingDetailView from '@/views/FundingDetailView'
 import FundingSearchView from '@/views/FundingSearchView'
 import ProfileView from '@/views/ProfileView'
 import FundingCreateView from '@/views/FundingCreateView'
+import store from '@/store'
 
 Vue.use(VueRouter)
 
@@ -57,7 +58,7 @@ const routes = [
   {
     path: '/fundings/create',
     name: 'FundingCreateView',
-    component: FundingCreateView
+    component: FundingCreateView,
   }
 
 ]
@@ -66,6 +67,19 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  const isLoggedIn = store.state.token
+  const authPages = ['FundingCreateView']
+  const isAuthRequired = authPages.includes(to.name)
+
+  if (isAuthRequired && !isLoggedIn) {
+    alert("로그인 해주세요")
+    next({ name: 'LogInView' })
+  } else {
+    next()
+  }
 })
 
 export default router

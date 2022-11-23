@@ -16,7 +16,7 @@
           v-model="fundingComment"
         />
         <br />
-        <button>등록하기</button>
+        <button>댓글 달기</button>
       </form>
     </div>
   </div>
@@ -50,7 +50,7 @@ export default {
         content: this.fundingComment,
         funding: this.$route.params.id,
       };
-      console.log(newFundingComment);
+      // console.log(newFundingComment);
       this.$store.dispatch("createFundingComment", newFundingComment);
       this.fundingComment = "";
     },

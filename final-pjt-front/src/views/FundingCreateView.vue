@@ -85,7 +85,7 @@ export default {
       }
       this.$store.dispatch("createFunding", payload)
     }
-  }
+  },
 }
 </script>
 

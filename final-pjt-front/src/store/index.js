@@ -3,9 +3,11 @@ import Vuex from 'vuex'
 import axios from 'axios'
 import router from '@/router'
 import createPersistedState from 'vuex-persistedstate'
-
+import 'v-slim-dialog/dist/v-slim-dialog.css'
+import SlimDialog from 'v-slim-dialog'
 
 Vue.use(Vuex)
+Vue.use(SlimDialog)
 
 const API_URL = 'http://127.0.0.1:8000'
 
@@ -257,7 +259,6 @@ export default new Vuex.Store({
       })
         .then((res) => {
           context.commit('SAVE_TOKEN', res.data.key)
-
         })
         .then(() => {
           axios({
@@ -274,8 +275,10 @@ export default new Vuex.Store({
             .then((res) => {
               context.commit('SAVE_USERID', res.data)
               context.commit('SAVE_USERNAME', payload.username)
-
             })
+        })
+        .catch(() => {
+          alert("ID와 Password가 정보와 일치하지 않습니다!")
         })
     },
 
