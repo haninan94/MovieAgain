@@ -33,8 +33,10 @@
         </div>
       </div>
     </div>
-    <router-link :to="{ name: 'FundingView' }">뒤로가기</router-link>
-    <FundingDonateForm />
+    <router-link :to="{ name: 'FundingView' }">
+      <button class="nes-btn">뒤로 가기</button>
+    </router-link>
+    <FundingDonateForm :fundingMinimumMoney="this.funding.minimum_money"/>
     <FundingCommentForm :fundingId="this.funding.id" ref="FundingCommentForm" />
   </div>
   <!-- <template v-if="check">

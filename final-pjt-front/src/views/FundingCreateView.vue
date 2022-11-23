@@ -84,7 +84,10 @@ export default {
   },
   methods: {
     createFunding() {
-      const payload = {
+      if (this.funding.goal_money <= this.funding.minimum_money) {
+        this.$dialogs.alert("목표 금액이 최소 금액보다 적습니다.")
+      } else {
+        const payload = {
         user: this.$store.state.userId,
         movie_title: this.funding.movie_title,
         content: this.funding.content,
@@ -92,9 +95,10 @@ export default {
         minimum_money: this.funding.minimum_money,
         goal_money: this.funding.goal_money,
         expired_date: this.funding.expired_date,
-      }
+        }
       this.$store.dispatch("createFunding", payload)
-    }
+      }
+    },
   },
 }
 </script>
