@@ -1,17 +1,15 @@
 <template>
-  <div>
-    <label for="dark_select" style="color: #fff">후원하기</label>
+  <div id="funding-donate-form" style="background-color:#212529; padding: 1rem 1.2rem 1rem 1rem;width:calc(100% + 8px)">
     <div class="nes-select is-dark">
-      <form @submit.prevent="donateFunding">
+      <label for="dark_select" style="color: #fff">후원하기</label>
+      <form class="donate-form" @submit.prevent="donateFunding">
         <select required id="dark_select" v-model="donateMoney">
-          <option value="" disabled selected hidden>Select...</option>
-          <option value="10000">10,000 원</option>
-          <option value="30000">30,000 원</option>
-          <option value="50000">50,000 원</option>
-          <option value="100000">100,000 원</option>
+          <option :value="fundingMinimumMoney">{{ fundingMinimumMoney }}원</option>
+          <option :value="fundingMinimumMoney + 10000">{{ fundingMinimumMoney + 10000 }}원</option>
+          <option :value="fundingMinimumMoney + 20000">{{ fundingMinimumMoney + 20000 }}원</option>
         </select>
-        <br /><br />
-        <button class="nes-btn is-warning">결제하기</button>
+        <br>
+        <button class="nes-btn">후원하기</button>
       </form>
     </div>
   </div>
@@ -25,10 +23,13 @@ export default {
       donateMoney: 0,
     };
   },
+  props: {
+    fundingMinimumMoney: Number,
+  },
   methods: {
     donateFunding() {
       if (!this.$store.state.token) {
-        alert("plz login");
+        this.$dialogs.alert("plz login");
         return;
       }
       const payload = {
@@ -43,4 +44,12 @@ export default {
 </script>
 
 <style>
+#funding-donate-form {
+  width: 75% !important;
+  margin: auto;
+}
+
+.donate-form {
+  align-content: center;
+}
 </style>

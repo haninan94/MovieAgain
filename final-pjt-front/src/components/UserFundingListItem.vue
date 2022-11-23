@@ -1,6 +1,6 @@
 <template>
   <b-col>
-    <router-link :to="{name: 'FundingDetailView', params: { id: userfunding.id }}">
+    <router-link :to="{name: 'FundingDetailView', params: { id: userfunding.funding.id }}">
       <div class="ticket">
         <div class="ticket__content">
           <img :src="userfunding.funding.poster_path" width="100%" height="100%">
