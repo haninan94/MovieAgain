@@ -1,11 +1,27 @@
 <template>
   <b-col class="container">
     <div class="funding-item">
-      <router-link style="text-decoration:none; color:black;" :to="{ name: 'FundingDetailView', params: { id: funding.id } }">
-        <b-card style="width:300px; height:700px;" class="funding-card" :title="funding.movie_title" :img-src="funding.poster_path">
-          <b-progress :value="funding.now_money / funding.goal_money * 100" variant="info" striped :animated="animate"></b-progress>
-            <p>{{ Math.ceil((funding.now_money / funding.goal_money) * 100) }}%</p>
-            <p>{{ remainDate }} 일 남음 {{ funding.now_money }}원</p>
+      <router-link
+        style="text-decoration: none; color: black"
+        :to="{ name: 'FundingDetailView', params: { id: funding.id } }"
+
+      >
+        <b-card
+          style="width: 300px; height: 700px"
+          class="funding-card"
+          :title="funding.movie_title"
+          :img-src="funding.poster_path"
+        >
+          <b-progress
+            :value="(funding.now_money / funding.goal_money) * 100"
+            variant="info"
+            striped
+            :animated="animate"
+          ></b-progress>
+          <p>
+            {{ Math.ceil((funding.now_money / funding.goal_money) * 100) }}%
+          </p>
+          <p>{{ remainDate }} 일 남음 {{ funding.now_money }}원</p>
         </b-card>
       </router-link>
     </div>
@@ -13,21 +29,20 @@
 </template>
 
 <script>
-import axios from 'axios'
-import dayjs from 'dayjs'
+import axios from "axios";
+import dayjs from "dayjs";
 
 const API_URL = "http://127.0.0.1:8000";
 
 export default {
-  name:'FundingListItem',
+  name: "FundingListItem",
   data() {
     return {
       animate: true,
       remainDate: "",
-    }
+    };
   },
-  computed: {
-  },
+  computed: {},
   props: {
     funding: Object,
   },
@@ -50,9 +65,9 @@ export default {
     },
   },
   created() {
-    this.getDday()
-  }
-}
+    this.getDday();
+  },
+};
 </script>
 
 <style>

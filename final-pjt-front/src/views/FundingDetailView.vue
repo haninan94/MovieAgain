@@ -99,10 +99,6 @@ export default {
         this.remainDate = remainDate / 1000 / 60 / 60 / 24;
       });
     },
-    // getFundingMoney(payload) {
-    //   console.log("Yes")
-    //   this.fundingMoney += payload
-    // }
   },
   created() {
     this.getFundingDetail();
@@ -117,7 +113,6 @@ export default {
 <style>
 #funding-detail {
   width: 100vw;
-  height: 300vh;
 }
 
 .nes-container {

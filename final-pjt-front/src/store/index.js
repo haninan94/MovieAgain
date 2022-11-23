@@ -37,6 +37,15 @@ export default new Vuex.Store({
     },
     getFundingDetail(state) {
       return state.funding
+    },
+    getIsCompleted(state) {
+      console.log('**********************')
+      const remainMoney = state.funding.goal_money - state.funding.now_money
+      if (remainMoney <= 0) {
+        return true
+      } else {
+        return false
+      }
     }
   },
   mutations: {
@@ -242,13 +251,8 @@ export default new Vuex.Store({
         }
       })
         .then(() => {
-<<<<<<< HEAD
-          swal("회원가입 성공", "환영합니다!", "success");
-          router.push({ name: "LogInView" })
-=======
           swal("회원가입에 성공했습니다!", "로그인 페이지로 이동합니다", "success")
-          router.push({name:"LogInView"})
->>>>>>> fee08fe7d5258cf7b3e7f8bd8fc2cc6d82cccb5e
+          router.push({ name: "LogInView" })
         })
         .catch((err) => {
           router.push({ name: "NotFound404" })
@@ -455,39 +459,39 @@ export default new Vuex.Store({
         buttons: true,
         dangerMode: true,
       })
-      .then((willDonate) => {
-        if(willDonate) {
-          axios({
-            method: "post",
-            url: `${API_URL}/api/v2/fundings/${payload.fundingId}/donation/`,
-            headers: {
-              Authorization: `Token ${context.state.token}`,
-            },
-            data: {
-              funding_id: payload.fundingId,
-              user: payload.user,
-              donation: payload.donation
-            },
-          })
-            .then(() => {
-              axios({
-                method: "get",
-                url: `${API_URL}/api/v2/fundings/${payload.fundingId}`,
-              })
-                .then((res) => {
-                  context.commit('GET_FUNDING_DETAIL', res.data)
+        .then((willDonate) => {
+          if (willDonate) {
+            axios({
+              method: "post",
+              url: `${API_URL}/api/v2/fundings/${payload.fundingId}/donation/`,
+              headers: {
+                Authorization: `Token ${context.state.token}`,
+              },
+              data: {
+                funding_id: payload.fundingId,
+                user: payload.user,
+                donation: payload.donation
+              },
+            })
+              .then(() => {
+                axios({
+                  method: "get",
+                  url: `${API_URL}/api/v2/fundings/${payload.fundingId}`,
                 })
-                .catch((err) => {
-                  console.log(err);
-                });
+                  .then((res) => {
+                    context.commit('GET_FUNDING_DETAIL', res.data)
+                  })
+                  .catch((err) => {
+                    console.log(err);
+                  });
+              });
+            swal("펀딩이 완료되었습니다.", {
+              icon: "success",
             });
-          swal("펀딩이 완료되었습니다.", {
-            icon: "success",
-          });
-        } else {
-          swal("펀딩이 취소되었습니다. 다시 시도해주세요!")
-        }
-      })
+          } else {
+            swal("펀딩이 취소되었습니다. 다시 시도해주세요!")
+          }
+        })
       // axios({
       //   method: "post",
       //   url: `${API_URL}/api/v2/fundings/${payload.fundingId}/donation/`,

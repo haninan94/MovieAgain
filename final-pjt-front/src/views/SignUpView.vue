@@ -66,16 +66,9 @@ export default {
   },
   methods: {
     signUp() {
-<<<<<<< HEAD
       const username = this.username;
       const password1 = this.password1;
       const password2 = this.password2;
-      console.log(username);
-=======
-      const username = this.username
-      const password1 = this.password1
-      const password2 = this.password2
->>>>>>> fee08fe7d5258cf7b3e7f8bd8fc2cc6d82cccb5e
       if (!username) {
         swal("회원가입 실패!", "ID를 입력해주세요.", "warning");
         // this.$dialogs.alert("ID를 입력해주세요")
