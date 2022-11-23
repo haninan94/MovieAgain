@@ -4,6 +4,11 @@ import axios from 'axios'
 import router from '@/router'
 import createPersistedState from 'vuex-persistedstate'
 
+import 'v-slim-dialog/dist/v-slim-dialog.css'
+import SlimDialog from 'v-slim-dialog'
+
+Vue.use(SlimDialog)
+
 
 Vue.use(Vuex)
 
@@ -84,7 +89,6 @@ export default new Vuex.Store({
       state.movieComments = comments
     },
     GET_USER_FUNDINGS(state, res) {
-      console.log(res)
       state.userFundings = res.data
     }
     ,
@@ -281,6 +285,10 @@ export default new Vuex.Store({
 
     // 영화 댓글 작성
     createMovieComment(context, newMovieComment) {
+      if (!context.state.token) {
+        alert('plz login')
+        return
+      }
       axios({
         method: 'post',
         url: `${API_URL}/api/v1/movies/${newMovieComment.movie}/commentcreate/`,
@@ -349,6 +357,7 @@ export default new Vuex.Store({
           console.log(err)
         })
     },
+    // 펀딩 댓글 생성
     createFundingComment(context, newFundingComment) {
       axios({
         method: 'post',
@@ -366,7 +375,6 @@ export default new Vuex.Store({
           context.commit('CREATE_FUNDING_COMMENT', res.data)
         })
         .catch((err) => {
-          console.log(newFundingComment)
           console.log(err)
         })
     },
@@ -406,6 +414,10 @@ export default new Vuex.Store({
     },
     // 펀딩 삭제
     createFunding(context, payload) {
+      if (!context.state.token) {
+        alert('plz login')
+        return
+      }
       axios({
         method: "post",
         url: `${API_URL}/api/v2/fundings/`,
