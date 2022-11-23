@@ -242,10 +242,11 @@ export default new Vuex.Store({
         }
       })
         .then(() => {
-          router.push({name:"LogInView"})
+          swal("회원가입 성공", "환영합니다!", "success");
+          router.push({ name: "LogInView" })
         })
         .catch((err) => {
-          router.push({ name: "NotFound404"})
+          router.push({ name: "NotFound404" })
           console.log(err)
         })
     },
@@ -410,7 +411,7 @@ export default new Vuex.Store({
           context.commit('GET_FUNDING_DETAIL', res.data)
         })
         .catch((err) => {
-          router.push({ name: "NotFound404"})
+          router.push({ name: "NotFound404" })
           console.log(err);
         });
     },

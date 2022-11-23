@@ -45,6 +45,15 @@ export default {
       // this.$router.push({ name: "MovieView" })
     },
   },
+  created() {
+    this.$store.dispatch("getMovies");
+    this.$store.dispatch("getRecommendFundings");
+    this.$store.dispatch("getAdventureMovies");
+    this.$store.dispatch("getHorrorMovies");
+    this.$store.dispatch("getDocumentaryMovies");
+    this.$store.dispatch("getAnimationMovies");
+    this.$store.dispatch("getRomanceMovies");
+  },
 };
 </script>
 

@@ -12,7 +12,7 @@
       
       <input type="submit" value="SignUp">
     </form> -->
-    <b-form  @submit.prevent="signUp">
+    <b-form @submit.prevent="signUp">
       <h1>회원가입</h1>
       <b-form-group id="input-group-1" label="아이디" label-for="input-1">
         <b-form-input
@@ -20,9 +20,10 @@
           v-model.trim="username"
           placeholder="ID"
           required
+          v-model="username"
         ></b-form-input>
       </b-form-group>
-      <br>
+      <br />
       <b-form-group id="input-group-2" label="비밀번호" label-for="input-2">
         <b-form-input
           type="password"
@@ -32,8 +33,12 @@
           required
         ></b-form-input>
       </b-form-group>
-      <br>
-      <b-form-group id="input-group-3" label="비밀번호를 한번 더 입력해주세요" label-for="input-3">
+      <br />
+      <b-form-group
+        id="input-group-3"
+        label="비밀번호를 한번 더 입력해주세요"
+        label-for="input-3"
+      >
         <b-form-input
           type="password"
           id="input-3"
@@ -42,43 +47,55 @@
         >
         </b-form-input>
       </b-form-group>
-      <br>
+      <br />
       <b-button type="submit" variant="outline-primary">회원가입</b-button>
     </b-form>
   </div>
 </template>
 
 <script>
-import swal from 'sweetalert';
+import swal from "sweetalert";
 export default {
-  name: 'SignUpView',
+  name: "SignUpView",
   data() {
     return {
       username: null,
       password1: null,
       password2: null,
-    }
+    };
   },
   methods: {
     signUp() {
-      const username = this.username
-      const password1 = this.password1
-      const password2 = this.password2
-
+      const username = this.username;
+      const password1 = this.password1;
+      const password2 = this.password2;
+      console.log(username);
       if (!username) {
-        swal('회원가입 실패!', "ID를 입력해주세요.", 'warning');
+        swal("회원가입 실패!", "ID를 입력해주세요.", "warning");
         // this.$dialogs.alert("ID를 입력해주세요")
       } else if (!password1) {
-        swal('회원가입 실패!', "비밀번호를 입력해주세요.", 'warning');
+        swal("회원가입 실패!", "비밀번호를 입력해주세요.", "warning");
         // this.$dialogs.alert("비밀번호를 입력해주세요")
       } else if (!password2) {
-        swal('회원가입 실패!', "비밀번호 확인을 위해 한번 더 입력해주세요.", 'warning');
+        swal(
+          "회원가입 실패!",
+          "비밀번호 확인을 위해 한번 더 입력해주세요.",
+          "warning"
+        );
         // this.$dialogs.alert("비밀번호 확인을 위해 한번 더 입력해주세요")
       } else if (password1.length < 8) {
-        swal('회원가입 실패!', "비밀번호를 8글자 이상 입력해주세요.", 'warning');
+        swal(
+          "회원가입 실패!",
+          "비밀번호를 8글자 이상 입력해주세요.",
+          "warning"
+        );
         // this.$dialogs.alert("비밀번호를 8글자 이상 입력해주세요")
       } else if (password1 !== password2) {
-        swal('회원가입 실패!', "두 개의 비밀번호가 서로 같지 않습니다.", 'warning');
+        swal(
+          "회원가입 실패!",
+          "두 개의 비밀번호가 서로 같지 않습니다.",
+          "warning"
+        );
         // this.$dialogs.alert("두 개의 비밀번호가 서로 같지 않습니다.")
       } else {
         const payload = {
@@ -88,13 +105,13 @@ export default {
           username: username,
           password1: password1,
           password2: password2,
-        }
-  
-        this.$store.dispatch('signUp', payload)
+        };
+
+        this.$store.dispatch("signUp", payload);
       }
     },
   },
-}
+};
 </script>
 
 <style>
