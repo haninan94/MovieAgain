@@ -1,13 +1,22 @@
 <template>
   <div id="fundingview">
     <!-- <router-link :to="{ name: 'FundingSearchView'}">Search</router-link> -->
-    <h1>진행중인 Funding List</h1>
-    <router-link :to="{ name: 'FundingCreateView'}">
-      <button class="nes-btn">
-        Create New Funding
-      </button>
-    </router-link>
-    <div class="container">
+    <div>
+      <div class="container1">
+        <p style="font-size: 30px">🙏재개봉을 기다리는 영화들🙏</p>
+      </div>
+      <div class="container2">
+        <p style="margin-right:2rem">
+          <router-link :to="{ name: 'FundingCreateView'}">
+            <button class="nes-btn is-error">
+              펀딩 만들기
+            </button>
+          </router-link>  
+        </p>
+      </div>
+    </div>
+
+    <div class="container3">
       <FundingList/>
     </div>
   </div>
@@ -43,7 +52,17 @@ export default {
   height: 100vh;
 }
 
-.container {
+.container1 {
+  display: flex;
+  justify-content: center;
+}
+
+.container2 {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.container3 {
   display: flex;
   flex-wrap: wrap;
 }

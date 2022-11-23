@@ -64,7 +64,6 @@ export default {
       const username = this.username
       const password1 = this.password1
       const password2 = this.password2
-
       if (!username) {
         swal('회원가입 실패!', "ID를 입력해주세요.", 'warning');
         // this.$dialogs.alert("ID를 입력해주세요")
