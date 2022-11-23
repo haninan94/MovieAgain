@@ -17,7 +17,7 @@
             :to="{ name: 'MovieDetailView', params: { id: movie.id } }"
           >
             <img
-              class="mainimage"
+              class=""
               :src="`https://image.tmdb.org/t/p/w300_and_h450_bestv2${movie.poster_path}`"
               alt=""
             />
@@ -56,17 +56,5 @@ export default {
 
 figure {
   margin: 0;
-}
-
-.mainimage {
-  -webkit-filter: grayscale(0) blur(0);
-  filter: grayscale(0) blur(0);
-  -webkit-transition: 0.3s ease-in-out;
-  transition: 0.3s ease-in-out;
-}
-
-.mainimage:hover {
-  -webkit-filter: grayscale(100%) blur(1px);
-  filter: grayscale(100%) blur(1px);
 }
 </style>

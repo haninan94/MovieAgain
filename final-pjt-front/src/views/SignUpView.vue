@@ -49,6 +49,7 @@
 </template>
 
 <script>
+import swal from 'sweetalert';
 export default {
   name: 'SignUpView',
   data() {
@@ -65,15 +66,20 @@ export default {
       const password2 = this.password2
 
       if (!username) {
-        this.$dialogs.alert("ID를 입력해주세요")
+        swal('회원가입 실패!', "ID를 입력해주세요.", 'warning');
+        // this.$dialogs.alert("ID를 입력해주세요")
       } else if (!password1) {
-        this.$dialogs.alert("비밀번호를 입력해주세요")
+        swal('회원가입 실패!', "비밀번호를 입력해주세요.", 'warning');
+        // this.$dialogs.alert("비밀번호를 입력해주세요")
       } else if (!password2) {
-        this.$dialogs.alert("비밀번호 확인을 위해 한번 더 입력해주세요")
+        swal('회원가입 실패!', "비밀번호 확인을 위해 한번 더 입력해주세요.", 'warning');
+        // this.$dialogs.alert("비밀번호 확인을 위해 한번 더 입력해주세요")
       } else if (password1.length < 8) {
-        this.$dialogs.alert("비밀번호를 8글자 이상 입력해주세요")
+        swal('회원가입 실패!', "비밀번호를 8글자 이상 입력해주세요.", 'warning');
+        // this.$dialogs.alert("비밀번호를 8글자 이상 입력해주세요")
       } else if (password1 !== password2) {
-        this.$dialogs.alert("두 개의 비밀번호가 서로 같지 않습니다.")
+        swal('회원가입 실패!', "두 개의 비밀번호가 서로 같지 않습니다.", 'warning');
+        // this.$dialogs.alert("두 개의 비밀번호가 서로 같지 않습니다.")
       } else {
         const payload = {
           // username,
