@@ -242,11 +242,11 @@ export default new Vuex.Store({
           password2: payload.password2,
         }
       })
-        .then((res) => {
-          context.commit('SAVE_TOKEN', res.data.key)
-          context.commit('SAVE_USERNAME', payload.username)
+        .then(() => {
+          router.push({name:"LogInView"})
         })
         .catch((err) => {
+          router.push({ name: "NotFound404"})
           console.log(err)
         })
     },
@@ -409,6 +409,7 @@ export default new Vuex.Store({
           context.commit('GET_FUNDING_DETAIL', res.data)
         })
         .catch((err) => {
+          router.push({ name: "NotFound404"})
           console.log(err);
         });
     },
