@@ -1,123 +1,97 @@
 <template>
   <b-col>
-    <router-link :to="{name: 'FundingDetailView', params: { id: userfunding.funding.id }}">
-      <!-- <div class="ticket">
-        <div class="ticket__content">
-          <img :src="userfunding.funding.poster_path" width="100%" height="100%">
-        </div>
-      </div> -->
+    <router-link
+      :to="{
+        name: 'FundingDetailView',
+        params: { id: userfunding.funding.id },
+      }"
+    >
       <div class="cardWrap">
         <div class="card cardLeft">
-          <h1>Startup <span>Cinema</span></h1>
+          <h1>{{ userfunding.funding.movie_title }}</h1>
           <div class="title">
-            <h2>How I met your Mother</h2>
-            <span>movie</span>
+            <span style="margin: 0.5px">Name</span>
           </div>
           <div class="name">
-            <h2>{{username}} </h2>
-            <span>name</span>
-          </div>
-          <div class="seat">
-            <h2>{{ userfunding.donation }} </h2>
-            <span>donation</span>
-          </div>
-          <div class="time">
-            <h2>12:00</h2>
-            <span>time</span>
+            <h2>{{ userName }}</h2>
+            <span>Donation</span>
+            <h2>{{ userfunding.donation }} ₩</h2>
           </div>
         </div>
         <div class="card cardRight">
-          <div class="eye"></div>
+          <div class="eye">RE:</div>
           <div class="number">
-            <h3>156</h3>
-            <span>seat</span>
+            <h3>{{ remainDate }}</h3>
+            <span>DAY</span>
           </div>
           <div class="barcode"></div>
         </div>
       </div>
-
-
     </router-link>
   </b-col>
 </template>
 
 <script>
+import dayjs from "dayjs";
 export default {
-  name:'UserFundingListItem',
-  props:{
+  name: "UserFundingListItem",
+  props: {
     userfunding: Object,
   },
-  computed:{
-    // imgUrl(){
-    //   // return this.userfunding.funding
-    // }
-  }
-
-}
+  data() {
+    return {
+      remainDate: "",
+    };
+  },
+  computed: {
+    userName() {
+      return this.$store.state.username;
+    },
+  },
+  methods: {
+    getDDay() {
+      const expiredDate = this.userfunding.funding.expired_date
+        .split("-")
+        .map((str) => Number(str));
+      console.log(expiredDate);
+      const todayDate = dayjs()
+        .format("YYYY-MM-DD")
+        .split("-")
+        .map((str) => Number(str));
+      const remainDate = new Date(expiredDate) - new Date(todayDate);
+      this.remainDate = remainDate / 1000 / 60 / 60 / 24;
+    },
+  },
+  created() {
+    this.getDDay();
+  },
+};
 </script>
 
 <style scoped>
 body {
-  background-color: #FCD000;
+  background-color: #fcd000;
 }
-
-/* .ticket {
-  position: relative;
-  box-sizing: border-box;
-  width: 300px;
-  height: 450px;
-  margin: 150px auto 0;
-  padding: 20px;
-  border-radius: 10px;
-  background: #FBFBFB;
-  box-shadow: 2px 2px 15px 0px #AB9B0D;
-}
-.ticket:before, .ticket:after {
-  content: "";
-  position: absolute;
-  left: 5px;
-  height: 6px;
-  width: 290px;
-}
-.ticket:before {
-  top: -5px;
-  background: radial-gradient(circle, transparent, transparent 50%, #FBFBFB 50%, #FBFBFB 100%) -7px -8px/16px 16px repeat-x;
-}
-.ticket:after {
-  bottom: -5px;
-  background: radial-gradient(circle, transparent, transparent 50%, #FBFBFB 50%, #FBFBFB 100%) -7px -2px/16px 16px repeat-x;
-}
-
-.ticket__content {
-  box-sizing: border-box;
-  height: 100%;
-  width: 100%;
-  border: 6px solid #D8D8D8;
-}
-
-.ticket__text {
-  width: 400px;
-  font-family: "Helvetica", "Arial", sans-serif;
-  font-size: 3rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  color: #C6DEDE;
-  transform: translate(-25px, 25px) rotate(-55deg);
-} */
 
 .cardWrap {
   width: 27em;
   margin: 2em auto;
-  color: #fff;
+  color: #e84c3d;
   font-family: sans-serif;
 }
 
 .card {
-  background: linear-gradient(to bottom, #e84c3d 0%, #e84c3d 26%, #ecedef 26%, #ecedef 100%);
+  background: linear-gradient(
+    to bottom,
+    #e84c3d 0%,
+    #e84c3d 26%,
+    #ecedef 26%,
+    #ecedef 100%
+  );
   height: 11em;
   float: left;
   position: relative;
-  padding: 1px ;
+  padding: 1px;
   margin-top: 0px;
 }
 
@@ -129,11 +103,12 @@ body {
 
 .cardRight {
   width: 6.5em;
-  border-left: 0.18em dashed #fff;
+  border-left: 0.18em dashed #212529;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
 }
-.cardRight:before, .cardRight:after {
+.cardRight:before,
+.cardRight:after {
   content: "";
   position: absolute;
   display: block;
@@ -151,10 +126,12 @@ body {
 }
 
 h1 {
+  font-family: "Helvetica", "Arial", sans-serif;
   font-size: 1.1em;
-  margin-top: 0;
+  margin-top: 10px;
 }
 h1 span {
+  font-family: "Helvetica", "Arial", sans-serif;
   font-weight: normal;
 }
 
@@ -162,6 +139,7 @@ h1 span {
 .name,
 .seat,
 .time {
+  font-family: "Helvetica", "Arial", sans-serif;
   text-transform: uppercase;
   font-weight: normal;
 }
@@ -169,7 +147,8 @@ h1 span {
 .name h2,
 .seat h2,
 .time h2 {
-  background-color: #fff;
+  font-family: "Helvetica", "Arial", sans-serif;
+  background-color: #ecedef;
   font-size: 0.9em;
   color: #525252;
   margin: 0;
@@ -201,35 +180,9 @@ h1 span {
 }
 
 .eye {
-  position: relative;
-  width: 2em;
-  height: 1.5em;
-  background: #fff;
-  margin: 0 auto;
-  border-radius: 1em/0.6em;
-  z-index: 1;
-}
-.eye:before, .eye:after {
-  content: "";
-  display: block;
-  position: absolute;
-  border-radius: 50%;
-}
-.eye:before {
-  width: 1em;
-  height: 1em;
-  background: #e84c3d;
-  z-index: 2;
-  left: 8px;
-  top: 4px;
-}
-.eye:after {
-  width: 0.5em;
-  height: 0.5em;
-  background: #fff;
-  z-index: 3;
-  left: 12px;
-  top: 8px;
+  text-align: center;
+  vertical-align: center;
+  font-size: 20px;
 }
 
 .number {
@@ -238,7 +191,7 @@ h1 span {
 }
 .number h3 {
   color: #e84c3d;
-  margin: 0.9em 0 0 0;
+  margin: 0.4em 0 0 0;
   font-size: 2.5em;
 }
 .number span {
@@ -247,9 +200,16 @@ h1 span {
 }
 
 .barcode {
-  height: 2em;
+  height: 2.3em;
   width: 0;
-  margin: 1.2em 0 0 0.8em;
-  box-shadow: 1px 0 0 1px #343434, 5px 0 0 1px #343434, 10px 0 0 1px #343434, 11px 0 0 1px #343434, 15px 0 0 1px #343434, 18px 0 0 1px #343434, 22px 0 0 1px #343434, 23px 0 0 1px #343434, 26px 0 0 1px #343434, 30px 0 0 1px #343434, 35px 0 0 1px #343434, 37px 0 0 1px #343434, 41px 0 0 1px #343434, 44px 0 0 1px #343434, 47px 0 0 1px #343434, 51px 0 0 1px #343434, 56px 0 0 1px #343434, 59px 0 0 1px #343434, 64px 0 0 1px #343434, 68px 0 0 1px #343434, 72px 0 0 1px #343434, 74px 0 0 1px #343434, 77px 0 0 1px #343434, 81px 0 0 1px #343434;
+  margin: 1.2em 0 0 1em;
+  box-shadow: 1px 0 0 1px #343434, 5px 0 0 1px #343434, 10px 0 0 1px #343434,
+    11px 0 0 1px #343434, 15px 0 0 1px #343434, 18px 0 0 1px #343434,
+    22px 0 0 1px #343434, 23px 0 0 1px #343434, 26px 0 0 1px #343434,
+    30px 0 0 1px #343434, 35px 0 0 1px #343434, 37px 0 0 1px #343434,
+    41px 0 0 1px #343434, 44px 0 0 1px #343434, 47px 0 0 1px #343434,
+    51px 0 0 1px #343434, 56px 0 0 1px #343434, 59px 0 0 1px #343434,
+    64px 0 0 1px #343434, 68px 0 0 1px #343434, 72px 0 0 1px #343434,
+    74px 0 0 1px #343434, 77px 0 0 1px #343434, 81px 0 0 1px #343434;
 }
 </style>

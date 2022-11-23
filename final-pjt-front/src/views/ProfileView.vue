@@ -1,8 +1,8 @@
 <template>
   <div id="profile">
-    <h2>profile</h2>
+    <h2>내 프로필</h2>
     <p>---------------------</p>
-    <p>your name : {{ getUserName }} </p>
+    <p>Welcome, {{ getUserName }}!</p>
     <p>---------------------</p>
     <div v-if="userFundings.length>0">
       <p>👇{{getUserName}} 님이 펀딩 참여한 영화 목록👇</p>

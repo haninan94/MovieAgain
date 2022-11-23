@@ -73,6 +73,9 @@ const routes = [
   }
 
 ]
+// const scrollBehavior = (to, from, savedPosition) => {
+//   return savedPosition || { top: 0, left: 0 }
+// }
 
 const router = new VueRouter({
   mode: 'history',
@@ -80,7 +83,8 @@ const router = new VueRouter({
   //   return { x: 0, y: 0 }
   // },
   base: process.env.BASE_URL,
-  routes
+  routes,
+  // scrollBehavior,
 })
 
 
