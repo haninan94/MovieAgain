@@ -29,7 +29,7 @@
           </template>
           <h1>{{ funding.now_money }}원 / {{ funding.goal_money }}원</h1>
           <h1>{{ ((funding.now_money / funding.goal_money) * 100).toFixed(1) }}% 달성!!</h1>
-          {{ remainDate }}일 남았다!!
+          <h3>D-{{ remainDate }}일</h3>
         </div>
       </div>
     </div>
