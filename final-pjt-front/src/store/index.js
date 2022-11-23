@@ -100,6 +100,7 @@ export default new Vuex.Store({
     },
     CREATE_FUNDING(state, payload) {
       state.fundings.push(payload)
+      swal("펀딩 생성 완료", "재개봉을 기원합니다.🙏🏻🙏", "success")
       router.push({ name: 'FundingView' })
     },
     GET_FUNDING_DETAIL(state, funding) {

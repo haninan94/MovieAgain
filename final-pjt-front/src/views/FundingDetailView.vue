@@ -6,6 +6,9 @@
       </div>
       <div>
         <div>
+          <div id="d-day">
+            <span id="d-day-span">D-{{ remainDate }}</span>  
+          </div>
           <p>영화 제목 : {{ funding.movie_title }}</p>
           <p>{{ funding.content }}</p>
           <br />
@@ -19,6 +22,7 @@
               :max="funding.goal_money"
             ></progress> -->
             <div>
+              <p>{{ Math.ceil((funding.now_money / funding.goal_money) * 100) }}%</p>
               <b-progress
                 :value="funding.now_money/funding.goal_money*100"
                 variant="info"
@@ -27,9 +31,14 @@
               ></b-progress>
             </div>
           </template>
-          <h1>{{ funding.now_money }}원 / {{ funding.goal_money }}원</h1>
-          <h1>{{ Math.ceil((funding.now_money / funding.goal_money) * 100) }}% 달성!!</h1>
-          <h3>D-{{ remainDate }}일</h3>
+          <div id="money">
+            <div>
+              <span>{{ funding.goal_money }}원 목표</span>
+            </div>
+            <div>
+              <span>{{ funding.now_money }}원</span>
+            </div>
+          </div>
           <FundingDonateForm 
             :fundingMinimumMoney="this.funding.minimum_money"
             :fundingId="funding.id"
@@ -127,6 +136,20 @@ export default {
 
 .funding-img {
   width: 300px;
-  
+}
+
+#d-day {
+  text-align: start;
+}
+
+#d-day-span {
+  background-color: rgb(235, 68, 68);
+  border-radius: 40%;
+  padding: 10px;
+}
+
+#money {
+  display: flex;
+  justify-content: space-between;
 }
 </style>

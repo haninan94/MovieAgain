@@ -31,7 +31,7 @@
         <label for="minimum_money"></label>
         <div class="nes-select">
           <select required id="minumum_money" v-model="funding.minimum_money">
-            <option value="" disabled selected hidden>select</option>
+            <option value="" disabled selected>select...</option>
             <option value="10000">10000</option>
             <option value="30000">30000</option>
             <option value="50000">50000</option>
@@ -47,11 +47,11 @@
           v-model="funding.goal_money"
           placeholder="Goal Money"
         />
-
+      
         <label for="expired_date"></label>
         <b-form-datepicker
           v-model="funding.expired_date"
-          placeholder="만료일을 설정해 주세요."
+          placeholder="펀딩 만료일을 설정해 주세요."
           :min="funding.min"
           id="expired_date"
           class="mx-2"
@@ -109,9 +109,13 @@ export default {
 
 <style>
 .funding-create-view {
-  width: 75%;
+  width: 50%;
   display: flex;
-  justify-content: center;
-  margin-left: 170px;
+  margin: auto;
 }
+
+.minimum_money::placeholder {
+  color: gray;
+}
+
 </style>
