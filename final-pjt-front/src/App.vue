@@ -23,13 +23,19 @@
       </router-link>
       <!-- <router-link :to="{ name: 'FundingSearchView'}">Search</router-link> -->
     </nav>
+    <CompleteFundingList/>
     <router-view />
   </div>
 </template>
 
 <script>
+import CompleteFundingList from '@/components/CompleteFundingList'
+
 export default {
   name: "App",
+  components:{
+    CompleteFundingList
+  },
   computed: {
     check() {
       return this.$store.getters.isLogin;
