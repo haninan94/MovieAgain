@@ -12,15 +12,23 @@
         </div>
         <div>
           <template>
-            <progress
+            <!-- <progress
               progress
               class="nes-progress is-primary"
               :value="funding.now_money"
               :max="funding.goal_money"
-            ></progress>
+            ></progress> -->
+            <div>
+              <b-progress
+                :value="funding.now_money/funding.goal_money*100"
+                variant="info"
+                striped :animated="animate"
+                class="mt-2"
+              ></b-progress>
+            </div>
           </template>
           <h1>{{ funding.now_money }}원 / {{ funding.goal_money }}원</h1>
-          <h1>{{ (funding.now_money / funding.goal_money) * 100 }}% 달성!!</h1>
+          <h1>{{ ((funding.now_money / funding.goal_money) * 100).toFixed(1) }}% 달성!!</h1>
           {{ remainDate }}일 남았다!!
         </div>
       </div>
@@ -55,6 +63,7 @@ export default {
     return {
       fundingMoney: 0,
       remainDate: "",
+      animate: true,
     };
   },
   computed: {
