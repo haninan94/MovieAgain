@@ -63,6 +63,8 @@
 </template> 
 
 <script>
+import swal from 'sweetalert';
+
 export default {
   name: "FundingCreateView",
   data() {
@@ -85,7 +87,7 @@ export default {
   methods: {
     createFunding() {
       if (this.funding.goal_money <= this.funding.minimum_money) {
-        this.$dialogs.alert("목표 금액이 최소 금액보다 적습니다.")
+        swal("펀딩 만들기에 실패하였습니다.", "목표 금액이 최소 금액보다 적습니다.", "warning")
       } else {
         const payload = {
         user: this.$store.state.userId,

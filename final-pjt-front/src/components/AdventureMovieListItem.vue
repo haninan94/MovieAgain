@@ -1,7 +1,7 @@
 <template>
   <b-col>
     <router-link :to="{ name: 'MovieDetailView', params: { id: movie.id } }">
-      <b-img class="test" thumbnail fluid :src="imgUrl"></b-img>
+      <b-img style="height:300px;" class="test" thumbnail fluid :src="imgUrl"></b-img>
     </router-link>
   </b-col>
 </template>
@@ -61,4 +61,6 @@ img {
 .test:hover{
   transform: scale(1.2);
 }
+
+
 </style>

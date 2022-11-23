@@ -11,6 +11,7 @@ import ProfileView from '@/views/ProfileView'
 import FundingCreateView from '@/views/FundingCreateView'
 import store from '@/store'
 import NotFound404 from '@/views/NotFound404'
+import swal from 'sweetalert';
 
 Vue.use(VueRouter)
 
@@ -85,7 +86,7 @@ router.beforeEach((to, from, next) => {
   const isAuthRequired = authPages.includes(to.name)
 
   if (isAuthRequired && !isLoggedIn) {
-    alert("로그인 해주세요")
+    swal("펀딩을 작성할 수 없습니다.", "로그인이 필요합니다.", "error")
     next({ name: 'LogInView' })
   } else {
     next()

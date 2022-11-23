@@ -287,7 +287,7 @@ export default new Vuex.Store({
     // 영화 댓글 작성
     createMovieComment(context, newMovieComment) {
       if (!context.state.token) {
-        alert('plz login')
+        swal('plz login', 'warning')
         return
       }
       axios({

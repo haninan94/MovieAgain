@@ -1,6 +1,6 @@
 <template>
   <div id="funding-detail">
-    <div class="container">
+    <div class="nes-container is-rounded is-dark">
       <div>
         <img class="funding-img" :src="funding?.poster_path" alt="" />
       </div>
@@ -28,15 +28,18 @@
             </div>
           </template>
           <h1>{{ funding.now_money }}원 / {{ funding.goal_money }}원</h1>
-          <h1>{{ ((funding.now_money / funding.goal_money) * 100).toFixed(1) }}% 달성!!</h1>
+          <h1>{{ Math.ceil((funding.now_money / funding.goal_money) * 100) }}% 달성!!</h1>
           <h3>D-{{ remainDate }}일</h3>
+          <FundingDonateForm 
+            :fundingMinimumMoney="this.funding.minimum_money"
+            :fundingId="funding.id"
+          />
         </div>
       </div>
     </div>
     <router-link :to="{ name: 'FundingView' }">
-      <button class="nes-btn">뒤로 가기</button>
+      <button class="nes-btn is-error">뒤로 가기</button>
     </router-link>
-    <FundingDonateForm :fundingMinimumMoney="this.funding.minimum_money"/>
     <FundingCommentForm :fundingId="this.funding.id" ref="FundingCommentForm" />
   </div>
   <!-- <template v-if="check">
@@ -116,12 +119,14 @@ export default {
   height: 300vh;
 }
 
-.container {
+.nes-container {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
 }
 
 .funding-img {
   width: 300px;
+  
 }
 </style>

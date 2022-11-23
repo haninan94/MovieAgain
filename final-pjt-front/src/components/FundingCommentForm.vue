@@ -16,7 +16,7 @@
           v-model="fundingComment"
         />
         <br />
-        <button class="nes-btn">댓글 달기</button>
+        <button class="nes-btn is-warning">댓글 달기</button>
       </form>
     </div>
   </div>

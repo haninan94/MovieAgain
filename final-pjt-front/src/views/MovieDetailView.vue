@@ -38,6 +38,7 @@
 <script>
 import axios from "axios";
 import MovieCommentForm from "@/components/MovieCommentForm";
+import swal from 'sweetalert';
 
 const API_URL = "http://127.0.0.1:8000";
 
@@ -77,12 +78,13 @@ export default {
             this.genres.push(object.name);
           }
         })
-        .catch((err) => {
+        .catch(() => {
           this.$router.push({ name: "NotFound404"})
-          console.log(err);
+          swal("영화 데이터가 존재하지 않습니다", "다시 시도해 보세요.", "error")
         });
       if(!this.movie){
         this.$router.push({name: 'NotFound404'})
+        swal("영화 데이터가 존재하지 않습니다", "다시 시도해 보세요.", "error")
       }
     },
   },

@@ -7,7 +7,9 @@
         Create New Funding
       </button>
     </router-link>
-    <FundingList/>
+    <div class="container">
+      <FundingList/>
+    </div>
   </div>
 </template>
 
@@ -39,5 +41,10 @@ export default {
 #fundingview {
   width: 100vw;
   height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
 }
 </style>

@@ -3,7 +3,7 @@
     <router-link
       :to="{ name: 'FundingDetailView', params: { id: funding.id } }"
     >
-      <b-img class="test img" thumbnail fluid :src="imgUrl"></b-img>
+      <b-img style="height:300px;" class="test img" thumbnail fluid :src="imgUrl"></b-img>
     </router-link>
   </b-col>
 </template>

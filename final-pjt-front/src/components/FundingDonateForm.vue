@@ -3,19 +3,23 @@
     <div class="nes-select is-dark">
       <label for="dark_select" style="color: #fff">후원하기</label>
       <form class="donate-form" @submit.prevent="donateFunding">
-        <select required id="dark_select" v-model="donateMoney">
+        <select style="margin-bottom:10px;" required id="dark_select" v-model="donateMoney">
+          <option value="" disabled selected>가격을 선택해주세요.</option>
           <option :value="fundingMinimumMoney">{{ fundingMinimumMoney }}원</option>
           <option :value="fundingMinimumMoney + 10000">{{ fundingMinimumMoney + 10000 }}원</option>
           <option :value="fundingMinimumMoney + 20000">{{ fundingMinimumMoney + 20000 }}원</option>
         </select>
-        <br>
-        <button class="nes-btn">후원하기</button>
+        <span>
+          <button class="nes-btn is-primary">후원하기</button>
+        </span>
       </form>
     </div>
   </div>
 </template>
 
 <script>
+import swal from 'sweetalert';
+
 export default {
   name: "FundingDonateForm",
   data() {
@@ -25,11 +29,12 @@ export default {
   },
   props: {
     fundingMinimumMoney: Number,
+    fundingId: Number,
   },
   methods: {
     donateFunding() {
       if (!this.$store.state.token) {
-        this.$dialogs.alert("plz login");
+        swal("후원할 수 없습니다.", "로그인을 해주시기 바랍니다.", "warning");
         return;
       }
       const payload = {
@@ -45,7 +50,6 @@ export default {
 
 <style>
 #funding-donate-form {
-  width: 75% !important;
   margin: auto;
 }
 

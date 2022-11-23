@@ -1,11 +1,11 @@
 <template>
   <b-col class="container">
     <div class="funding-item">
-      <router-link :to="{ name: 'FundingDetailView', params: { id: funding.id } }">
-        <b-card class="funding-card" :title="funding.movie_title" :img-src="funding.poster_path">
+      <router-link style="text-decoration:none; color:black;" :to="{ name: 'FundingDetailView', params: { id: funding.id } }">
+        <b-card style="width:300px; height:700px;" class="funding-card" :title="funding.movie_title" :img-src="funding.poster_path">
           <b-progress :value="funding.now_money / funding.goal_money * 100" variant="info" striped :animated="animate"></b-progress>
-          <p>{{ ((funding.now_money / funding.goal_money) * 100).toFixed(1) }}%</p>
-          <p>{{ remainDate }} 일 남음 {{ funding.now_money }}원</p>
+            <p>{{ Math.ceil((funding.now_money / funding.goal_money) * 100) }}%</p>
+            <p>{{ remainDate }} 일 남음 {{ funding.now_money }}원</p>
         </b-card>
       </router-link>
     </div>
@@ -67,7 +67,4 @@ export default {
   margin-bottom: 1rem;
 }
 
-router-link {
-  text-decoration: none;
-}
 </style>
