@@ -13,7 +13,7 @@
     <router-link
       :to="{ name: 'FundingDetailView', params: { id: funding.id } }"
     >
-      <b-img class="documentaryimage" thumbnail fluid :src="imgUrl"></b-img>
+      <b-img class="funding-recommend-img" thumbnail fluid :src="imgUrl"></b-img>
     </router-link>
   </b-col>
 </template>
@@ -33,14 +33,16 @@ export default {
 </script>
 
 <style>
-.documentaryimage {
+.funding-recommend-img {
   -webkit-filter: grayscale(0) blur(0);
   filter: grayscale(0) blur(0);
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
+  width: 200px;
+  height: 300px;
 }
 
-.documentaryimage:hover {
+.funding-recommend-img:hover {
   -webkit-filter: grayscale(100%) blur(1px);
   filter: grayscale(100%) blur(1px);
 }

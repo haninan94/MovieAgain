@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="login">
     <h1>LogIn Page</h1>
     <form @submit.prevent="logIn">
       <label for="username"></label>
@@ -36,3 +36,10 @@ export default {
   }
 }
 </script>
+
+<style>
+#login {
+  width: 100vw;
+  height: 100vh;
+}
+</style>

@@ -1,8 +1,8 @@
 <template>
-  <div id="fundingdetail">
+  <div id="funding-detail">
     <div class="container">
       <div>
-        <img :src="funding?.poster_path" alt="" />
+        <img class="funding-img" :src="funding?.poster_path" alt="" />
       </div>
       <div>
         <div>
@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import FundingCommentForm from "@/components/FundingCommentForm";
 import FundingDonateForm from "@/components/FundingDonateForm";
 import dayjs from "dayjs";
@@ -100,8 +101,17 @@ export default {
 </script>
 
 <style>
+#funding-detail {
+  width: 100vw;
+  height: 300vh;
+}
+
 .container {
   display: flex;
   justify-content: space-evenly;
+}
+
+.funding-img {
+  width: 300px;
 }
 </style>

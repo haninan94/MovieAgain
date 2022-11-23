@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="profile">
     <h2>profile</h2>
     <p>your name : {{ getUserName }} </p>
     <p>당신이 가 참여한 펀딩 목록</p>
@@ -40,4 +40,7 @@ export default {
 </script>
 
 <style>
+#profile {
+  width: 100vw;
+}
 </style>
