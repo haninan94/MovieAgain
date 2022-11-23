@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="fundingview">
     <!-- <router-link :to="{ name: 'FundingSearchView'}">Search</router-link> -->
     <h1>진행중인 Funding List</h1>
     <router-link :to="{ name: 'FundingCreateView'}">
@@ -7,7 +7,9 @@
         Create New Funding
       </button>
     </router-link>
-    <FundingList/>
+    <div class="container">
+      <FundingList/>
+    </div>
   </div>
 </template>
 
@@ -36,4 +38,13 @@ export default {
 </script>
 
 <style>
+#fundingview {
+  width: 100vw;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
 </style>

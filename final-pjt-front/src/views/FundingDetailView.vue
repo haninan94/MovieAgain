@@ -58,6 +58,7 @@ import axios from "axios";
 import FundingCommentForm from "@/components/FundingCommentForm";
 import FundingDonateForm from "@/components/FundingDonateForm";
 import dayjs from "dayjs";
+
 const API_URL = "http://127.0.0.1:8000";
 export default {
   name: "FundingDetailView",
@@ -118,11 +119,13 @@ export default {
   width: 100vw;
   height: 300vh;
 }
+
 .nes-container {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
+
 .funding-img {
   width: 300px;
 }

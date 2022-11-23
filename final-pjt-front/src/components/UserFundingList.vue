@@ -1,5 +1,5 @@
 <template>
-  <b-container>
+  <b-container id="user-funding-list">
     <b-row>
     <UserFundingListItem
     v-for="userfunding in userfundings"
@@ -26,5 +26,4 @@ export default {
 </script>
 
 <style>
-
 </style>

@@ -1,9 +1,11 @@
 <template>
-  <div>
+  <div id="profile">
     <h2>profile</h2>
+    <p>---------------------</p>
     <p>your name : {{ getUserName }} </p>
-    <p>당신이 가 참여한 펀딩 목록</p>
-    <div>
+    <p>---------------------</p>
+    <div v-if="userFundings.length>0">
+      <p>👇{{getUserName}} 님이 펀딩 참여한 영화 목록👇</p>
       <UserFundingList/>
     </div>
   </div>
@@ -20,6 +22,9 @@ export default {
     return {};
   },
   computed: {
+    userFundings(){
+      return this.$store.state.userFundings
+    },
     getUserId(){
       return this.$store.state.userId
     },
@@ -40,4 +45,7 @@ export default {
 </script>
 
 <style>
+#profile {
+  width: 100vw;
+}
 </style>

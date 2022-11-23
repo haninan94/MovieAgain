@@ -9,11 +9,15 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import Carousel3d from 'vue-carousel-3d'
 import "nes.css/css/nes.min.css";
 import VueNesCss from 'vuenes.css'
+import 'v-slim-dialog/dist/v-slim-dialog.css'
+import SlimDialog from 'v-slim-dialog'
+
 
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(Carousel3d)
 Vue.use(VueNesCss)
+Vue.use(SlimDialog)
 
 Vue.config.productionTip = false
 

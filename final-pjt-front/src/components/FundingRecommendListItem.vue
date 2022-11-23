@@ -1,19 +1,9 @@
 <template>
-  <!-- <div>
-    <h5>{{ movie.id }}</h5>
-    <p>{{ movie.title }}</p>
-    <img :src="imgUrl" alt="" />
-    <br />
-    <router-link :to="{ name: 'MovieDetailView', params: { id: movie.id } }">
-      [DETAIL]
-    </router-link>
-    <hr />
-  </div> -->
   <b-col>
     <router-link
       :to="{ name: 'FundingDetailView', params: { id: funding.id } }"
     >
-      <b-img class="documentaryimage" thumbnail fluid :src="imgUrl"></b-img>
+      <b-img style="height:300px;" class="test img" thumbnail fluid :src="imgUrl"></b-img>
     </router-link>
   </b-col>
 </template>
@@ -33,15 +23,16 @@ export default {
 </script>
 
 <style>
-.documentaryimage {
-  -webkit-filter: grayscale(0) blur(0);
-  filter: grayscale(0) blur(0);
-  -webkit-transition: 0.3s ease-in-out;
-  transition: 0.3s ease-in-out;
+img {
+  transition: transform 0.25s;
 }
 
-.documentaryimage:hover {
-  -webkit-filter: grayscale(100%) blur(1px);
-  filter: grayscale(100%) blur(1px);
+.img {
+  width: 200px;
+  height: 300px;
+}
+
+.test:hover{
+  transform: scale(1.2);
 }
 </style>

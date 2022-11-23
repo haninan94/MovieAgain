@@ -16,7 +16,7 @@
           v-model="fundingComment"
         />
         <br />
-        <button>등록하기</button>
+        <button class="nes-btn is-warning">댓글 달기</button>
       </form>
     </div>
   </div>
@@ -24,6 +24,7 @@
 
 <script>
 import FundingCommentItem from "@/components/FundingCommentItem/";
+import swal from 'sweetalert';
 
 export default {
   name: "FundingCommentForm",
@@ -45,12 +46,15 @@ export default {
   },
   methods: {
     createFundingComment() {
+      if (!this.$store.state.token) {
+        swal('댓글을 달 수 없습니다 !', "로그인 해주세요", 'warning')
+        return;
+      }
       const newFundingComment = {
         user: this.$store.state.userId,
         content: this.fundingComment,
         funding: this.$route.params.id,
       };
-      console.log(newFundingComment);
       this.$store.dispatch("createFundingComment", newFundingComment);
       this.fundingComment = "";
     },

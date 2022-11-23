@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="bg-dark">
+  <div id="app" class="appclass">
     <nav>
       <router-link :to="{ name: 'MovieView' }">
         <button class="nes-btn is-success">HOME</button>
@@ -62,6 +62,10 @@ export default {
   color: whitesmoke;
   /* background-color: white; */
   /* font-family: "font-family you want to use"; */
+}
+
+.appclass {
+  background-color: #212529;
 }
 
 * {
