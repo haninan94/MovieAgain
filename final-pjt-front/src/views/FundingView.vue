@@ -15,7 +15,6 @@
         </p>
       </div>
     </div>
-
     <div class="container3">
       <FundingList/>
     </div>

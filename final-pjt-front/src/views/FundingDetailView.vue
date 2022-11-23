@@ -125,7 +125,6 @@ export default {
 <style>
 #funding-detail {
   width: 100vw;
-  height: 300vh;
 }
 
 .nes-container {
