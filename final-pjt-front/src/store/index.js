@@ -5,6 +5,7 @@ import router from '@/router'
 import createPersistedState from 'vuex-persistedstate'
 import 'v-slim-dialog/dist/v-slim-dialog.css'
 import SlimDialog from 'v-slim-dialog'
+import swal from 'sweetalert';
 
 
 Vue.use(Vuex)
@@ -278,7 +279,8 @@ export default new Vuex.Store({
             })
         })
         .catch(() => {
-          alert("ID와 Password가 정보와 일치하지 않습니다!")
+          swal('로그인 실패!', "아이디와 비밀번호를 확인해 주세요", 'error');
+          // alert("ID와 Password가 정보와 일치하지 않습니다!")
         })
     },
 

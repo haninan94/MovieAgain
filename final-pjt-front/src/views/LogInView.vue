@@ -37,6 +37,8 @@
 </template>
 
 <script>
+// import swal from 'sweetalert';
+
 export default {
   name: 'LogInView',
   data() {
@@ -49,17 +51,11 @@ export default {
     logIn() {
       const username = this.username
       const password = this.password
-      if (!username) {
-        this.$dialogs.alert("ID를 입력해주세요!")
-      } else if (!password) {
-        this.$dialogs.alert("비밀번호를 입력해주세요!")
-      } else {
-        const payload = {
-          username: username,
-          password: password,
-        }
-        this.$store.dispatch('logIn', payload)
+      const payload = {
+        username: username,
+        password: password,
       }
+      this.$store.dispatch('logIn', payload)
     }
   }
 }

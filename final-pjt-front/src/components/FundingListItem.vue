@@ -9,11 +9,6 @@
         </b-card>
       </router-link>
     </div>
-
-    <!-- <router-link :to="{ name: 'FundingDetailView', params: { id: funding.id } }" >
-      <img class="funding-item-img" :src="funding.poster_path" alt="">
-      <p>{{ funding.movie_title }}</p>
-    </router-link> -->
   </b-col>
 </template>
 
