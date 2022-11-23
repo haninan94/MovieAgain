@@ -20,13 +20,13 @@
             ></progress>
           </template>
           <h1>{{ funding.now_money }}원 / {{ funding.goal_money }}원</h1>
-          <h1>{{ funding.now_money / funding.goal_money * 100 }}% 달성!!</h1>
+          <h1>{{ (funding.now_money / funding.goal_money) * 100 }}% 달성!!</h1>
           {{ remainDate }}일 남았다!!
         </div>
       </div>
     </div>
     <router-link :to="{ name: 'FundingView' }">뒤로가기</router-link>
-    <FundingDonateForm/>
+    <FundingDonateForm />
     <FundingCommentForm :fundingId="this.funding.id" ref="FundingCommentForm" />
   </div>
   <!-- <template v-if="check">
@@ -40,9 +40,15 @@
 <script>
 import axios from 'axios'
 import FundingCommentForm from "@/components/FundingCommentForm";
+<<<<<<< HEAD
 import FundingDonateForm from '@/components/FundingDonateForm'
 import dayjs from 'dayjs'
 import axios from 'axios'
+=======
+import FundingDonateForm from "@/components/FundingDonateForm";
+import dayjs from "dayjs";
+import axios from "axios";
+>>>>>>> e6c6b03dc41d52b3815d9a998596e07d367598b3
 
 const API_URL = "http://127.0.0.1:8000";
 
@@ -55,7 +61,7 @@ export default {
   data() {
     return {
       fundingMoney: 0,
-      remainDate: '',
+      remainDate: "",
     };
   },
   computed: {
@@ -72,14 +78,17 @@ export default {
       axios({
         method: "get",
         url: `${API_URL}/api/v2/fundings/${this.$route.params.id}`,
-      })
-        .then((res) => {
-          const expiredDate = res.data.expired_date.split("-").map(str => Number(str))
-          const todayDate = dayjs().format("YYYY-MM-DD").split("-").map(str => Number(str))
-          const remainDate = (new Date(expiredDate) - new Date(todayDate))
-          this.remainDate = remainDate / 1000 / 60 / 60 / 24
-        })
-
+      }).then((res) => {
+        const expiredDate = res.data.expired_date
+          .split("-")
+          .map((str) => Number(str));
+        const todayDate = dayjs()
+          .format("YYYY-MM-DD")
+          .split("-")
+          .map((str) => Number(str));
+        const remainDate = new Date(expiredDate) - new Date(todayDate);
+        this.remainDate = remainDate / 1000 / 60 / 60 / 24;
+      });
     },
     // getFundingMoney(payload) {
     //   console.log("Yes")
@@ -88,7 +97,7 @@ export default {
   },
   created() {
     this.getFundingDetail();
-    this.getDday()
+    this.getDday();
   },
   updated() {
     this.$refs.FundingCommentForm.getFundingComments();
