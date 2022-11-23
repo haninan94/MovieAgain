@@ -47,7 +47,7 @@ def funding_list(request):
 def funding_recommend_list(request):
     if request.method == 'GET':
 
-        fundings = Funding.objects.all().order_by('expired_date')
+        fundings = Funding.objects.all().order_by('expired_date')[:5]
 
         serializer = FundingSerializer(fundings, many=True)
         return Response(serializer.data)
