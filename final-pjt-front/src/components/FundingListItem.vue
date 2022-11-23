@@ -67,4 +67,7 @@ export default {
   margin-bottom: 1rem;
 }
 
+.card-title {
+  font-size: 24px;
+}
 </style>

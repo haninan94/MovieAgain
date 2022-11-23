@@ -12,14 +12,14 @@
       </template>
       <template v-else>
         <router-link :to="{ name: 'SignUpView' }">
-          <button class="nes-btn is-primary">SIGNUP</button>
+          <button class="nes-btn">SIGNUP</button>
         </router-link>
         <router-link :to="{ name: 'LogInView' }">
           <button class="nes-btn is-primary">LOGIN</button>
         </router-link>
       </template>
       <router-link :to="{ name: 'FundingView' }">
-        <button class="nes-btn is-warning">FUND</button>
+        <button class="nes-btn is-warning">FUNDING</button>
       </router-link>
       <!-- <router-link :to="{ name: 'FundingSearchView'}">Search</router-link> -->
     </nav>
