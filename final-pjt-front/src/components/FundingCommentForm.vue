@@ -45,12 +45,19 @@ export default {
   },
   methods: {
     createFundingComment() {
+      if (!this.$store.state.token) {
+        alert("plz login");
+        return;
+      }
       const newFundingComment = {
         user: this.$store.state.userId,
         content: this.fundingComment,
         funding: this.$route.params.id,
       };
+<<<<<<< HEAD
       // console.log(newFundingComment);
+=======
+>>>>>>> 73a1f1f30089f58d9bce36f912784c1e171518c2
       this.$store.dispatch("createFundingComment", newFundingComment);
       this.fundingComment = "";
     },

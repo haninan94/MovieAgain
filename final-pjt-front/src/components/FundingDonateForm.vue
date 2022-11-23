@@ -27,6 +27,10 @@ export default {
   },
   methods: {
     donateFunding() {
+      if (!this.$store.state.token) {
+        alert("plz login");
+        return;
+      }
       const payload = {
         fundingId: this.$route.params.id,
         user: this.$store.state.userId,
