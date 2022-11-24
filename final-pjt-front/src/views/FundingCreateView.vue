@@ -59,7 +59,7 @@
           class="mx-2"
         >
         </b-form-datepicker>
-        <button class="nes-btn is-error">생성하기</button>
+        <button @click="onPlay" class="nes-btn is-error">생성하기</button>
       </form>
     </div>
     
@@ -105,6 +105,10 @@ export default {
       this.$store.dispatch("createFunding", payload)
       }
     },
+    onPlay() {
+      const audio = document.querySelector("audio")
+      audio.play()
+    }
   },
 }
 </script>

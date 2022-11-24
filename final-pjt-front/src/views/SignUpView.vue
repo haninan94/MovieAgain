@@ -37,7 +37,7 @@
         </b-form-input>
       </b-form-group>
       <br />
-      <b-button type="submit" variant="outline-primary">회원가입</b-button>
+      <b-button @click="onPlay" type="submit" variant="outline-primary">회원가입</b-button>
     </b-form>
   </div>
 </template>
@@ -90,6 +90,10 @@ export default {
         this.$store.dispatch("signUp", payload);
       }
     },
+    onPlay() {
+      const audio = document.querySelector("audio")
+      audio.play()
+    }
   },
 };
 </script>

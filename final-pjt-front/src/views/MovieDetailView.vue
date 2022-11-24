@@ -31,7 +31,9 @@
       <div class="moviedetail2">
         <!-- Go to Back -->
         <router-link :to="{ name: 'MovieView' }">
-          <button class="nes-btn is-primary">Back</button>
+          <button @click="onPlay" class="nes-btn is-primary">Back
+            <audio id="audio" src="../assets/tfile.mp3"></audio>
+          </button>
         </router-link>
         <!-- Movie Comment -->
         <MovieCommentForm ref="MovieCommentForm"></MovieCommentForm>
@@ -91,6 +93,10 @@ export default {
         swal("영화 데이터가 존재하지 않습니다", "다시 시도해 보세요.", "error")
       }
     },
+    onPlay() {
+      const audio = document.querySelector("audio")
+      audio.play()
+    }
   },
 };
 </script>

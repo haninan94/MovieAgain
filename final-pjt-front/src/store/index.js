@@ -43,30 +43,6 @@ export default new Vuex.Store({
     getFundingDetail(state) {
       return state.funding
     },
-    // getIsCompleted(state) {
-      // console.log('**********************')
-      // const remainMoney = state.funding.goal_money - state.funding.now_money
-      // const remainDate = state.funding.remainDate
-      // console.log(remainDate)
-      // if (remainDate <= 0) {
-      //   if (remainMoney <= 0) {
-      //     return true
-      //   } else {
-      //     return false
-      //   }
-      // } else {
-      //   if (remainMoney > 0) {
-      //     return 'ing'
-      //   } else {
-      //     return true
-      //   }
-      // }
-      // if (remainMoney <= 0) {
-      //   return true
-      // } else {
-      //   return false
-      // }
-    // }
     // 펀딩 완료 여부 확인
     getIsCompleted(state) {
       const remainMoney = state.funding.goal_money - state.funding.now_money
@@ -122,9 +98,29 @@ export default new Vuex.Store({
     },
     // 로그아웃
     LOGOUT(state) {
-      state.token = null
-      state.userId = null
-      state.username = null
+      swal({
+        title: "로그아웃 알림",
+        text: "정말 로그아웃 하시겠습니까?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          state.token = null
+          state.userId = null
+          state.username = null
+          swal("로그아웃이 완료되었습니다.", {
+            icon: "success",
+          })
+          router.push({ name: 'MovieView' })
+        } else {
+          swal("로그아웃 실패", "다시 시도해 주시기 바랍니다.", "error")
+        }
+
+      })
+
+
     },
     // user id 저장
     SAVE_USERID(state, userId) {
@@ -412,9 +408,6 @@ export default new Vuex.Store({
             .then((res) => {
               context.commit('GET_MOVIE_COMMENTS', res.data)
             })
-            .catch((err) => {
-              console.log(err)
-            })
         })
     },
     // 펀딩 댓글 가져오기
@@ -467,9 +460,6 @@ export default new Vuex.Store({
           })
             .then((res) => {
               context.commit('GET_FUNDING_COMMENTS', res.data)
-            })
-            .catch((err) => {
-              console.log(err)
             })
         })
     },

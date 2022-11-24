@@ -22,17 +22,6 @@ export default {
 </script>
 
 <style>
-/* .romanceimage {
-  -webkit-filter: grayscale(0) blur(0);
-	filter: grayscale(0) blur(0);
-	-webkit-transition: .3s ease-in-out;
-	transition: .3s ease-in-out;
-}
-
-.romanceimage:hover {
-  -webkit-filter: grayscale(100%) blur(1px);
-	filter: grayscale(100%) blur(1px)
-} */
 img {
   transition: transform 0.25s;
 }

@@ -22,7 +22,8 @@
         ></b-form-input>
       </b-form-group>
       <br>
-      <b-button type="submit" variant="outline-primary">로그인</b-button>
+      <b-button @click="onPlay" type="submit" variant="outline-primary">로그인
+      </b-button>
     </b-form>
   </div>
 </template>
@@ -46,8 +47,12 @@ export default {
         password: password,
       }
       this.$store.dispatch('logIn', payload)
-    }
-  }
+    },
+    onPlay() {
+      const audio = document.querySelector("audio")
+      audio.play()
+    },
+  },
 }
 </script>
 

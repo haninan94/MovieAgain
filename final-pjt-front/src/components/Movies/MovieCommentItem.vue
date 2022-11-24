@@ -35,16 +35,6 @@ export default {
     },
   },
   methods: {
-    // deleteMovieComment(movieComment, event) {
-    //   event.preventDefault();
-    //   const payload = {
-    //     movieCommentId: movieComment.id,
-    //     userId: movieComment.user,
-    //   };
-    //   // this.$store.dispatch("deleteComment", payload);
-    //   // this.$router.push({ name: "MovieDetailView", params: { id: movieId } });
-    //   this.$emit("deleteMovieComment", payload);
-    // },
     deleteMovieComment(commentId, movieId) {
       const payload = {
         commentId: commentId,

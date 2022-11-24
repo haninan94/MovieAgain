@@ -15,7 +15,7 @@
           class="nes-input is-dark"
           v-model="fundingComment"
         />
-        <button class="nes-btn is-warning">댓글 달기</button>
+        <button @click="onPlay" class="nes-btn is-warning">댓글 달기</button>
       </form>
     </div>
   </div>
@@ -60,6 +60,10 @@ export default {
     getFundingComments() {
       const fundingId = this.$route.params.id;
       this.$store.dispatch("getFundingComments", fundingId);
+    },
+    onPlay() {
+      const audio = document.querySelector("audio")
+      audio.play()
     },
   },
 };

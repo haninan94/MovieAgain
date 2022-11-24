@@ -4,30 +4,32 @@
     <nav>
     <div class="container">
       <router-link :to="{ name: 'MovieView' }">
-        <img id="logo-img" src="./assets/Group 97 (2).svg" alt="">
+        <img id="logo-img" src="./assets/teamlogo.svg" alt="">
       </router-link>
     </div>
       <!-- 메인 페이지 -->
       <router-link :to="{ name: 'MovieView' }">
-        <button class="nes-btn is-success">HOME</button>
+        <button @click="onPlay" class="nes-btn is-success">HOME
+          <audio id="audio" src="./assets/tfile.mp3"></audio>
+        </button>
       </router-link>
       <router-link :to="{ name: 'FundingView' }">
-        <button class="nes-btn is-warning">FUNDING</button>
+        <button @click="onPlay" class="nes-btn is-warning">FUNDING</button>
       </router-link>
       <!-- 로그인 상태일 시 : LOGOUT, MYPAGE -->
       <template v-if="check">
-        <button class="nes-btn is-primary" @click="logOut">LOGOUT</button>
         <router-link :to="{ name: 'ProfileView', params: { id: userid } }">
-          <button class="nes-btn">MYPAGE</button>
+          <button @click="onPlay" class="nes-btn">MYPAGE</button>
         </router-link>
+        <button class="nes-btn is-primary" @click="logOut">LOGOUT</button>
       </template>
       <!-- 로그아웃 상태일 시 : SIGNUP, LOGIN -->
       <template v-else>
         <router-link :to="{ name: 'SignUpView' }">
-          <button class="nes-btn">SIGNUP</button>
+          <button @click="onPlay" class="nes-btn">SIGNUP</button>
         </router-link>
         <router-link :to="{ name: 'LogInView' }">
-          <button class="nes-btn is-primary">LOGIN</button>
+          <button @click="onPlay" class="nes-btn is-primary">LOGIN</button>
         </router-link>
       </template>
       <!-- 펀딩 페이지 -->
@@ -50,7 +52,13 @@ export default {
   methods: {
     logOut() {
       this.$store.commit("LOGOUT");
+      const audio = document.querySelector("audio")
+      audio.play()
     },
+    onPlay() {
+      const audio = document.querySelector("audio")
+      audio.play()
+    }
   },
   created() {
     this.$store.dispatch("getMovies");
@@ -103,5 +111,10 @@ nav a {
   position: absolute;
   top: 0px;
   left: 100px;
+}
+
+.music {
+  display: absolute;
+  right: 0px;
 }
 </style>

@@ -37,6 +37,8 @@ export default {
   },
   methods: {
     deleteFundingComment(commentId, fundingId) {
+      const audio = document.querySelector("audio")
+      audio.play()
       const payload = {
         commentId: commentId,
         fundingId: fundingId,

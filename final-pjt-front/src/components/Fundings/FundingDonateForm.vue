@@ -11,7 +11,7 @@
           <option :value="fundingMinimumMoney + 20000">{{ fundingMinimumMoney + 20000 }}원</option>
         </select>
         <span>
-          <button id="donate-button" class="nes-btn is-primary">펀딩하기</button>
+          <button @click="onPlay" id="donate-button" class="nes-btn is-primary">펀딩하기</button>
         </span>
       </form>
     </div>
@@ -50,6 +50,10 @@ export default {
       };
       this.$store.dispatch("donateFunding", payload);
     },
+    onPlay() {
+      const audio = document.querySelector("audio")
+      audio.play()
+    }
   },
 };
 </script>

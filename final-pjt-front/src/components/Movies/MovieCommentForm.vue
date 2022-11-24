@@ -12,7 +12,7 @@
           <label for="movie-comment"></label>
           <input type="text" id="movie-comment" class="nes-input is-dark" v-model="movieComment" />
           <br>
-          <button>댓글 달기</button>
+          <button @click="onPlay">댓글 달기</button>
         </form>
       </div>
   </div>
@@ -39,9 +39,6 @@ export default {
       movieComment: "",
     };
   },
-  // created() {
-  //   this.getMovieComments();
-  // },
   methods: {
     createMovieComment() {
       const newMovieComment = {
@@ -56,6 +53,10 @@ export default {
       const movieId = this.$route.params.id;
       this.$store.dispatch("getMovieComments", movieId);
     },
+    onPlay() {
+      const audio = document.querySelector("audio")
+      audio.play()
+    }
   },
 };
 </script>

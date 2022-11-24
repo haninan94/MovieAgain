@@ -7,7 +7,7 @@
         </div>
         <div v-else-if="isCompleted==='complete'" class="parent">
           <img class="funding-img child" :src="funding?.poster_path" alt=""/>
-          <img src="../assets/Group 98.svg" alt="" style="width: 300px" class="child completed">
+          <img src="../assets/completed.svg" alt="" style="width: 300px" class="child completed">
         </div>
         <div v-else-if="isCompleted==='ing'">
           <img class="funding-img" :src="funding?.poster_path" alt="" />
@@ -58,7 +58,7 @@
       </div>
     </div>
     <router-link :to="{ name: 'FundingView' }">
-      <button class="nes-btn is-error">뒤로 가기</button>
+      <button @click="onPlay" class="nes-btn is-error">뒤로 가기</button>
     </router-link>
     <FundingCommentForm :fundingId="this.funding.id" ref="FundingCommentForm" />
   </div>
@@ -140,9 +140,12 @@ export default {
         const remainDate = new Date(expiredDate) - new Date(todayDate);
         this.remainDate = remainDate / 1000 / 60 / 60 / 24;
         this.$store.state.remainDate = this.remainDate
-
       });
     },
+    onPlay() {
+      const audio = document.querySelector("audio")
+      audio.play()
+    }
   },
   created() {
     this.getFundingDetail();

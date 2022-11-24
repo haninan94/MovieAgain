@@ -11,7 +11,7 @@
         </form>
         <p style="margin-right:2rem">
           <router-link :to="{ name: 'FundingCreateView'}">
-            <button class="nes-btn is-error">
+            <button @click="onPlay" class="nes-btn is-error">
               펀딩 만들기
             </button>
           </router-link>  
@@ -50,6 +50,10 @@ export default {
     },
     searchFunding() {
       this.$store.dispatch('searchFunding', this.searchWord)
+    },
+    onPlay() {
+      const audio = document.querySelector("audio")
+      audio.play()
     }
   },
 };
