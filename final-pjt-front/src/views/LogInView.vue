@@ -1,15 +1,6 @@
+<!-- Login View -->
 <template>
   <div id="login">
-    <!-- <h1>로그인 페이지</h1>
-    <form @submit.prevent="logIn">
-      <label for="username"></label>
-      <input type="text" id="username" v-model.trim="username" placeholder="ID"><br>
-
-      <label for="password"></label>
-      <input type="password" id="password" v-model.trim="password" placeholder="Password"><br>
-
-      <button class="nes-btn">LOGIN</button>
-    </form> -->
     <b-form @submit.prevent="logIn">
       <h1>로그인</h1>
       <b-form-group id="input-group-1" label="아이디" label-for="input-1">
@@ -37,7 +28,6 @@
 </template>
 
 <script>
-// import swal from 'sweetalert';
 
 export default {
   name: 'LogInView',

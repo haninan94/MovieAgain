@@ -1,3 +1,4 @@
+<!-- Movie List Item -->
 <template slot-scope="{ index, isCurrent, leftIndex, rightIndex}">
   <slide :index="index">
     <figure>

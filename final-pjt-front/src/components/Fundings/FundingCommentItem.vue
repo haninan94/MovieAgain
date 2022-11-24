@@ -1,3 +1,4 @@
+<!-- Funding Comment Item -->
 <template>
   <div class="funding-comment-item-top">
     <div class="funding-comment-item">
@@ -44,7 +45,6 @@ export default {
     },
   },
 };
-// fundingCommentItem 완
 </script>
 
 <style>

@@ -1,7 +1,9 @@
+<!-- Movie Detail View -->
 <template>
   <div>
     <div>
       <div class="moviedetail">
+        <!-- Movie Poster -->
         <div class="border border-dark mx-3">
           <img class="poster" :src="img_url" alt="이미지 자리" />
         </div>
@@ -9,6 +11,7 @@
           border-variant="dark"
           class="nes-container is-rounded is-dark me-3"
         >
+        <!-- Movie Information -->
           <p>제목 : {{ movie?.title }}</p>
           <p>{{ movie?.overview }}</p>
           <p>개봉일 : {{ movie?.release_date }}</p>
@@ -26,9 +29,11 @@
         </b-card>
       </div>
       <div class="moviedetail2">
+        <!-- Go to Back -->
         <router-link :to="{ name: 'MovieView' }">
           <button class="nes-btn is-primary">Back</button>
         </router-link>
+        <!-- Movie Comment -->
         <MovieCommentForm ref="MovieCommentForm"></MovieCommentForm>
       </div>
     </div>
@@ -37,7 +42,7 @@
 
 <script>
 import axios from "axios";
-import MovieCommentForm from "@/components/MovieCommentForm";
+import MovieCommentForm from "@/components/Movies/MovieCommentForm";
 import swal from 'sweetalert';
 
 const API_URL = "http://127.0.0.1:8000";
@@ -69,7 +74,6 @@ export default {
         url: `${API_URL}/api/v1/movies/${this.$route.params.id}`,
       })
         .then((res) => {
-          // console.log(res);
           this.movie = res.data;
           this.img_url =
             "https://image.tmdb.org/t/p/w300_and_h450_bestv2" +

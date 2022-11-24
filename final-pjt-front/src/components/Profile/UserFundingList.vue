@@ -1,3 +1,4 @@
+<!-- User Funding List -->
 <template>
   <b-container id="user-funding-list">
     <b-row>
@@ -10,7 +11,7 @@
 </template>
 
 <script>
-import UserFundingListItem from '@/components/UserFundingListItem'
+import UserFundingListItem from '@/components/Profile/UserFundingListItem'
 
 export default {
   name:'UserFundingList',

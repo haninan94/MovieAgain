@@ -1,3 +1,4 @@
+<!-- Adventure Movie List Item -->
 <template>
   <b-col>
     <router-link :to="{ name: 'MovieDetailView', params: { id: movie.id } }">

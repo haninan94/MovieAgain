@@ -1,3 +1,4 @@
+<!-- Funding List -->
 <template>
   <b-container fluid class="p-4 bg-dark border-top border-danger">
     <b-row>
@@ -11,7 +12,7 @@
 </template>
 
 <script>
-import FundingListItem from '@/components/FundingListItem'
+import FundingListItem from '@/components/Fundings/FundingListItem'
 export default {
   name:'FundingList',
   components:{

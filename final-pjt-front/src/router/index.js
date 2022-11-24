@@ -6,7 +6,6 @@ import MovieView from '@/views/MovieView'
 import MovieDetailView from '@/views/MovieDetailView'
 import FundingView from '@/views/FundingView'
 import FundingDetailView from '@/views/FundingDetailView'
-import FundingSearchView from '@/views/FundingSearchView'
 import ProfileView from '@/views/ProfileView'
 import FundingCreateView from '@/views/FundingCreateView'
 import store from '@/store'
@@ -20,11 +19,6 @@ const routes = [
     path: '/signup',
     name: 'SignUpView',
     component: SignUpView
-  },
-  {
-    path: '/404',
-    name: 'NotFound404',
-    component: NotFound404
   },
   {
     path: '/login',
@@ -52,11 +46,6 @@ const routes = [
     component: FundingDetailView
   },
   {
-    path: '/fundings/search',
-    name: 'FundingSearchView',
-    component: FundingSearchView
-  },
-  {
     path: '/profile/:id',
     name: 'ProfileView',
     component: ProfileView
@@ -64,27 +53,24 @@ const routes = [
   {
     path: '/fundings/create',
     name: 'FundingCreateView',
-
+    
     component: FundingCreateView
+  },
+  {
+    path: '/404',
+    name: 'NotFound404',
+    component: NotFound404
   },
   {
     path: '*',
     redirect: '/404'
   }
-
 ]
-// const scrollBehavior = (to, from, savedPosition) => {
-//   return savedPosition || { top: 0, left: 0 }
-// }
 
 const router = new VueRouter({
   mode: 'history',
-  // scrollBehavior() {
-  //   return { x: 0, y: 0 }
-  // },
   base: process.env.BASE_URL,
   routes,
-  // scrollBehavior,
 })
 
 
@@ -95,7 +81,7 @@ router.beforeEach((to, from, next) => {
   const isAuthRequired = authPages.includes(to.name)
 
   if (isAuthRequired && !isLoggedIn) {
-    swal("펀딩을 작성할 수 없습니다.", "로그인이 필요합니다.", "error")
+    swal("펀딩을 만들 수 없습니다.", "로그인이 필요합니다.", "error")
     next({ name: 'LogInView' })
   } else {
     next()

@@ -1,6 +1,6 @@
+<!-- Funding Comment Form -->
 <template>
   <div class="funding-comment-form">
-    <!-- <p id="idTag">{{ fundingId }}번째 펀딩글</p> -->
     <FundingCommentItem
       v-for="fundingComment in fundingComments"
       :key="fundingComment.id + Math.random()"
@@ -15,7 +15,6 @@
           class="nes-input is-dark"
           v-model="fundingComment"
         />
-        <br />
         <button class="nes-btn is-warning">댓글 달기</button>
       </form>
     </div>
@@ -23,7 +22,7 @@
 </template>
 
 <script>
-import FundingCommentItem from "@/components/FundingCommentItem/";
+import FundingCommentItem from "@/components/Fundings/FundingCommentItem/";
 import swal from 'sweetalert';
 
 export default {
@@ -68,7 +67,7 @@ export default {
 
 <style>
 #funding-comment {
-  width: 75%;
+  width: 50%;
   margin-bottom: 2rem;
 }
 </style>

@@ -17,9 +17,9 @@
             <div v-if="isCompleted==='ing'" id="d-day">
               <span id="d-day-span">D-{{ remainDate }}</span>  
             </div>
-            <!-- <div v-else-if="isCompleted" id="d-day"> -->
+            <div v-else-if="isCompleted" id="d-day">
               <!-- <span id="d-day-span">D-{{ remainDate }}</span>   -->
-            <!-- </div> -->
+            </div>
             <p>영화 제목 : {{ funding.movie_title }}</p>
             <p>{{ funding.content }}</p>
             <br />
@@ -36,7 +36,7 @@
                   class="mt-2"
                 ></b-progress>
               </div>
-              <!-- <p>{{ isCompleted }}</p> -->
+              <p>{{ isCompleted }}</p>
             </template>
 
             <div id="money">
@@ -48,7 +48,7 @@
               </div>
             </div>
             <FundingDonateForm 
-              v-if="isCompleted==='ing'"
+              v-if="isCompleted"
               :fundingMinimumMoney="this.funding.minimum_money"
               :fundingId="funding.id"
             />
