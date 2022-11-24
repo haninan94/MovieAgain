@@ -12,6 +12,7 @@ urlpatterns = [
     path('fundings/comments/<int:comment_pk>/', views.comment_detail),
     path('fundings/<int:funding_pk>/commentcreate/', views.comment_create),
     path('fundings/<int:funding_pk>/comments/', views.funding_comment_list),
+    path('fundings/search/', views.funding_search),
     # # 필수 작성
     path('schema/', SpectacularAPIView.as_view(), name='schema'),
     # # optional UI

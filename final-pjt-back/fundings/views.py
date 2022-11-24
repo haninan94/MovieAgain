@@ -157,3 +157,13 @@ def funding_comment_list(request, funding_pk):
         comment = Comment.objects.filter(funding_id=funding_pk)
         serializer = CommentListSerializer(comment, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+@api_view(['GET'])
+def funding_search(request):
+    if request.method == 'GET':
+        print('******************************************************************')
+        word = request.GET.get('searchword')
+        print(word)
+        fundings = Funding.objects.filter(movie_title__contains=word)
+        serializer = FundingListSerializer(fundings, many=True)
+        return Response(serializer.data)

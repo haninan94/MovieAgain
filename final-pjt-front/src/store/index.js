@@ -162,6 +162,10 @@ export default new Vuex.Store({
       state.funding = funding
       state.remainMoney = funding.goal_money - funding.now_money
     },
+    SEARCH_FUNDING (state, fundings) {
+      state.fundings = fundings
+    }
+
   },
   actions: {
     // 메인 영화 데이터 가져오기
@@ -551,6 +555,18 @@ export default new Vuex.Store({
           }
         })
     },
+    searchFunding(context, searchword) {
+      axios({
+        method: "get",
+        url: `${API_URL}/api/v2/fundings/search/`,
+        params: {
+          searchword: searchword
+        },
+      })
+        .then((res) => {
+          context.commit('SEARCH_FUNDING', res.data)
+        })
+    }
   },
   modules: {
   }
