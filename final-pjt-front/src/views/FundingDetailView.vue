@@ -13,7 +13,7 @@
           <img class="funding-img" :src="funding?.poster_path" alt="" />
         </div>
         <div>
-          <div>
+          <div style="margin-left: 50px; margin-right: 50px;">
             <div v-if="isCompleted==='ing'" id="d-day">
               <span id="d-day-span">D-{{ remainDate }}</span>  
             </div>
@@ -21,12 +21,13 @@
               <!-- <span id="d-day-span">D-{{ remainDate }}</span>   -->
             </div>
             <p>영화 제목 : {{ funding.movie_title }}</p>
+            <hr>
             <p>{{ funding.content }}</p>
             <br />
           </div>
           <div>
             <template>
-              <div>
+              <div style="margin-left: 30px; margin-right: 30px;">
                 <p>{{ Math.ceil((funding.now_money / funding.goal_money) * 100) }}%</p>
                 <b-progress
                   :value="(funding.now_money / funding.goal_money) * 100"
@@ -36,10 +37,9 @@
                   class="mt-2"
                 ></b-progress>
               </div>
-              <p>{{ isCompleted }}</p>
             </template>
 
-            <div id="money">
+            <div id="money" style="margin-left: 50px; margin-right: 50px; margin-top: 15px;">
               <div>
                 <span>{{ funding.goal_money }}원 목표</span>
               </div>

@@ -24,6 +24,7 @@
           <p>
             {{ Math.ceil((funding.now_money / funding.goal_money) * 100) }}%
           </p>
+          <hr>
           <div class="detail">
             <p>{{ remainDate }} 일 남음</p>
             <p style="font-size: 24px">{{ funding.now_money }}원</p>
@@ -47,6 +48,7 @@
           <p>
             {{ Math.ceil((funding.now_money / funding.goal_money) * 100) }}%
           </p>
+          <hr>
           <div class="detail">
             <p>기간 만료</p>
             <p style="font-size: 24px">{{ funding.now_money }}원</p>
@@ -68,6 +70,7 @@
           <p>
             {{ Math.ceil((funding.now_money / funding.goal_money) * 100) }}%
           </p>
+          <hr>
           <div class="detail">
             <p>펀딩 완료</p>
             <p style="font-size: 24px">{{ funding.now_money }}원</p>
@@ -126,6 +129,11 @@ export default {
   font-size: 16px;
   text-align: center;
   position: absolute;
+
+}
+
+.funding-card:hover{
+  transform: scale(1.1);
 }
 
 .container {
