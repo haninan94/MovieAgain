@@ -51,6 +51,7 @@
               v-if="isCompleted"
               :fundingMinimumMoney="this.funding.minimum_money"
               :fundingId="funding.id"
+              :remainDate="remainDate"
             />
           </div>
         </div>
@@ -70,8 +71,8 @@
 </template>
 <script>
 import axios from "axios";
-import FundingCommentForm from "@/components/FundingCommentForm";
-import FundingDonateForm from "@/components/FundingDonateForm";
+import FundingCommentForm from "@/components/Fundings/FundingCommentForm";
+import FundingDonateForm from "@/components/Fundings/FundingDonateForm";
 import dayjs from "dayjs";
 
 const API_URL = "http://127.0.0.1:8000";
@@ -93,7 +94,6 @@ export default {
       return this.$store.getters.getFundingDetail;
     },
     isCompleted() {
-      console.log(this.$store.state.remainMoney)
       if (this.remainDate <= 0) {
         if (this.$store.state.remainMoney <= 0) {
           return 'complete'

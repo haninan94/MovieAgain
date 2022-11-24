@@ -7,9 +7,9 @@
         style="text-decoration: none; color: black"
         :to="{ name: 'FundingDetailView', params: { id: funding.id } }"
       >
-        <!-- 1. 기간이 남았고, 펀딩에 필요한 돈이 충족되지 않았을 때 -->
+        <!-- 1. 기간이 남았을 때 -->
         <b-card
-          v-if="remainDate > 0 && funding.now_money < funding.goal_money"
+          v-if="remainDate > 0"
           style="width: 300px; height: 100%;"
           class="funding-card"
           :title="funding.movie_title"
@@ -34,7 +34,7 @@
           id="item3"
           v-else-if="remainDate <= 0 && funding.now_money < funding.goal_money"
           style="width: 300px; height: 100%; filter: grayscale(100%);"
-          class="funding-card"
+          class="funding-card fail"
           :title="funding.movie_title"
           :img-src="funding.poster_path"
         >
@@ -53,28 +53,26 @@
           </div>
         </b-card>
         <!-- 3. 기간이 지났고, 펀딩에 필요한 돈이 충족되었을 때 -->
-        <div v-else-if="remainDate <= 0 && funding.now_money >= funding.goal_money">
-          <b-card
-            style="width: 300px; height: 100%;"
-            class="funding-card"
-            :title="funding.movie_title"
-            :img-src="funding.poster_path"
-          >
-            <b-progress
-              :value="(funding.now_money / funding.goal_money) * 100"
-              variant="info"
-              striped
-              :animated="animate"
-            ></b-progress>
-            <p>
-              {{ Math.ceil((funding.now_money / funding.goal_money) * 100) }}%
-            </p>
-            <div class="detail">
-              <p>기간 만료</p>
-              <p style="font-size: 24px">{{ funding.now_money }}원</p>
-            </div>
-          </b-card>
-        </div>
+        <b-card v-else-if="remainDate <= 0 && funding.now_money >= funding.goal_money"
+          style="width: 300px; height: 100%;"
+          class="funding-card success"
+          :title="funding.movie_title"
+          :img-src="funding.poster_path"
+        >
+          <b-progress
+            :value="(funding.now_money / funding.goal_money) * 100"
+            variant="info"
+            striped
+            :animated="animate"
+          ></b-progress>
+          <p>
+            {{ Math.ceil((funding.now_money / funding.goal_money) * 100) }}%
+          </p>
+          <div class="detail">
+            <p>기간 만료</p>
+            <p style="font-size: 24px">{{ funding.now_money }}원</p>
+          </div>
+        </b-card>
       </router-link>
     </div>
   </b-col>
@@ -91,7 +89,7 @@ export default {
   data() {
     return {
       animate: true,
-      remainDate: "",
+      remainDate: null,
     };
   },
   computed: {},
@@ -127,7 +125,7 @@ export default {
   width: 300px;
   font-size: 16px;
   text-align: center;
-  position: relative;
+  position: absolute;
 }
 
 .container {
@@ -147,6 +145,7 @@ export default {
 .box {
   position: relative;
 }
+
 
 /* .card-img {
   background: url(../../assets/completed.png);
