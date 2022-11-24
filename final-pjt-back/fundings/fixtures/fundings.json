@@ -73,5 +73,20 @@
       "expired_date": "2022-11-10",
       "created_at": "2022-11-23"
     }
+  },
+  {
+    "model": "fundings.funding",
+    "pk": 6,
+    "fields": {
+      "goal_money": 200000,
+      "minimum_money": 30000,
+      "now_money": 0,
+      "poster_path": "https://upload.wikimedia.org/wikipedia/ko/f/f2/%EC%96%B4%EB%B2%A4%EC%A0%B8%EC%8A%A4-_%EC%97%94%EB%93%9C%EA%B2%8C%EC%9E%84_%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg",
+      "movie_title": "어벤져스: 엔드게임",
+      "content": "어벤져스 게임 다시보실분123123",
+      "user_id": 2,
+      "expired_date": "2022-11-03",
+      "created_at": "2022-10-01"
+    }
   }
 ]

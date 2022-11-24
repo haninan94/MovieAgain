@@ -21,6 +21,7 @@ from .serializers import (
 from .models import Funding, Comment, Backers
 from django.db.models import Q, F
 from rest_framework.permissions import IsAuthenticated
+from datetime import datetime
 
 
 # @login_required
@@ -47,11 +48,18 @@ def funding_list(request):
 def funding_recommend_list(request):
     if request.method == 'GET':
 
-        fundings = Funding.objects.all().order_by('expired_date')[:5]
+        now=datetime.now()
+        now_time = now.date()
+        # fundings = Funding.objects.all().order_by('expired_date')[:5]
+        
+        fundings = Funding.objects.all()
+        fundings = Funding.objects.filter(expired_date__gt=F('created_at'))
+        fundings = fundings.filter(expired_date__gt=now_time)
+
 
         serializer = FundingSerializer(fundings, many=True)
         return Response(serializer.data)
-
+        
 
 @api_view(['GET', 'DELETE', 'POST'])
 # @permission_classes([IsAuthenticated])
