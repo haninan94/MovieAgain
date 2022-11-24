@@ -5,9 +5,9 @@
         <div v-if="isCompleted===false">
           <img class="funding-img status-gray" :src="funding?.poster_path" alt="" />
         </div>
-        <div v-else-if="isCompleted==='complete'">
-          <img src="../assets/ACCEPT.png" alt="">
-          <img class="funding-img" :src="funding?.poster_path" alt="" />
+        <div v-else-if="isCompleted==='complete'" class="parent">
+          <img class="funding-img child" :src="funding?.poster_path" alt=""/>
+          <img src="../assets/completed.png" alt="" style="width: 300px" class="child completed">
         </div>
         <div v-else-if="isCompleted==='ing'">
           <img class="funding-img" :src="funding?.poster_path" alt="" />
@@ -197,4 +197,22 @@ export default {
 .status-gray{
   filter: grayscale(100%);
 }
+
+.parent{
+  position: relative;
+}
+
+.child{
+  /* position: absolute;
+  top: -200px;
+  left: -150px; */
+}
+
+.completed {
+  position: absolute;
+  left: 0px;
+  top: 50px;
+}
+
+
 </style>

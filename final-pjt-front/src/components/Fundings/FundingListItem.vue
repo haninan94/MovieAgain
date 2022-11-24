@@ -69,7 +69,7 @@
             {{ Math.ceil((funding.now_money / funding.goal_money) * 100) }}%
           </p>
           <div class="detail">
-            <p>기간 만료</p>
+            <p>펀딩 완료</p>
             <p style="font-size: 24px">{{ funding.now_money }}원</p>
           </div>
         </b-card>

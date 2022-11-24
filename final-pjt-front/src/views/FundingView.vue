@@ -6,6 +6,9 @@
         <p style="font-size: 30px">🙏재개봉을 기다리는 영화들🙏</p>
       </div>
       <div class="container2">
+        <form action="">
+          <input @keyup.prevent="searchFunding" type="text" style="margin-left: 2rem; margin-bottom: 20px" v-model="searchWord" placeholder="펀딩을 검색하세요.">
+        </form>
         <p style="margin-right:2rem">
           <router-link :to="{ name: 'FundingCreateView'}">
             <button class="nes-btn is-error">
@@ -30,6 +33,11 @@ export default {
   components: {
     FundingList,
   },
+  data() {
+    return {
+      searchWord: "",
+    }
+  },  
   computed: {
 
   },
@@ -39,6 +47,9 @@ export default {
   methods: {
     getFundings() {
       this.$store.dispatch("getFundings")
+    },
+    searchFunding() {
+      this.$store.dispatch('searchFunding', this.searchWord)
     }
   },
 };
@@ -57,7 +68,7 @@ export default {
 
 .container2 {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 
 .container3 {
