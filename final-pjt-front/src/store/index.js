@@ -255,9 +255,8 @@ export default new Vuex.Store({
           swal("회원가입에 성공했습니다!", "로그인 페이지로 이동합니다", "success")
           router.push({ name: "LogInView" })
         })
-        .catch((err) => {
+        .catch(() => {
           router.push({ name: "NotFound404" })
-          console.log(err)
         })
     },
     logIn(context, payload) {
@@ -298,8 +297,8 @@ export default new Vuex.Store({
     // 영화 댓글 작성
     createMovieComment(context, newMovieComment) {
       if (!context.state.token) {
-        swal('plz login', 'warning')
-        return
+        swal('댓글을 달 수 없습니다.', '로그인이 필요합니다.', "warning")
+        return;
       }
       axios({
         method: 'post',
@@ -314,7 +313,6 @@ export default new Vuex.Store({
         }
       })
         .then((res) => {
-          console.log(res.data)
           context.commit('CREATE_MOVIE_COMMENT', res.data)
         })
         .catch((err) => {
