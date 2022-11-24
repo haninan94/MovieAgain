@@ -70,8 +70,8 @@
 </template>
 <script>
 import axios from "axios";
-import FundingCommentForm from "@/components/FundingCommentForm";
-import FundingDonateForm from "@/components/FundingDonateForm";
+import FundingCommentForm from "@/components/Fundings/FundingCommentForm";
+import FundingDonateForm from "@/components/Fundings/FundingDonateForm";
 import dayjs from "dayjs";
 
 const API_URL = "http://127.0.0.1:8000";

@@ -54,7 +54,7 @@ def funding_recommend_list(request):
         
         fundings = Funding.objects.all()
         fundings = Funding.objects.filter(expired_date__gt=F('created_at'))
-        fundings = fundings.filter(expired_date__gt=now_time)
+        fundings = fundings.filter(expired_date__gt=now_time).order_by('?')[:5]
 
 
         serializer = FundingSerializer(fundings, many=True)
