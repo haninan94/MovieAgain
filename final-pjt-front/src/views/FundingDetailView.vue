@@ -1,50 +1,52 @@
 <template>
   <div id="funding-detail">
-    <div class="nes-container is-rounded is-dark">
-      <div>
-        <img class="funding-img" :src="funding?.poster_path" alt="" />
-      </div>
-      <div>
+    <div id="container">
+      <div id="test" class="nes-container is-rounded is-dark">
         <div>
-          <div id="d-day">
-            <span id="d-day-span">D-{{ remainDate }}</span>  
-          </div>
-          <p>영화 제목 : {{ funding.movie_title }}</p>
-          <p>{{ funding.content }}</p>
-          <br />
+          <img class="funding-img" :src="funding?.poster_path" alt="" />
         </div>
         <div>
-          <template>
-            <!-- <progress
-              progress
-              class="nes-progress is-primary"
-              :value="funding.now_money"
-              :max="funding.goal_money"
-            ></progress> -->
-            <div>
-              <p>{{ Math.ceil((funding.now_money / funding.goal_money) * 100) }}%</p>
-              <b-progress
-                :value="(funding.now_money / funding.goal_money) * 100"
-                variant="info"
-                striped
-                :animated="animate"
-                class="mt-2"
-              ></b-progress>
+          <div>
+            <div id="d-day">
+              <span id="d-day-span">D-{{ remainDate }}</span>  
             </div>
-          </template>
-
-          <div id="money">
-            <div>
-              <span>{{ funding.goal_money }}원 목표</span>
-            </div>
-            <div>
-              <span>{{ funding.now_money }}원</span>
-            </div>
+            <p>영화 제목 : {{ funding.movie_title }}</p>
+            <p>{{ funding.content }}</p>
+            <br />
           </div>
-          <FundingDonateForm 
-            :fundingMinimumMoney="this.funding.minimum_money"
-            :fundingId="funding.id"
-          />
+          <div>
+            <template>
+              <!-- <progress
+                progress
+                class="nes-progress is-primary"
+                :value="funding.now_money"
+                :max="funding.goal_money"
+              ></progress> -->
+              <div>
+                <p>{{ Math.ceil((funding.now_money / funding.goal_money) * 100) }}%</p>
+                <b-progress
+                  :value="(funding.now_money / funding.goal_money) * 100"
+                  variant="info"
+                  striped
+                  :animated="animate"
+                  class="mt-2"
+                ></b-progress>
+              </div>
+            </template>
+
+            <div id="money">
+              <div>
+                <span>{{ funding.goal_money }}원 목표</span>
+              </div>
+              <div>
+                <span>{{ funding.now_money }}원</span>
+              </div>
+            </div>
+            <FundingDonateForm 
+              :fundingMinimumMoney="this.funding.minimum_money"
+              :fundingId="funding.id"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -146,5 +148,14 @@ export default {
 #money {
   display: flex;
   justify-content: space-between;
+}
+
+#container {
+  display: flex;
+  justify-content: center;
+}
+
+#test {
+  width: 75%;
 }
 </style>
