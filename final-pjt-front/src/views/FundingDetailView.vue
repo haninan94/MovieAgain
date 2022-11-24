@@ -51,6 +51,7 @@
               v-if="isCompleted"
               :fundingMinimumMoney="this.funding.minimum_money"
               :fundingId="funding.id"
+              :remainDate="remainDate"
             />
           </div>
         </div>
@@ -93,7 +94,6 @@ export default {
       return this.$store.getters.getFundingDetail;
     },
     isCompleted() {
-      console.log(this.$store.state.remainMoney)
       if (this.remainDate <= 0) {
         if (this.$store.state.remainMoney <= 0) {
           return 'complete'

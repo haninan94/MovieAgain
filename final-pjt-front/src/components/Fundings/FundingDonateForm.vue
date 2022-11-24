@@ -31,11 +31,16 @@ export default {
   props: {
     fundingMinimumMoney: Number,
     fundingId: Number,
+    remainDate: Number,
   },
   methods: {
     donateFunding() {
       if (!this.$store.state.token) {
         swal("펀딩할 수 없습니다.", "로그인을 해주시기 바랍니다.", "warning");
+        return;
+      } 
+      if (this.remainDate < 0) {
+        swal("펀딩할 수 없습니다.", "이미 기간이 만료된 펀딩입니다.", "error")
         return;
       }
       const payload = {
