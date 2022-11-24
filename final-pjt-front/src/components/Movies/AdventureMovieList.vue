@@ -1,3 +1,4 @@
+<!-- Adventure Movie List -->
 <template>
   <b-container fluid class="p-4 bg-dark border-top border-danger">
     <b-row>
@@ -12,7 +13,7 @@
 </template>
 
 <script>
-import AdventureMovieListItem from "@/components/AdventureMovieListItem";
+import AdventureMovieListItem from "@/components/Movies/AdventureMovieListItem";
 
 export default {
   name: "AdventureMovieList",

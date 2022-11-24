@@ -1,7 +1,9 @@
+<!-- Funding Create Component -->
 <template>
-  <div >
+  <div>
     <div class="funding-create-view">
       <form @submit.prevent="createFunding">
+        <!-- Funding title -->
         <label for="movie_title"></label>
         <input
           type="text"
@@ -10,7 +12,7 @@
           v-model="funding.movie_title"
           placeholder="title"
         />
-
+        <!-- Funding Content -->
         <label for="content"></label>
         <textarea
           id="content"
@@ -18,7 +20,7 @@
           v-model="funding.content"
           placeholder="content"
         ></textarea>
-
+        <!-- Funding Poster -->
         <label for="poster_path"></label>
         <input
           type="text"
@@ -27,8 +29,8 @@
           v-model="funding.poster_path"
           placeholder="Poster URL"
         />
-
-        <label for="minimum_money"></label>
+        <!-- Minimum Funding Money -->
+        <label for="minimum_money">최소 펀딩 금액을 설정해주세요</label>
         <div class="nes-select">
           <select required id="minumum_money" v-model="funding.minimum_money">
             <option value="" disabled selected>select...</option>
@@ -38,7 +40,7 @@
             <option value="100000">100000</option>
           </select>
         </div>
-
+        <!-- Goal Money  -->
         <label for="goal_money"></label>
         <input
           type="text"
@@ -47,7 +49,7 @@
           v-model="funding.goal_money"
           placeholder="Goal Money"
         />
-      
+        <!-- Expired Date  -->
         <label for="expired_date"></label>
         <b-form-datepicker
           v-model="funding.expired_date"
@@ -57,7 +59,7 @@
           class="mx-2"
         >
         </b-form-datepicker>
-        <button class="nes-btn is-error">CREATE</button>
+        <button class="nes-btn is-error">생성하기</button>
       </form>
     </div>
     

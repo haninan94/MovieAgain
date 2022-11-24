@@ -1,3 +1,4 @@
+<!-- Romance Movie List -->
 <template>
   <b-container fluid class="p-4 bg-dark border-top border-danger">
     <b-row>
@@ -12,7 +13,7 @@
 </template>
 
 <script>
-import RomanceMovieListItem from "@/components/RomanceMovieListItem";
+import RomanceMovieListItem from "@/components/Movies/RomanceMovieListItem";
 
 export default {
   name: "RomanceMovieList",

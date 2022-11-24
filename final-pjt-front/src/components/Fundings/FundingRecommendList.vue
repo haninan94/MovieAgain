@@ -1,12 +1,5 @@
+<!-- Funding Recommend List  -->
 <template>
-  <!-- <div class="movie-list">
-    <h3>Movie List</h3>
-    <DocumentaryMovieListItem
-      v-for="movie in movies"
-      :key="movie.id"
-      :movie="movie"
-    />
-  </div> -->
   <b-container fluid class="p-4 bg-dark border-top border-danger">
     <b-row>
       <h1 class="nes-text is-warning">현재 진행중인 펀딩</h1>
@@ -20,7 +13,7 @@
 </template>
 
 <script>
-import FundingRecommendListItem from "@/components/FundingRecommendListItem";
+import FundingRecommendListItem from "@/components/Fundings/FundingRecommendListItem";
 
 export default {
   name: "FundingRecommendList",

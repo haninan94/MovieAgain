@@ -1,3 +1,4 @@
+<!-- Movie List -->
 <template>
   <div class="movielist">
     <carousel-3d
@@ -29,12 +30,10 @@
 </template>
 
 <script>
-// import MovieListItem from "@/components/MovieListItem";
 
 export default {
   name: "MovieList",
   components: {
-    // MovieListItem,
   },
   computed: {
     movies() {

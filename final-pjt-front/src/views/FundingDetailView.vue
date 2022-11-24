@@ -1,27 +1,27 @@
+<!-- Funding Detail View -->
 <template>
   <div id="funding-detail">
     <div id="container">
       <div id="test" class="nes-container is-rounded is-dark">
+        <!-- Funding Image -->
         <div>
           <img class="funding-img" :src="funding?.poster_path" alt="" />
         </div>
         <div>
           <div>
+            <!-- Funding D-Day -->
             <div id="d-day">
               <span id="d-day-span">D-{{ remainDate }}</span>  
             </div>
+            <!-- Funding Movie title -->
             <p>영화 제목 : {{ funding.movie_title }}</p>
+            <!-- Funding Movie Content -->
             <p>{{ funding.content }}</p>
             <br />
           </div>
           <div>
+            <!-- Funding Progress -->
             <template>
-              <!-- <progress
-                progress
-                class="nes-progress is-primary"
-                :value="funding.now_money"
-                :max="funding.goal_money"
-              ></progress> -->
               <div>
                 <p>{{ Math.ceil((funding.now_money / funding.goal_money) * 100) }}%</p>
                 <b-progress
@@ -33,15 +33,16 @@
                 ></b-progress>
               </div>
             </template>
-
+            <!-- Funding Goal Money, Now Money -->
             <div id="money">
               <div>
                 <span>{{ funding.goal_money }}원 목표</span>
               </div>
               <div>
-                <span>{{ funding.now_money }}원</span>
+                <span style="font-size:30px">{{ funding.now_money }}원</span>
               </div>
             </div>
+            <!-- Funding Donate -->
             <FundingDonateForm 
               :fundingMinimumMoney="this.funding.minimum_money"
               :fundingId="funding.id"
@@ -50,22 +51,17 @@
         </div>
       </div>
     </div>
+    <!-- Funding Comment -->
+    <FundingCommentForm :fundingId="this.funding.id" ref="FundingCommentForm" />
     <router-link :to="{ name: 'FundingView' }">
       <button class="nes-btn is-error">뒤로 가기</button>
     </router-link>
-    <FundingCommentForm :fundingId="this.funding.id" ref="FundingCommentForm" />
   </div>
-  <!-- <template v-if="check">
-          <progress class="nes-progress is-error" :value="fundingRate" max="1"></progress>
-        </template>
-        <template v-else>
-          <progress class="nes-progress" :value="fundingRate" max="1"></progress>
-        </template> -->
 </template>
 <script>
 import axios from "axios";
-import FundingCommentForm from "@/components/FundingCommentForm";
-import FundingDonateForm from "@/components/FundingDonateForm";
+import FundingCommentForm from "@/components/Fundings/FundingCommentForm";
+import FundingDonateForm from "@/components/Fundings/FundingDonateForm";
 import dayjs from "dayjs";
 
 const API_URL = "http://127.0.0.1:8000";
@@ -105,7 +101,7 @@ export default {
           .split("-")
           .map((str) => Number(str));
         const remainDate = new Date(expiredDate) - new Date(todayDate);
-        this.remainDate = remainDate / 1000 / 60 / 60 / 24;
+        this.remainDate = remainDate / 1000 / 60 / 60 / 24
       });
     },
   },
@@ -156,6 +152,6 @@ export default {
 }
 
 #test {
-  width: 75%;
+  width: 60%;
 }
 </style>

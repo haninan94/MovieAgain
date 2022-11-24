@@ -1,15 +1,19 @@
+<!-- App.vue -->
 <template>
   <div id="app" class="appclass">
     <nav>
+      <!-- 메인 페이지 -->
       <router-link :to="{ name: 'MovieView' }">
         <button class="nes-btn is-success">HOME</button>
       </router-link>
+      <!-- 로그인 상태일 시 : LOGOUT, MYPAGE -->
       <template v-if="check">
         <button class="nes-btn is-primary" @click="logOut">LOGOUT</button>
         <router-link :to="{ name: 'ProfileView', params: { id: userid } }">
           <button class="nes-btn">MYPAGE</button>
         </router-link>
       </template>
+      <!-- 로그아웃 상태일 시 : SIGNUP, LOGIN -->
       <template v-else>
         <router-link :to="{ name: 'SignUpView' }">
           <button class="nes-btn">SIGNUP</button>
@@ -18,10 +22,10 @@
           <button class="nes-btn is-primary">LOGIN</button>
         </router-link>
       </template>
+      <!-- 펀딩 페이지 -->
       <router-link :to="{ name: 'FundingView' }">
         <button class="nes-btn is-warning">FUNDING</button>
       </router-link>
-      <!-- <router-link :to="{ name: 'FundingSearchView'}">Search</router-link> -->
     </nav>
     <router-view />
   </div>
@@ -40,9 +44,7 @@ export default {
   },
   methods: {
     logOut() {
-      // console.log("go")
       this.$store.commit("LOGOUT");
-      // this.$router.push({ name: "MovieView" })
     },
   },
   created() {
@@ -64,13 +66,10 @@ export default {
 }
 
 #app {
-  /* font-family: Avenir, Helvetica, Arial, sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: whitesmoke;
-  /* background-color: white; */
-  /* font-family: "font-family you want to use"; */
 }
 
 .appclass {
@@ -84,7 +83,6 @@ export default {
 
 nav {
   padding: 30px;
-  /* background-color: white; */
 }
 
 nav a {
@@ -92,7 +90,4 @@ nav a {
   color: #2c3e50;
 }
 
-/* nav a.router-link-exact-active {
-  color: #42b983;
-} */
 </style>

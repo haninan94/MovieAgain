@@ -1,31 +1,28 @@
+<!-- Horror Movie List -->
 <template>
   <b-container fluid class="p-4 bg-dark border-top border-danger">
     <b-row>
-      <h1 class="nes-text is-warning">Animation</h1>
-      <AnimationMovieListItem
+      <h1 class="nes-text is-warning">Horror</h1>
+      <HorrorMovieListItem
       v-for="movie in movies"
       :key="movie.id"
       :movie="movie"
-    />
+      />
     </b-row>
   </b-container>
-  <!-- <b-container fluid class="p-4 bg-dark">
-    <b-row>
-    </b-row>
-  </b-container> -->
 </template>
 
 <script>
-import AnimationMovieListItem from "@/components/AnimationMovieListItem";
+import HorrorMovieListItem from "@/components/Movies/HorrorMovieListItem";
 
 export default {
-  name: "AnimationMovieList",
+  name: "HorrorMovieList",
   components: {
-    AnimationMovieListItem,
+    HorrorMovieListItem,
   },
   computed: {
     movies() {
-      return this.$store.state.animation_movies;
+      return this.$store.state.horror_movies;
     },
   },
 };

@@ -1,24 +1,15 @@
+<!-- Romance Movie List Item -->
 <template>
   <b-col>
     <router-link :to="{ name: 'MovieDetailView', params: { id: movie.id } }">
       <b-img style="height:300px;" class="test" thumbnail fluid :src="imgUrl"></b-img>
     </router-link>
   </b-col>
-  <!-- <div>
-    <h5>{{ movie.id }}</h5>
-    <p>{{ movie.title }}</p>
-    <img :src="imgUrl" alt="" />
-    <br />
-    <router-link :to="{ name: 'MovieDetailView', params: { id: movie.id } }">
-      [DETAIL]
-    </router-link>
-    <hr />
-  </div> -->
 </template>
 
 <script>
 export default {
-  name: "AnimationMovieListItem",
+  name: "RomanceMovieListItem",
   props: {
     movie: Object,
   },
@@ -31,17 +22,16 @@ export default {
 </script>
 
 <style>
-/* .animationimage {
+/* .romanceimage {
   -webkit-filter: grayscale(0) blur(0);
 	filter: grayscale(0) blur(0);
 	-webkit-transition: .3s ease-in-out;
 	transition: .3s ease-in-out;
 }
 
-.animationimage:hover {
+.romanceimage:hover {
   -webkit-filter: grayscale(100%) blur(1px);
-	filter: grayscale(100%) blur(1px);
-  transform: scale(1.5);
+	filter: grayscale(100%) blur(1px)
 } */
 img {
   transition: transform 0.25s;

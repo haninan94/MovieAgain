@@ -1,3 +1,4 @@
+<!-- Movie View -->
 <template>
   <div>
     <div class="movieview bg-dark">
@@ -26,13 +27,13 @@
 
 
 <script>
-import MovieList from "@/components/MovieList";
-import AdventureMovieList from "@/components/AdventureMovieList";
-import HorrorMovieList from "@/components/HorrorMovieList";
-import DocumentaryMovieList from "@/components/DocumentaryMovieList";
-import AnimationMovieList from "@/components/AnimationMovieList";
-import RomanceMovieList from "@/components/RomanceMovieList";
-import FundingRecommendList from "@/components/FundingRecommendList";
+import MovieList from "@/components/Movies/MovieList";
+import AdventureMovieList from "@/components/Movies/AdventureMovieList";
+import HorrorMovieList from "@/components/Movies/HorrorMovieList";
+import DocumentaryMovieList from "@/components/Movies/DocumentaryMovieList";
+import AnimationMovieList from "@/components/Movies/AnimationMovieList";
+import RomanceMovieList from "@/components/Movies/RomanceMovieList";
+import FundingRecommendList from "@/components/Fundings/FundingRecommendList";
 
 export default {
   name: "MovieView",
@@ -46,9 +47,6 @@ export default {
     RomanceMovieList,
   },
   computed: {
-    // isLogin() {
-    //   return this.$store.getters.isLogin;
-    // },
   },
   created() {
     this.getMovies();
@@ -62,12 +60,6 @@ export default {
   methods: {
     getMovies() {
       this.$store.dispatch("getMovies");
-      // if (this.isLogin === true) {
-      //   this.$store.dispatch("getMovies");
-      // } else {
-      //   alert("로그인이 필요한 서비스 입니다.");
-      //   this.$router.push({ name: "LogInView" });
-      // }
     },
     getRecommendFundings() {
       this.$store.dispatch("getRecommendFundings");

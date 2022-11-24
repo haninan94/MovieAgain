@@ -1,3 +1,4 @@
+<!-- Profile View -->
 <template>
   <div id="profile">
     <h2>내 프로필</h2>
@@ -12,7 +13,7 @@
 </template>
 
 <script>
-import UserFundingList from '@/components/UserFundingList'
+import UserFundingList from '@/components/Profile/UserFundingList'
 export default {
   name: "ProfileView",
   components:{
@@ -31,7 +32,6 @@ export default {
     getUserName(){
       return this.$store.state.username
     }
-    // getUsername() {},
   },
   created(){
     this.getUserFundings();

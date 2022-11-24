@@ -1,3 +1,4 @@
+<!-- Movie Comment Form -->
 <template>
   <div class="moviecommentform">
     <p id="idTag">{{ movieId }}</p>
@@ -18,7 +19,7 @@
 </template>
 
 <script>
-import MovieCommentItem from "@/components/MovieCommentItem/";
+import MovieCommentItem from "@/components/Movies/MovieCommentItem/";
 
 export default {
   name: "MovieCommentForm",

@@ -1,6 +1,6 @@
+<!-- Funding Main Page -->
 <template>
   <div id="fundingview">
-    <!-- <router-link :to="{ name: 'FundingSearchView'}">Search</router-link> -->
     <div>
       <div class="container1">
         <p style="font-size: 30px">🙏재개봉을 기다리는 영화들🙏</p>
@@ -15,6 +15,7 @@
         </p>
       </div>
     </div>
+    <!-- Funding List -->
     <div class="container3">
       <FundingList/>
     </div>
@@ -22,14 +23,12 @@
 </template>
 
 <script>
-import FundingList from '@/components/FundingList'
-// import FundingCreateView from '@/views/FundingCreateView'
+import FundingList from '@/components/Fundings/FundingList'
 
 export default {
   name: "FundingView",
   components: {
     FundingList,
-    // FundingCreateView
   },
   computed: {
 

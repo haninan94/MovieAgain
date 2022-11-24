@@ -1,7 +1,8 @@
+<!-- Funding Donate Form -->
 <template>
   <div id="funding-donate-form" style="background-color:#212529; padding: 1rem 1.2rem 1rem 1rem;width:calc(100% + 8px)">
     <div class="nes-select is-dark">
-      <label for="dark_select" style="color: #fff">후원하기</label>
+      <label for="dark_select" style="color: #fff">펀딩하기</label>
       <form class="donate-form" @submit.prevent="donateFunding">
         <select style="margin-bottom:10px;" required id="dark_select" v-model="donateMoney">
           <option value="" disabled selected>가격을 선택해주세요.</option>
@@ -10,7 +11,7 @@
           <option :value="fundingMinimumMoney + 20000">{{ fundingMinimumMoney + 20000 }}원</option>
         </select>
         <span>
-          <button class="nes-btn is-primary">후원하기</button>
+          <button id="donate-button" class="nes-btn is-primary">펀딩하기</button>
         </span>
       </form>
     </div>
@@ -34,7 +35,7 @@ export default {
   methods: {
     donateFunding() {
       if (!this.$store.state.token) {
-        swal("후원할 수 없습니다.", "로그인을 해주시기 바랍니다.", "warning");
+        swal("펀딩할 수 없습니다.", "로그인을 해주시기 바랍니다.", "warning");
         return;
       }
       const payload = {
@@ -56,4 +57,5 @@ export default {
 .donate-form {
   align-content: center;
 }
+
 </style>

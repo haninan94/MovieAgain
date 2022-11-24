@@ -1,3 +1,4 @@
+<!-- Not Found View -->
 <template>
   <div>
     <img src="../assets/notfoundimg.gif" alt="">
