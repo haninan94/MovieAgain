@@ -113,6 +113,7 @@ export default new Vuex.Store({
     // 회원가입 && 로그인
     SAVE_TOKEN(state, token) {
       state.token = token
+      swal("로그인 완료", "로그인이 완료되었습니다", "success")
       router.push({ name: 'MovieView' })
     },
     // 댓글 작성
