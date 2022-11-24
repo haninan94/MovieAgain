@@ -54,7 +54,6 @@ export default {
       const expiredDate = this.userfunding.funding.expired_date
         .split("-")
         .map((str) => Number(str));
-      console.log(expiredDate);
       const todayDate = dayjs()
         .format("YYYY-MM-DD")
         .split("-")

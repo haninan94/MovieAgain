@@ -162,6 +162,7 @@ export default new Vuex.Store({
       state.funding = funding
       state.remainMoney = funding.goal_money - funding.now_money
     },
+    // 펀딩 검색하기
     SEARCH_FUNDING (state, fundings) {
       state.fundings = fundings
     }
@@ -555,6 +556,7 @@ export default new Vuex.Store({
           }
         })
     },
+    // 펀딩 검색하기
     searchFunding(context, searchword) {
       axios({
         method: "get",

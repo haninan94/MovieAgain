@@ -2,9 +2,17 @@
 <template>
   <div id="app" class="appclass">
     <nav>
+    <div class="container">
+      <router-link :to="{ name: 'MovieView' }">
+        <img id="logo-img" src="./assets/Group 97 (2).svg" alt="">
+      </router-link>
+    </div>
       <!-- 메인 페이지 -->
       <router-link :to="{ name: 'MovieView' }">
         <button class="nes-btn is-success">HOME</button>
+      </router-link>
+      <router-link :to="{ name: 'FundingView' }">
+        <button class="nes-btn is-warning">FUNDING</button>
       </router-link>
       <!-- 로그인 상태일 시 : LOGOUT, MYPAGE -->
       <template v-if="check">
@@ -23,9 +31,6 @@
         </router-link>
       </template>
       <!-- 펀딩 페이지 -->
-      <router-link :to="{ name: 'FundingView' }">
-        <button class="nes-btn is-warning">FUNDING</button>
-      </router-link>
     </nav>
     <router-view />
   </div>
@@ -90,4 +95,13 @@ nav a {
   color: #2c3e50;
 }
 
+.container {
+  position: relative;
+}
+
+#logo-img {
+  position: absolute;
+  top: 0px;
+  left: 100px;
+}
 </style>

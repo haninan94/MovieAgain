@@ -2,7 +2,7 @@
 <template>
   <b-container fluid class="p-4 bg-dark border-top border-danger">
     <b-row>
-      <h1 class="nes-text is-warning">Animation</h1>
+      <h1 class="nes-text is-warning">10덕도 사람입니다. 존중해주세요. 그게 뭔데 10덕아</h1>
       <AnimationMovieListItem
       v-for="movie in movies"
       :key="movie.id"

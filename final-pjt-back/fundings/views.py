@@ -161,7 +161,6 @@ def funding_comment_list(request, funding_pk):
 @api_view(['GET'])
 def funding_search(request):
     if request.method == 'GET':
-        print('******************************************************************')
         word = request.GET.get('searchword')
         print(word)
         fundings = Funding.objects.filter(movie_title__contains=word)

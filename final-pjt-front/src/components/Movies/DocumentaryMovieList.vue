@@ -2,7 +2,7 @@
 <template>
   <b-container fluid class="p-4 bg-dark border-top border-danger">
     <b-row>
-      <h1 class="nes-text is-warning">Documentary</h1>
+      <h1 class="nes-text is-warning">수면이 부족한 당신을 위해... zZ</h1>
       <DocumentaryMovieListItem
       v-for="movie in movies"
       :key="movie.id"
