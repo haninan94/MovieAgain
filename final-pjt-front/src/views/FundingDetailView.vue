@@ -7,7 +7,7 @@
         </div>
         <div v-else-if="isCompleted==='complete'" class="parent">
           <img class="funding-img child" :src="funding?.poster_path" alt=""/>
-          <img src="../assets/completed.png" alt="" style="width: 300px" class="child completed">
+          <img src="../assets/Group 98.svg" alt="" style="width: 300px" class="child completed">
         </div>
         <div v-else-if="isCompleted==='ing'">
           <img class="funding-img" :src="funding?.poster_path" alt="" />
@@ -211,7 +211,8 @@ export default {
 .completed {
   position: absolute;
   left: 0px;
-  top: 50px;
+  top: 170px;
+  transform: rotate(-20deg);
 }
 
 
