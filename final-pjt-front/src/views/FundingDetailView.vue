@@ -85,7 +85,7 @@ export default {
   data() {
     return {
       fundingMoney: 0,
-      remainDate: "",
+      remainDate: 0,
       animate: true,
     };
   },
