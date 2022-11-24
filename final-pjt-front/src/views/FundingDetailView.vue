@@ -2,26 +2,30 @@
   <div id="funding-detail">
     <div id="container">
       <div id="test" class="nes-container is-rounded is-dark">
-        <div>
+        <div v-if="isCompleted===false">
+          <img class="funding-img status-gray" :src="funding?.poster_path" alt="" />
+        </div>
+        <div v-else-if="isCompleted==='complete'">
+          <img src="../assets/ACCEPT.png" alt="">
+          <img class="funding-img" :src="funding?.poster_path" alt="" />
+        </div>
+        <div v-else-if="isCompleted==='ing'">
           <img class="funding-img" :src="funding?.poster_path" alt="" />
         </div>
         <div>
           <div>
-            <div id="d-day">
+            <div v-if="isCompleted==='ing'" id="d-day">
               <span id="d-day-span">D-{{ remainDate }}</span>  
             </div>
+            <!-- <div v-else-if="isCompleted" id="d-day"> -->
+              <!-- <span id="d-day-span">D-{{ remainDate }}</span>   -->
+            <!-- </div> -->
             <p>영화 제목 : {{ funding.movie_title }}</p>
             <p>{{ funding.content }}</p>
             <br />
           </div>
           <div>
             <template>
-              <!-- <progress
-                progress
-                class="nes-progress is-primary"
-                :value="funding.now_money"
-                :max="funding.goal_money"
-              ></progress> -->
               <div>
                 <p>{{ Math.ceil((funding.now_money / funding.goal_money) * 100) }}%</p>
                 <b-progress
@@ -32,6 +36,7 @@
                   class="mt-2"
                 ></b-progress>
               </div>
+              <!-- <p>{{ isCompleted }}</p> -->
             </template>
 
             <div id="money">
@@ -43,6 +48,7 @@
               </div>
             </div>
             <FundingDonateForm 
+              v-if="isCompleted==='ing'"
               :fundingMinimumMoney="this.funding.minimum_money"
               :fundingId="funding.id"
             />
@@ -86,6 +92,33 @@ export default {
     funding() {
       return this.$store.getters.getFundingDetail;
     },
+    isCompleted() {
+      console.log(this.$store.state.remainMoney)
+      if (this.remainDate <= 0) {
+        if (this.$store.state.remainMoney <= 0) {
+          return 'complete'
+          // '성공했는데 날짜지남'
+          // 펀딩 완료 (중지)
+        } else {
+          return false
+          // 날짜 지나고 돈이 남아있음
+          // 펀딩 중지
+        }
+      } else {
+        if (this.$store.state.remainMoney > 0) {
+          return 'ing'
+          // 날짜 남았는데 돈이 남음
+          // 펀딩 계속
+        } else {
+          return 'ing'
+          // '날짜 남았는데 성공함'
+          // 펀딩 계속
+        }
+      }
+
+
+      // return this.$store.getters.getIsCompleted;
+    }
   },
   methods: {
     getFundingDetail() {
@@ -106,6 +139,8 @@ export default {
           .map((str) => Number(str));
         const remainDate = new Date(expiredDate) - new Date(todayDate);
         this.remainDate = remainDate / 1000 / 60 / 60 / 24;
+        this.$store.state.remainDate = this.remainDate
+
       });
     },
   },
@@ -157,5 +192,9 @@ export default {
 
 #test {
   width: 75%;
+}
+
+.status-gray{
+  filter: grayscale(100%);
 }
 </style>

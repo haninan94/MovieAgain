@@ -24,6 +24,7 @@ export default new Vuex.Store({
     fundingComments: [],
     userId: '',
     funding: [],
+    remainMoney: null,
   },
   getters: {
     isLogin(state) {
@@ -38,15 +39,30 @@ export default new Vuex.Store({
     getFundingDetail(state) {
       return state.funding
     },
-    getIsCompleted(state) {
-      console.log('**********************')
-      const remainMoney = state.funding.goal_money - state.funding.now_money
-      if (remainMoney <= 0) {
-        return true
-      } else {
-        return false
-      }
-    }
+    // getIsCompleted(state) {
+      // console.log('**********************')
+      // const remainMoney = state.funding.goal_money - state.funding.now_money
+      // const remainDate = state.funding.remainDate
+      // console.log(remainDate)
+      // if (remainDate <= 0) {
+      //   if (remainMoney <= 0) {
+      //     return true
+      //   } else {
+      //     return false
+      //   }
+      // } else {
+      //   if (remainMoney > 0) {
+      //     return 'ing'
+      //   } else {
+      //     return true
+      //   }
+      // }
+      // if (remainMoney <= 0) {
+      //   return true
+      // } else {
+      //   return false
+      // }
+    // }
   },
   mutations: {
     GET_MOVIES(state, movies) {
@@ -114,6 +130,7 @@ export default new Vuex.Store({
     },
     GET_FUNDING_DETAIL(state, funding) {
       state.funding = funding
+      state.remainMoney = funding.goal_money - funding.now_money
     },
   },
   actions: {
