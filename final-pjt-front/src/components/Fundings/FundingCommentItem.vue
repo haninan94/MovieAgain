@@ -6,10 +6,13 @@
       <span>{{ fundingComment.content }}</span>
       <span>{{ getCreatedAt }}</span>
       <button
+        v-if="getUsername === getMyNickName"
         @click.prevent="
           deleteFundingComment(fundingComment.id, fundingComment.funding)
         "
-      >X</button>
+      >
+        X
+      </button>
     </div>
   </div>
 </template>
@@ -34,11 +37,15 @@ export default {
       ).toLocaleString();
       return createdAt;
     },
+    getMyNickName() {
+      const myNickName = this.$store.state.userName;
+      return myNickName;
+    },
   },
   methods: {
     deleteFundingComment(commentId, fundingId) {
-      const audio = document.querySelector("audio")
-      audio.play()
+      const audio = document.querySelector("audio");
+      audio.play();
       const payload = {
         commentId: commentId,
         fundingId: fundingId,
@@ -72,6 +79,4 @@ export default {
 .funding-comment-item button {
   margin-left: 10px;
 }
-
-
 </style>
